@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rainbow.html</title>
+    <!-- CSS 표준 위치 -->
+    <style>
+        #button1 {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="button1">Click to This.</button>
+    <!-- Javascript 표준 위치 -->
+    <script>
+        const button = document.getElementById('button1');
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'rebeccapurple', 'violet'];
+
+        function change() {
+            document.body.style.background = colors[Math.floor(7 * Math.random())];
+        }
+
+        button.addEventListener('click', change);
+
+    </script>
+</body>
+
+</html>

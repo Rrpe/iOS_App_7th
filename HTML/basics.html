@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Basic</title>
+</head>
+
+<body>
+    <h1>자바스크립트 기초 실습 예제</h1>
+    <p>이 문서를 브라우저에서 열고, Cmd + Option + I 또는 FN + F12 를 눌러 Console을 확인하세요.</p>
+
+    <script>
+        console.log("Javascript 실습 예제");
+
+        // 1. Data Type
+        let num = 10;
+        const number = 10;
+        num = 11; // 변수는 변경 가능
+        // number = 12; // 상수는 변경 불가능
+
+        let str = "Hello Javascript!"; // 문자열
+        let str1 = 'hello, world!';
+
+        let isActive = true; // true, false 참, 거짓을 의미하는 변수
+        let emptyValue = null; // 값이 없음을 의미함
+        let underfinedValue;
+
+        console.log(emptyValue, underfinedValue);
+        console.log(emptyValue == underfinedValue);
+        console.log(emptyValue === underfinedValue);
+
+        console.log("typeof num:", typeof num);
+        console.log("typeof str:", typeof str);
+        console.log("typeof isActive:", typeof isActive);
+        console.log("typeof emptyValue:", typeof emptyValue);
+        console.log("typeof underfinedValue:", typeof underfinedValue);
+
+        // 연산자
+        console.log("------------------")
+        console.log("2. 연산자")
+        console.log("------------------")
+
+        let a = 5;
+        let b = 2;
+
+        console.log("a + b =", a + b); // 7
+        console.log("a - b =", a - b); // 3
+        console.log("a * b =", a * b); // 10
+        console.log("a / b =", a / b); // 2.5
+        console.log("a % b =", a % b); // 1 (나머지 연산)
+
+        let greeting = "Hello" + "World!";
+        console.log("문자열 연결", greeting); // 문자열의 덧셈: 문자 이어 붙이기
+
+        let n = 1;
+        let str_n = "1";
+        console.log(n + str_n, typeof n + str_n);
+        console.log(str_n + n, typeof str_n + n);
+
+        // 비교 연산
+        console.log("a == 5:", a == 5); // true
+        console.log("a === '5':", a === "5"); // false (타입까지 비교)
+        console.log("a !== b:", a !== b); // true
+        console.log("a != b:", a != b);
+
+        // 논리 연산
+        console.log("(a > 2) && (b < 5):", a > 2 && b < 5); // true
+        console.log("(a > 6) || (b === 2):", a > 6 || b === 2); // true
+        console.log("!(a === 5):", !(a === 5)); // false
+
+        // 문자열 처리 함수 예시 trim(): 문자열의 시작과 끝의 공백 문자를 지워줌
+        console.log("     Hello, World!     ".trim());
+        console.log("     Hello, World!     ");
+
+        // 3. 조건문
+        console.log("------------------")
+        console.log("3. 조건문")
+        console.log("------------------")
+
+        let score = 90;
+        if (score >= 90) {
+            console.log("학점: A");
+        } else if (score >= 80) {
+            console.log("학점: B");
+        } else {
+            console.log("학점: C");
+        }
+
+        switch (score) {
+            case 90:
+                console.log("학점: A");
+                break;
+            case 90 > 80:
+                console.log("학점: B");
+                break;
+            default:
+                console.log("학점: C");
+        }
+
+        // 3항 연산자
+        let result = (score >= 90) ? "학점: A" : "학점: B";
+        console.log(result);
+
+        // 3항 연산자의 중첩: 보기 좋지 않음
+        let result2 = (score > - 90) ? "학점: A" : (score >= 80) ? "학점: B" : "학점: C";
+        console.log(result2);
+
+        // 4. 반복문
+        console.log("------------------")
+        console.log("4. 반복문")
+        console.log("------------------")
+
+        for (let i = 0; i < 5; i++) {
+            console.log("for문 - ", i);
+        }
+
+        let i = 0;
+        while (i < 5) {
+            console.log("while문 - ", i);
+            i++;
+        }
+        i = 0;
+
+        // do while문은 최초 1회 실행 보장 → ★
+        do {
+            console.log("do-while문 - ", i);
+            i++;
+        } while (i < 5);
+
+        // 중첩 반복문
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                console.log("중첩 반복문 - ", "i :", i, "j :", j);
+            }
+        }
+
+        // 5. 함수
+        console.log("------------------")
+        console.log("5. 함수")
+        console.log("------------------")
+
+        // 5-1. 함수 선언문
+        function sayHello(name) {
+            console.log("안녕하세요, " + name + "님!");
+        }
+        //  함수 호출
+        sayHello("페르");
+
+        // 5-2. 반환 값이 있는 함수
+        function add(a, b) {
+            return a + b;
+        }
+        console.log("add(2, 3) =", add(2, 3));
+
+        // 5-3. 함수 표현식 (Function Expression)
+        const addF = function (a, b) {
+            return a + b;
+        };
+        console.log("add(2, 3) =", add(2, 3));
+
+        // 5-4. 화살표 함수 (Arrow Function)
+        const multiply = (a, b) => {
+            return a * b;
+        };
+        console.log("multiply(4, 5) =", multiply(4, 5));
+
+        /*
+        위의 화살표 함수는 아래와 동일
+        function multiply(a, b) {
+          return a * b;
+        }
+        */
+
+        // (1) 콜백으로 사용할 함수
+        function greeting_Function(cb_name) {
+            console.log("안녕, " + cb_name + "님!");
+            alert("안녕, " + cb_name + "님!");
+        }
+
+        // (2) 함수를 인자로 받아서 내부에서 호출하는 함수
+        function processUserInput(callback) {
+            const userName = prompt("이름 입력, 대답", "홍길동");
+            if (userName !== null) {
+                callback(userName);
+            }
+        }
+
+        // (3) 실제 호출
+        // processUserInput 함수를 호출하면서 greeting 함수를 인자로 넘김
+        // => greeting 함수가 processUserInput 내부에서 호출됨
+        processUserInput(greeting_Function);
+
+    </script>
+</body>
+
+</html>
