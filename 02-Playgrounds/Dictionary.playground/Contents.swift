@@ -1,5 +1,6 @@
 import Foundation
 
+// struct(구조체)
 struct PersonName {
     let givenName: String
     let familyName: String
