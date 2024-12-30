@@ -1,7 +1,7 @@
 import Foundation
 
 enum GridPosition: String {
-    case empty = " "
+    case empty = "-"
     case player1 = "o"
     case player2 = "x"
 }
