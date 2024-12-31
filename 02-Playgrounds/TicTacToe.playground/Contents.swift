@@ -43,11 +43,13 @@ struct TicTacToe {
     }
 }
 
+// subscript 사용 전
 var game = TicTacToe()
 game.gridStorage[1][1] = .player1
 game.gridStorage[0][2] = .player2
 print(game.gameStateString())
 
+// subscript 사용 후
 game[0, 1] = .player1
 print(game.gameStateString())
 
