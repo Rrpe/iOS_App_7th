@@ -10,7 +10,7 @@
 /// - 참조가 필요할 때
 /// - 상속이 필요할 때
 /// - 이느턴스의 identity를 제어해야할 때
-class Person {
+public class Person {
     // 멤버변수 - 프로퍼티
     let givenName: String
     let middleName: String?
@@ -96,4 +96,14 @@ public func runClass() {
     print(sam.displayName)
     print(maddie.displayName)
     print(mark.displayName)
+    
+    // 클래스 복사시 메모리 주소 확인 테스트 - Heap영역
+    let testPerson1 = Person(givenName: "페르", familyName: "란")
+    let testPerson2 = testPerson1
+    
+    let pointer1 = Unmanaged.passUnretained(testPerson1).toOpaque()
+    let pointer2 = Unmanaged.passUnretained(testPerson2).toOpaque()
+    print(pointer1)
+    print(pointer2)
+    print(pointer1 == pointer2)
 }

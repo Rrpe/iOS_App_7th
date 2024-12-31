@@ -28,12 +28,19 @@ public func runOptional() {
 
 //    numberOfFingersHeldUpByFinn = nil
     // 조건부 언래핑
-    if let numberOfFingerHeld = numberOfFingersHeldUpByFinn {
-        print(numberOfFingerHeld) // 값이 nil이 아니면 실행
+//    if let numberOfFingerHeld = numberOfFingersHeldUpByFinn {
+//        print(numberOfFingerHeld) // 값이 nil이 아니면 실행
+//    } else {
+//        print("moluu")
+//    } // if let numberOfFingerHeld은 if문 안에서만
+    
+    // Swift 5.7부터 옵셔널 변수명에 if let 사용 가능
+    if let numberOfFingersHeldUpByFinn {
+        print(numberOfFingersHeldUpByFinn)
     } else {
-        print("moluu")
-    } // if let numberOfFingerHeld은 if문 안에서만
-
+        print("몰?루")
+    }
+    
     guard let numberOfFingerHeld = numberOfFingersHeldUpByFinn else {
     //    값이 없으면 실행
         print("몰??루")

@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Point {
+public struct Point {
     var x: Int
     var y: Int
     
@@ -53,4 +53,14 @@ public func runStruct() {
     let ciecle = Circle(radius: 10)
     print(ciecle.area)
     print(ciecle.areaFunction())
+    
+    // 값의 복사는 독립적으로 이루어짐 ( 다른 공간에 할당 )
+    
+    // 메모리 주소로 서로 다른 공간을 차지 하는 것을 확인 할 수 있음. Stack영역
+    var point2 = point
+    let pointer1 = UnsafeRawPointer(&point)
+    let pointer2 = UnsafeRawPointer(&point2)
+    print(pointer1)
+    print(pointer2)
+    print(pointer1 == pointer2)
 }
