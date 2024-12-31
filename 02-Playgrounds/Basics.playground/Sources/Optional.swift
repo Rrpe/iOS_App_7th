@@ -32,11 +32,12 @@ public func runOptional() {
         print(numberOfFingerHeld) // 값이 nil이 아니면 실행
     } else {
         print("moluu")
-    }
+    } // if let numberOfFingerHeld은 if문 안에서만
 
-    //guard let numberOfFingerHeld = numberOfFingersHeldUpByFinn else {
+    guard let numberOfFingerHeld = numberOfFingersHeldUpByFinn else {
     //    값이 없으면 실행
-    //    print("몰??루")
-    //    return
-    //}
+        print("몰??루")
+        return
+    } // guard let numberOfFingerHeld는 밖에서 사용 가능
+    print(numberOfFingerHeld)
 }
