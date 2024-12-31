@@ -38,7 +38,8 @@ let numbers = [1, 2, 3, 4, 5]
 let squaredNumbers = numbers.map { $0 * $0 }
 print(squaredNumbers)
 
-// Capturing Values 캡처값
+/// Capturing Values 캡처값
+/// () -> Int 는 값이 아닌 함수를 반환 한다는 의미
 func makeIncrementer(incrementAmount: Int) -> () -> Int {
     var total = 0
     let incrementer: () -> Int = {
@@ -55,3 +56,19 @@ print(incrementer())
 let incrementer2 = makeIncrementer(incrementAmount: 10)
 print(incrementer2())
 print(incrementer2())
+
+// Capturing Values - String Test
+func test_CapturingValues(incrementAmount: String) -> () -> String {
+    var total = ""
+    let incrementer: () -> String = {
+        total += incrementAmount
+        return total
+    }
+    return incrementer
+}
+
+var tester1 = test_CapturingValues(incrementAmount: "Hello")
+print(tester1())
+print(tester1())
+var tester1count = tester1().count
+print(tester1count)
