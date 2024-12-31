@@ -5,6 +5,11 @@
 //  Created by KimJunsoo on 12/31/24.
 //
 
+
+/// 클래스를 사용하는 경우:
+/// - 참조가 필요할 때
+/// - 상속이 필요할 때
+/// - 이느턴스의 identity를 제어해야할 때
 class Person {
     // 멤버변수 - 프로퍼티
     let givenName: String
