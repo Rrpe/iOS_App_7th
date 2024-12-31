@@ -22,6 +22,12 @@ func combine(_ string1: String, _ string2: String) -> String {
     return "\(string1) \(string2)" // 문자열 보간법
 }
 
+
+/// <#Description#>
+/// - Parameters:
+///   - int1: <#int1 description#>
+///   - int2: <#int2 description#>
+/// - Returns: <#description#>
 func combine(_ int1: Int, _ int2: Int) -> Int {
     return int1 + int2
 }
