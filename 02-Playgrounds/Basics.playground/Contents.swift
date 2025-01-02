@@ -44,10 +44,29 @@ print(car.position)
 // required
 protocol Named {
     init(name: String)
+    
+    func displayName() -> String
+}
+
+extension Named {
+    func printDescripton() {
+        print(displayName())
+    }
+}
+
+extension String {
+    func makeUpperCase() -> String {
+        return uppercased()
+    }
 }
 
 class Person2: Named {
+    func displayName() -> String {
+        return "Person2: \(name)"
+    }
+    
     let name: String
+    
     required init(name: String) {
         self.name = name
     }
@@ -62,9 +81,18 @@ class Friend: Person2 {
 }
 
 struct Point: Named {
+    func displayName() -> String {
+        return "Point: \(name)"
+    }
+    
     let name: String
     
     init(name: String) {
         self.name = name
     }
 }
+
+let person3 = Person2(name: "Jung")
+person3.printDescripton()
+
+print("car".makeUpperCase())
