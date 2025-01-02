@@ -82,3 +82,28 @@ for (key, value) in zeppelinByInstrument {
 //ledZeppelin.forEach { musician in print(musician) }
 ledZeppelin.forEach { print($0) }
 zeppelinByInstrument.forEach { (key, value) in print("\(value)가 \(key)를 연주합니다.") }
+
+// while문
+enum CoinFlip: Int {
+    case heads // = 0
+    case tails // = 1
+    
+    static func flipCoin() -> CoinFlip {
+        return CoinFlip(rawValue: Int.random(in: 0...1))!
+    }
+}
+
+func howManyHeadsInARow() -> Int {
+    var numberOfHeadsInARow = 0
+    var currentFlip: CoinFlip = CoinFlip.flipCoin()
+    while currentFlip == .heads {
+        print("currentFlip.rawValue: \(currentFlip)") // 동전 나온 횟수
+        numberOfHeadsInARow += 1
+        currentFlip = CoinFlip.flipCoin()
+    }
+    
+    return numberOfHeadsInARow
+}
+
+let noOfHeads = howManyHeadsInARow()
+print(noOfHeads)
