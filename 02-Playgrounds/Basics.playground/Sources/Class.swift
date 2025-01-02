@@ -10,7 +10,7 @@
 /// - 참조가 필요할 때
 /// - 상속이 필요할 때
 /// - 이느턴스의 identity를 제어해야할 때
-public class Person {
+fileprivate class Person {
     // 멤버변수 - 프로퍼티
     let givenName: String
     let middleName: String?
@@ -44,7 +44,7 @@ public class Person {
 }
 
 // final 사용시 상속 불가
-final class Friend: Person {
+fileprivate final class Friend: Person {
     var whereWeMet: String?
     
     override var displayName: String {
@@ -53,7 +53,7 @@ final class Friend: Person {
     }
 }
 
-final class Family: Person {
+fileprivate final class Family: Person {
     let relationship: String
     
     init(givenName: String, middleName: String? , familyName: String = "Barker", relationship: String) {

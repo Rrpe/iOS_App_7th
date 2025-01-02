@@ -6,7 +6,7 @@
 //
 import Foundation
 
-public struct Point {
+fileprivate struct Point {
     var x: Int
     var y: Int
     
