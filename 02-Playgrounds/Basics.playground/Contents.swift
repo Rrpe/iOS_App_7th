@@ -42,7 +42,7 @@ enum Item {
     case sharpKnife
 }
 
-func combine(_ firstItem: Item, with secondItem: Item) -> Item? {
+func combine(_ firstItem: Item, with secondItem: Item) -> Item? { // 튜플 Tuple
     switch (firstItem, secondItem) {
     case (.key, .lockedDoor):
         print("문을 열었습니다!")
@@ -58,3 +58,27 @@ func combine(_ firstItem: Item, with secondItem: Item) -> Item? {
 
 let door = combine(.key, with: .lockedDoor)
 let oilAndWater = combine(.bluntKnife, with: .lockedDoor)
+
+print("---------------------------------------------")
+// for문
+let ledZeppelin = ["Robert", "Jimmy", "John", "John Paul"]
+
+for musician in ledZeppelin {
+    print(musician)
+}
+
+for value in 1...12 {
+    print("5 x \(value) = \(value * 5)")
+}
+
+//let zeppelinByInstrument: [String: [String]] = [ "guitar": ["Robert", "Jimmy", "John"], "drums": ["John Paul"] ]
+let zeppelinByInstrument = ["vocals": "Robert", "lead guitar": "Jimmy", "drums": "John", "bass guitar": "John Paul"]
+
+for (key, value) in zeppelinByInstrument {
+    print("\(value)가 \(key)를 연주합니다.")
+}
+
+// forEach문
+//ledZeppelin.forEach { musician in print(musician) }
+ledZeppelin.forEach { print($0) }
+zeppelinByInstrument.forEach { (key, value) in print("\(value)가 \(key)를 연주합니다.") }
