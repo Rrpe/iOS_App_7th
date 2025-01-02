@@ -137,21 +137,11 @@ class Meal {
         }
     }
     
-    func buyIngredients() throws {
-        try change(to: .buyIngredients)
-    }
-    func propareIngredients() throws {
-        try change(to: .propareIngredients)
-    }
-    func cook() throws {
-        try change(to: .cook)
-    }
-    func plateUp() throws {
-        try change(to: .plateUp)
-    }
-    func serve() throws {
-        try change(to: .serve)
-    }
+    func buyIngredients() throws { try change(to: .buyIngredients) }
+    func propareIngredients() throws { try change(to: .propareIngredients) }
+    func cook() throws { try change(to: .cook) }
+    func plateUp() throws { try change(to: .plateUp) }
+    func serve() throws { try change(to: .serve) }
 }
  
 let dinner = Meal()
