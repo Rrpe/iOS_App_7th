@@ -53,6 +53,8 @@ func printBallTypeOfPlayer1(forTable table: PoolTable) {
     }
 }
 
+
+// 실행부
 public func runIfelse() {
     let two = poolBallType(forNumber: 2)
     let eight = poolBallType(forNumber: 8)
