@@ -118,11 +118,14 @@ enum MealState {
 }
 
 enum MealError: Error {
-    case canOnlyMoveToAppropriateState
+    case canOnlyMoveToAppropriateState(from: MealState, to: MealState)
+    case tooMuchSalt
+    case wrongStateToAddSalt
 }
 
 class Meal {
     private(set) var state: MealState = .initial // 외부에서 참조 불가
+    private(set) var saltAdded = 0
     
     func change(to newState: MealState) throws {
         switch (state, newState) {
@@ -133,7 +136,17 @@ class Meal {
             (.plateUp, .serve):
             state = newState
         default:
-            throw MealError.canOnlyMoveToAppropriateState
+            throw MealError.canOnlyMoveToAppropriateState(from: state, to: newState)
+        }
+    }
+    
+    func addSalt() throws {
+        if saltAdded >= 5 {
+            throw MealError.tooMuchSalt
+        } else if .initial == state || .buyIngredients == state {
+            throw MealError.wrongStateToAddSalt
+        } else {
+            saltAdded += 1
         }
     }
     
@@ -153,11 +166,16 @@ do {
 //    try dinner.change(to: .plateUp)
 //    try dinner.change(to: .serve)
     try dinner.buyIngredients()
+    try dinner.addSalt()
     try dinner.propareIngredients()
     try dinner.cook()
     try dinner.plateUp()
     try dinner.serve()
     print("Raedy for Dinner!")
-} catch let error {
-    print(error)
+} catch MealError.canOnlyMoveToAppropriateState(let from, let to) {
+    print("\(from) -> \(to) 상태로 이동할 수 없습니다.")
+} catch MealError.tooMuchSalt {
+    print("짜다!")
+} catch MealError.wrongStateToAddSalt {
+    print("이 단계에서는 소금을 추가할 수 없습니다.")
 }
