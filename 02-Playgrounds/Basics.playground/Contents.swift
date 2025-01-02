@@ -3,6 +3,40 @@ import Foundation
 //runOptional() // 옵티널
 //runFunction() // 함수
 //runClass() // 클래스
-runStruct() // 구조체
+//runStruct() // 구조체
 //runEnun() // 열거형
 //runClosure() // 클로저
+
+
+protocol Describable {
+    var description: String { get }
+}
+
+struct Person: Describable {
+    let name: String
+    let age: Int
+    
+    var description: String {
+        return "Person: \(name), \(age)"
+    }
+}
+
+let person = Person(name: "Jung", age: 20)
+print(person.description)
+
+protocol Movable {
+    func move(to poitn: CGPoint)
+}
+
+class Car: Movable {
+    var position: CGPoint = CGPoint(x: 0, y: 0)
+    
+    func move(to point: CGPoint) {
+        position = point
+        print("Car move to \(point)")
+    }
+}
+
+let car = Car()
+car.move(to: CGPoint(x: 10, y: 20))
+print(car.position)
