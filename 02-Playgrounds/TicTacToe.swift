@@ -118,9 +118,12 @@ while true {
     game.printBoard()
     print("\n==> 현재 플레이어: \(game.currentPlayer) <==")
     
-    print("행 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrend)' 입력 ", terminator: "")
+    print("행 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrend)' 입력: ", terminator: "")
     let rowInput = readLine() ?? ""
-    if rowInput == "q" { break }
+    if rowInput == "q" {
+        print("게임이 종료되었습니다.")
+        break
+    }
     // 항복 추가 Add_4
     if rowInput.lowercased() == "surrend" {
         let winner = game.currentPlayer == .x ? Piece.o : Piece.x
@@ -133,10 +136,13 @@ while true {
         continue
     }
     
-    print("열 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrender)' 입력 ", terminator: "")
+    print("열 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrend)' 입력: ", terminator: "")
     let colInput = readLine() ?? ""
-    if colInput == "q" { break }
-    if rowInput.lowercased() == "surrend" {
+    if colInput == "q" {
+        print("게임이 종료되었습니다.")
+        break
+    }
+    if colInput.lowercased() == "surrend" {
         let winner = game.currentPlayer == .x ? Piece.o : Piece.x
         print("'\(game.currentPlayer)' 플레이거가 항복 했습니다. '\(winner)' 플레이어 승리!")
         break
@@ -156,7 +162,18 @@ while true {
     if let winner = game.checkWinner() {
         game.printBoard()
         if winner == .empty {
-            print("무승부")
+            print("무승부 입니다.")
+            game.printBoard()
+            
+            print("다시 플레이 하시겠습니까? (y/n): ", terminator: "")
+            let again = readLine()?.lowercased() ?? "n"
+            if again == "n" {
+                print("게임이 종료되었습니다.")
+                break
+            } else {
+                game = TicTacToe()
+                continue
+            }
         } else {
             print("'\(winner)'플레이어 승리!!! Winner Winner Chicken Dinner!!!")
         }
