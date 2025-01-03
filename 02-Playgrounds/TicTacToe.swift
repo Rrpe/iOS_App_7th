@@ -115,30 +115,38 @@ class TicTacToe: GameState {
 var game = TicTacToe()
 
 while true {
-    var surrend = ""
-    
     game.printBoard()
-    print("\n현재 플레이어: \(game.currentPlayer)")
+    print("\n==> 현재 플레이어: \(game.currentPlayer) <==")
     
-    print("행 입력 (0-2)('q' 입력시 종료): ", terminator: "")
+    print("행 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrend)' 입력 ", terminator: "")
     let rowInput = readLine() ?? ""
     if rowInput == "q" { break }
-    // guard let row = Int(rowInput) else { continue } .. Add_1
+    // 항복 추가 Add_4
+    if rowInput.lowercased() == "surrend" {
+        let winner = game.currentPlayer == .x ? Piece.o : Piece.x
+        print("'\(game.currentPlayer)' 플레이거가 항복 했습니다. '\(winner)' 플레이어 승리!")
+        break
+    }
+    // 숫자 잘못 입력시 호출, guard let row = Int(rowInput) else { continue } .. Add_1
     guard let row = Int(rowInput), (0...2).contains(row) else {
         print("잘못된 입력입니다. 0, 1, 2중 하나를 다시 입력하세요.")
         continue
     }
-    // 항복 추가 해보기
     
-    print("열 입력 (0-2)('q' 입력시 종료): ", terminator: "")
+    print("열 입력 (0,1,2) 또는('q' 입력시 종료) 또는 '항복(surrender)' 입력 ", terminator: "")
     let colInput = readLine() ?? ""
     if colInput == "q" { break }
+    if rowInput.lowercased() == "surrend" {
+        let winner = game.currentPlayer == .x ? Piece.o : Piece.x
+        print("'\(game.currentPlayer)' 플레이거가 항복 했습니다. '\(winner)' 플레이어 승리!")
+        break
+    }
     guard let column = Int(colInput), (0...2).contains(column) else {
         print("잘못된 입력입니다. 0, 1, 2중 하나를 다시 입력하세요.")
         continue
     }
     
-    // 중복으로 둔 경우
+    // 둘 곳 입력, 중복된 위치에 둘 경우 호출
     if !game.makeMove(row: row, column: column) {
         print("잘못된 위치입니다. 다시 시도해주세요.")
         continue
