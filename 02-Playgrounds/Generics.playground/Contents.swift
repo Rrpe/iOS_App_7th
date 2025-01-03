@@ -1,6 +1,4 @@
-import Foundation
-
-class RecentList<T> {
+class RecentList<T: CustomStringConvertible> {
     var slot1: T?
     var slot2: T?
     var slot3: T?
@@ -27,12 +25,12 @@ class RecentList<T> {
     }
 }
 
-let recentlyCopiedList = RecentList<String>()
-recentlyCopiedList.add(recent: "First")
-recentlyCopiedList.add(recent: "Next")
-recentlyCopiedList.add(recent: "Last")
+let recentlyCopiedList = RecentList<Int>()
+recentlyCopiedList.add(recent: 1)
+recentlyCopiedList.add(recent: 2)
+recentlyCopiedList.add(recent: 3)
 var recentlyCopied = recentlyCopiedList.getAll()
-print(recentlyCopied)
+print(recentlyCopied) // Last, Next, First
 
 let recentTestInt = RecentList<Int>()
 recentTestInt.add(recent: 1)
@@ -43,20 +41,47 @@ recentTestInt.add(recent: 5)
 var recentTestInts = recentTestInt.getAll()
 print(recentTestInts)
 
-class Person {
+class Person: CustomStringConvertible {
+    var description: String {
+        return "Person(\(name))"
+    }
+    
     let name: String
     
     init(name: String) {
         self.name = name
     }
 }
-let rodrigo = Person(name: "Rodrigo")
-let joseph = Person(name: "Joseph")
-let josephine = Person(name: "Josephine")
+
+let rod = Person(name: "Rod")
+let john = Person(name: "John")
+let freddy = Person(name: "Freddy")
 
 let recentlyVisitedList = RecentList<Person>()
-recentlyVisitedList.add(recent: rodrigo)
-recentlyVisitedList.add(recent: joseph)
-recentlyVisitedList.add(recent: josephine)
-var recentlyVisitedPeople = recentlyVisitedList.getAll()
-for i in recentlyVisitedPeople { print(i.name) }
+recentlyVisitedList.add(recent: rod)
+recentlyVisitedList.add(recent: john)
+recentlyVisitedList.add(recent: freddy)
+var recentlyVisited = recentlyVisitedList.getAll()
+
+for person in recentlyVisited {
+    print(person)
+}
+
+func makeDuplicates<T,Key: Hashable>(of item: T, withKeys keys: Set<Key>) -> [Key: T] {
+    var duplicates: [Key: T] = [:]
+    
+    for key in keys {
+        duplicates[key] = item
+    }
+    
+    return duplicates
+}
+
+let awards: Set<String> = ["Best Visual Effects",
+                           "Best Cinematography",
+                           "Best Original Score",
+                           "Best Film Editing"]
+
+let oscars2022 = makeDuplicates(of: "Dune", withKeys: awards)
+
+print(oscars2022["Best Visual Effects"] ?? "")
