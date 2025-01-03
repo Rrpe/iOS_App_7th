@@ -91,7 +91,7 @@ class TicTacToe: GameState {
     
     func printBoard() {
         // 보드를 출력하는 코드
-        print("---------------------------")
+        print("-------")
             for row in board {
                 var rowString = "|"
                 for piece in row {
@@ -107,7 +107,7 @@ class TicTacToe: GameState {
                 // 줄의 끝에 완성된 문자열을 출력
                 print(rowString)
             }
-        print("---------------------------")
+        print("-------")
     }
     
 }
