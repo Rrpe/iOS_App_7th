@@ -1,3 +1,5 @@
+import Foundation
+
 // 게임 보드를 표현하는 열거형
 enum Piece {
     case empty
@@ -75,18 +77,37 @@ class TicTacToe: GameState {
             return board[0][2]
         }
         
-        // 무승부
+        // 무승부 Add_3
         // .empty칸이 있으면 아직 진행중 <-> .empty칸이 없으면 게임이 끝났음애도 승부가 안났으니 무승부
-        return nil
+        for row in board {
+            for finder in row {
+                if finder == .empty {
+                    return nil // 빈칸이 있으므로 진행중
+                }
+            }
+        }
+        return .empty // 무승부
     }
     
     func printBoard() {
         // 보드를 출력하는 코드
-        print("---------------------------\n")
-//        for row in board {
-//            
-//        }
-        print("---------------------------\n")
+        print("---------------------------")
+            for row in board {
+                var rowString = "|"
+                for piece in row {
+                    switch piece {
+                    case .empty:
+                        rowString += ".|"
+                    case .x:
+                        rowString += "X|"
+                    case .o:
+                        rowString += "O|"
+                    }
+                }
+                // 줄의 끝에 완성된 문자열을 출력
+                print(rowString)
+            }
+        print("---------------------------")
     }
     
 }
@@ -94,6 +115,8 @@ class TicTacToe: GameState {
 var game = TicTacToe()
 
 while true {
+    var surrend = ""
+    
     game.printBoard()
     print("\n현재 플레이어: \(game.currentPlayer)")
     
@@ -105,7 +128,7 @@ while true {
         print("잘못된 입력입니다. 0, 1, 2중 하나를 다시 입력하세요.")
         continue
     }
-    // 항복 surrend 추가 해보기
+    // 항복 추가 해보기
     
     print("열 입력 (0-2)('q' 입력시 종료): ", terminator: "")
     let colInput = readLine() ?? ""
