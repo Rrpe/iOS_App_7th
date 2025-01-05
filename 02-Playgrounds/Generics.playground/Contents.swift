@@ -1,4 +1,4 @@
-import Foundation
+import CoreLocation
 
 class RecentList<T: CustomStringConvertible> {
     var slot1: T?
@@ -34,14 +34,6 @@ recentlyCopiedList.add(recent: 3)
 var recentlyCopied = recentlyCopiedList.getAll()
 print(recentlyCopied) // Last, Next, First
 
-let recentTestInt = RecentList<Int>()
-recentTestInt.add(recent: 1)
-recentTestInt.add(recent: 2)
-recentTestInt.add(recent: 3)
-recentTestInt.add(recent: 4)
-recentTestInt.add(recent: 5)
-var recentTestInts = recentTestInt.getAll()
-print(recentTestInts)
 
 class Person: CustomStringConvertible {
     var description: String {
@@ -88,9 +80,7 @@ let oscars2022 = makeDuplicates(of: "Dune", withKeys: awards)
 
 print(oscars2022["Best Visual Effects"] ?? "")
 
-// Protocol & Generics
-
-import CoreLocation
+// 프로토콜과 제네릭
 
 protocol TransportLocation {
     var location: CLLocation { get }
@@ -103,7 +93,6 @@ protocol TransportMethod {
     var averageSpeedInKPH: Double { get }
 }
 
-
 enum TrainStation: String, TransportLocation {
     case BMS = "Bromley South"
     case VIC = "London Victoria"
@@ -111,15 +100,91 @@ enum TrainStation: String, TransportLocation {
     case BTN = "Brighton (East Sussex)"
     
     var location: CLLocation {
-        return CLLocation()
+        switch self {
+        case .BMS:
+            return CLLocation(latitude: 51.4000504, longitude: 0.0174237)
+        case .VIC:
+            return CLLocation(latitude: 51.4952103, longitude: -0.1438979)
+        case .RAI:
+            return CLLocation(latitude: 51.3663, longitude: 0.61137)
+        case .BTN:
+            return CLLocation(latitude: 50.829, longitude: -0.14125)
+        }
     }
 }
 
 struct Train: TransportMethod {
     typealias CollectionPoint = TrainStation
     
-    var defaultCollectionPoint: CollectionPoint {
+    var defaultCollectionPoint: TrainStation {
         return TrainStation.BMS
     }
     var averageSpeedInKPH: Double { 100 }
 }
+
+class Journey<TransportType: TransportMethod> {
+    let start: TransportType.CollectionPoint
+    let end: TransportType.CollectionPoint
+    let method: TransportType
+    
+    var distanceInKMs: Double
+    var durationInHours: Double
+    
+    init(start: TransportType.CollectionPoint,
+         end: TransportType.CollectionPoint,
+         method: TransportType) {
+        self.start = start
+        self.end = end
+        self.method = method
+        
+        // 미터 단위의 거리 값 / 1000 => 킬로미터 단위로 변환
+        distanceInKMs = end.location.distance(from: start.location) / 1000
+        durationInHours = distanceInKMs / method.averageSpeedInKPH
+    }
+}
+
+let trainJourney = Journey(start: TrainStation.BMS,
+                           end: TrainStation.VIC,
+                           method: Train())
+
+let distanceByTrain = trainJourney.distanceInKMs
+let durationByTrain = trainJourney.durationInHours
+
+print("여정 거리: \(distanceByTrain) km")
+print("여정 소요 시간: \(durationByTrain) 시간")
+
+extension CLLocation: TransportLocation {
+    var location: CLLocation { self }
+}
+
+enum Road: TransportMethod {
+    typealias CollectionPoint = CLLocation
+    
+    case car
+    case motorbike
+    case van
+    case hgv
+    
+    var defaultCollectionPoint: CLLocation {
+        return CLLocation(latitude: 51.1, longitude: 0.1)
+    }
+    
+    var averageSpeedInKPH: Double {
+        switch self {
+        case .car: return 60
+        case .motorbike: return 70
+        case .van: return 55
+        case .hgv: return 50
+        }
+    }
+}
+
+let start = CLLocation(latitude: 51.3994669, longitude: 0.0116888)
+let end = CLLocation(latitude: 51.2968654, longitude: 0.5053609)
+let roadJourney = Journey(start: start, end: end, method: Road.car)
+
+let distanceByCar = roadJourney.distanceInKMs
+let durationByCar = roadJourney.durationInHours
+
+print("여정 거리: \(distanceByCar) km")
+print("여정 소요 시간: \(durationByCar) 시간")
