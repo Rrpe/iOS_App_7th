@@ -8,6 +8,7 @@ func fetchRepos(forUsername username: String) async throws {
     
     var request = URLRequest(url: url)
     request.setValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
+//    request.setValue("SwiftPlayground", forHTTPHeaderField: "User-Agent")
     
     do {
         let (data, _) = try await URLSession.shared.data(for: request)
