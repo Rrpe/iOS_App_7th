@@ -104,3 +104,47 @@ let stationaryOrUIKitDevices = Devices.supportedUIKit.union(Devices.stationary)
 // Intersection / AND
 let stationaryAndUIKitDevices = Devices.supportedUIKit.intersection(Devices.stationary)
 
+// 사용자가 만드는 커스텀 연산자
+infix operator ->>
+
+func ->> (lhs: String, rhs: String) -> String {
+    var combine = rhs
+    combine.append(lhs)
+    return combine
+}
+
+//func >>> (lhs: String, rhs: [String]) -> [String] {
+//    var combined = rhs
+//    combined.append(lhs)
+//    return combined
+//}
+//
+//func >>> (lhs: [String], rhs: [String]) -> [String] {
+//    var combined = rhs
+//    combined.append(contentsOf: lhs)
+//    return combined
+//}
+
+func ->> <Element>(lhs: Element, rhs: Array<Element> ) -> Array<Element> {
+    var combined = rhs
+    combined.append(lhs)
+    return combined
+}
+
+func ->> <Element>(lhs: Array<Element>, rhs: Array<Element> ) -> Array<Element> {
+    var combined = rhs
+    combined.append(contentsOf: lhs)
+    return combined
+}
+
+let appendedString = "Two" ->> "One"
+print(appendedString)
+
+let appendStringToArray = "Three" ->> ["One", "Two"]
+print(appendStringToArray)
+
+let appendedArray = ["Three", "Four"] ->> ["One", "Two"]
+print(appendedArray)
+
+let appendIntToArray = 1 ->> [3, 4]
+print(appendIntToArray)
