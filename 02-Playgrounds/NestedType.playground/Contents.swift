@@ -41,4 +41,11 @@ struct UserInterface {
     let orientation: Orientation
 }
 
-func uiOrientation(for deviceOrientation:)
+func uiOrientation(for deviceOrientation: Device.Orientation) -> UserInterface.Orientation {
+    switch deviceOrientation {
+    case .portrait, .portariaUpsideDown:
+        return .portrait
+    case .landscapeLeft, .landscapeRight:
+        return .landscape
+    }
+}
