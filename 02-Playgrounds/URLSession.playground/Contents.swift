@@ -24,4 +24,5 @@ let task = session.dataTask(with: request) { data, response, error in
 }
 print("2. 끼욧?")
 
+// 비동기 네트워크 작업
 task.resume()
