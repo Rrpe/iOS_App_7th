@@ -45,3 +45,27 @@ print(backslash)
 
 let escapedString = "줄바꿈: \\n, \n, 캐리지 리턴 \r, 탭: \t, 역슬래시\\, 따옴표\", 작은따옴표', 유니코드: \u{FC}"
 print(escapedString)
+
+let firstIndex = greeting.startIndex
+let lastIndex = greeting.index(before: greeting.endIndex)
+print("first: \(firstIndex), last: \(lastIndex)")
+print("\(greeting[firstIndex]) \(greeting[lastIndex])")
+print(greeting[firstIndex...])
+
+// 문자열 슬라이싱
+let range = greeting.index(firstIndex, offsetBy: 1)..<greeting.index(lastIndex, offsetBy: -1)
+print(greeting[range])
+
+// 변수
+backslash = "\\ \(backslash)"
+print(backslash)
+
+let maxLength = 10
+
+let myTuple = (432, 31.4, "This is a String")
+//let myString = myTuple.2
+let (_, _, myString) = myTuple
+print(myString)
+
+let myTuple2 = (count: 10, length: 432.433, message: "This is a String")
+print(myTuple2.message)
