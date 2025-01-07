@@ -42,3 +42,30 @@ while i < 10 {
     }
     print("continue i: \(i)")
 }
+
+// 조건 흐름 제어
+let x = 10
+if x > 9 {
+    print("if - x is greater than 9")
+} else {  // ==> if x <= 9
+    print("else - x is less than or equal to 9")
+}
+if x == 10 {
+    print("if - x is 10")
+} else if x == 9 {
+    print("else if - x is 9")
+} else if x == 8 {
+    print("else if - x is 8")
+} else {
+    print("else - x is not 8, 9 or 10")
+}
+func multiplyByTen(value: Int?) {
+    guard let number = value, number < 10 else {
+        print("guard - Number is too high")
+        return
+    }
+    let result = number * 10
+    print(result)
+}
+multiplyByTen(value: 5)
+multiplyByTen(value: 10)
