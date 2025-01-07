@@ -32,3 +32,13 @@ while true {
         break
     }
 }
+
+var i = 0
+while i < 10 {
+    i += 1
+    // (홀수일때) 다음 루프 반복으로 넘어가는 것: continue
+    if (i % 2) != 0 {
+        continue
+    }
+    print("continue i: \(i)")
+}
