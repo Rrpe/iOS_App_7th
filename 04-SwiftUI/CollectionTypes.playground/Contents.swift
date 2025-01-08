@@ -38,4 +38,19 @@ print(removeItem)
 firstArray.removeAll()
 print(firstArray)
 
+// 배열의 요소 반복 반환 값이 없다
 secondArray.forEach { print($0) }
+
+
+// Any 혼합 타입 배열과 타입 캐스팅
+let mixedArray: [Any] = ["A String", 432, 34.989]
+
+for object in mixedArray {
+    if let intValue = object as? Int {
+        print("intValue: \(intValue)")
+    } else if let doubleValue = object as? Double {
+        print("doubleValue: \(doubleValue)")
+    } else if let stringValue = object as? String {
+        print("stringValue: \(stringValue)")
+    }
+}
