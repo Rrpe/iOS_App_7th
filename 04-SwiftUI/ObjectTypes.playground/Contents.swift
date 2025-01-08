@@ -100,3 +100,25 @@ let stringOne = doubleFunc2(value: "Hello")
 //if (intOne == stringOne) {
 //    print("They match")
 //}
+
+class SavingsAccount: BankAccount {
+    var interestRate: Float = 0.0
+    
+    init(rate: Float, balance: Float, number: Int) {
+        self.interestRate = rate
+        super.init(number: number, balance: balance)
+    }
+    
+    func calculateInterest() -> Float {
+        return interestRate * accountBalance
+    }
+    
+    override func displayBalance() {
+        super.displayBalance()
+        print("현재 이자율: \(interestRate)")
+    }
+}
+
+let savings1 = SavingsAccount(rate: 0.05, balance: 1000.0, number: 7030595136011)
+savings1.displayBalance()
+print(savings1.calculateInterest())
