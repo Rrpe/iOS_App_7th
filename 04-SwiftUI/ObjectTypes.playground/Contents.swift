@@ -67,12 +67,13 @@ class MyClass1 {
     }
 }
 
-// 프로토콜
+// 프로토콜 선언
 protocol MessageBuilder {
     var name: String { get }
     func buildMessage() -> String
 }
 
+// 클래스 정의: 프로토콜을 준수하는 클래스를 정의함 (프로토콜에 선언되어있는 변수와 메서드를 구현)
 class MyClass: MessageBuilder {
     var name: String
     
@@ -84,3 +85,18 @@ class MyClass: MessageBuilder {
         "Hello " + name
     }
 }
+
+func doubleFunc1(value: Int) -> some Equatable {
+    return value * 2
+}
+ 
+func doubleFunc2(value: String) -> some Equatable {
+    value + value
+}
+
+let intOne = doubleFunc1(value: 10)
+let stringOne = doubleFunc2(value: "Hello")
+
+//if (intOne == stringOne) {
+//    print("They match")
+//}
