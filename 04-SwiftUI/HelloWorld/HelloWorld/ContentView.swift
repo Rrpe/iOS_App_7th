@@ -7,49 +7,60 @@
 
 import SwiftUI
 
+struct MyVStack<Content: View>: View {
+    let content: () -> Content
+    
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            content()
+        }
+        .font(.largeTitle)
+    }
+}
+
+// 커스텀 레이블 스타일 (레이아웃)
+struct VerticalLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .center) {
+            configuration.icon.padding(5)
+            configuration.title
+        }
+    }
+}
+
 struct ContentView: View {
     // 상태를 관리하는 프로퍼티
     @State private var count = 0
     
     var body: some View {
-        VStack(spacing: 20) { // 수직 스택으로 컨텐츠 정렬
-            Text("Count")
-                .font(.largeTitle)
-            
-            Text("\(count)")
-                .font(.system(size: 70))
-                .fontWeight(.bold)
-                .foregroundColor(count % 2 == 0 ? .blue : .red) // 짝수/홀수에 따른 색상 변경
-            
-            HStack { // 수평 스택으로 버튼 정렬
-                Button(action: {
-                    self.count -= 1
-                }) {
-//                    Text("-")
-                    Image(systemName: "minus")
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(Color.gray)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
-                
-                Spacer() // 중간 여백
-                
-                Button(action: {
-                    self.count += 1
-                }) {
-//                    Text("+")
-                    Image(systemName: "plus")
-                        .font(.system(size: 16))
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }
+        MyVStack {
+            Text("Text 1")
+            Text("Text 2")
+            HStack {
+                Image(systemName: "star.fill")
+                Image(systemName: "star.fill")
+                Image(systemName: "star")
             }
+            Button(action: {
+                print("click")
+            })
+            {
+                Label("Welcome to SwiftUI", systemImage: "person.circle.fill")
+            }
+            Label(title: {
+                Text("Welcome to SwiftUI").font(.largeTitle)
+            },
+                  icon: {
+                Circle().fill(Color.blue).frame(width: 25,  height: 25)
+            })
+            .labelStyle(.titleAndIcon)
+            
+            Label("수직 레이블", systemImage: "moon.fill").labelStyle(VerticalLabelStyle())
         }
-        .padding() // 외부 여백 추가
     }
 }
 
