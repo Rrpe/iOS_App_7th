@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// @State, $Binding
 struct ContentView: View {
     @State private var wifiEnabled = true
     @State private var userName = ""
