@@ -25,8 +25,9 @@ struct ContentView: View {
                 Button(action: {
                     self.count -= 1
                 }) {
-                    Text("-")
-                        .font(.largeTitle)
+//                    Text("-")
+                    Image(systemName: "minus")
+                        .font(.system(size: 16))
                         .padding()
                         .background(Color.gray)
                         .foregroundColor(.white)
@@ -38,8 +39,9 @@ struct ContentView: View {
                 Button(action: {
                     self.count += 1
                 }) {
-                    Text("+")
-                        .font(.largeTitle)
+//                    Text("+")
+                    Image(systemName: "plus")
+                        .font(.system(size: 16))
                         .padding()
                         .background(Color.green)
                         .foregroundColor(.white)
