@@ -8,32 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var myLayout: AnyLayout = AnyLayout(VStackLayout())
-    
     var body: some View {
-        myLayout {
-            Text("Sample Text")
-            Text("Sample Text")
-            Text("Sample Text")
-        }
-        HStack {
-            Button(action: {
-                myLayout = AnyLayout(HStackLayout())
-            }) {
-                Text("HStack")
-            }
-            Button(action: {
-                myLayout = AnyLayout(VStackLayout())
-            }) {
-                Text("VStack")
-            }
-        }
-        
-        HStack {
-            Image(systemName: "airplane")
-            Text("Flight times:").layoutPriority(1) // 우선순위 부여
-            Text("London")
-        }.font(.largeTitle).lineLimit(1) // 글씨 크기로 인해 줄 바뀜을 제한
+        Text("Clear World")
+            .font(.largeTitle)
+//            .frame(minWidth: 100, maxWidth: 300, minHeight: 100, maxHeight: 100,
+//                   alignment: .center)
+            .frame(minWidth: 100, maxWidth: .infinity,
+                   minHeight: 100, maxHeight: .infinity,
+                   alignment: .center)
+            .border(Color.red, width: 10)
+            .ignoresSafeArea(.all)
+//            .frame(width: 300, height: 100, alignment: .center)
     } // body View
 } // ContentView
 
