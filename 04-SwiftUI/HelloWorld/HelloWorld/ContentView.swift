@@ -7,60 +7,54 @@
 
 import SwiftUI
 
-struct MyVStack<Content: View>: View {
-    let content: () -> Content
-    
-    init(@ViewBuilder content: @escaping () -> Content) {
-        self.content = content
-    }
-    
-    var body: some View {
-        VStack(spacing: 10) {
-            content()
-        }
-        .font(.largeTitle)
-    }
-}
-
-// 커스텀 레이블 스타일 (레이아웃)
-struct VerticalLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        VStack(alignment: .center) {
-            configuration.icon.padding(5)
-            configuration.title
-        }
-    }
-}
-
 struct ContentView: View {
-    // 상태를 관리하는 프로퍼티
-    @State private var count = 0
-    
     var body: some View {
-        MyVStack {
-            Text("Text 1")
-            Text("Text 2")
+        VStack {
             HStack {
-                Image(systemName: "star.fill")
-                Image(systemName: "star.fill")
-                Image(systemName: "star")
+                Image(systemName: "goforward.10")
+                Image(systemName: "goforward.15")
+                Image(systemName: "goforward.30")
             }
-            Button(action: {
-                print("click")
-            })
-            {
-                Label("Welcome to SwiftUI", systemImage: "person.circle.fill")
+            ZStack {
+                Image(systemName: "goforward.10")
+                Image(systemName: "goforward.15")
+                Image(systemName: "goforward.30")
             }
-            Label(title: {
-                Text("Welcome to SwiftUI").font(.largeTitle)
-            },
-                  icon: {
-                Circle().fill(Color.blue).frame(width: 25,  height: 25)
-            })
-            .labelStyle(.titleAndIcon)
+            // 복잡한 중첩 레이아웃 예시
+            Text("Financial Results").font(.title)
+            HStack {
+                Text("Q1 Sales").font(.headline)
+                VStack {
+                    Text("January")
+                    Text("February")
+                    Text("March")
+                }
+                VStack {
+                    Text("$1000")
+                    Text("$200")
+                    Text("$3000")
+                }
+            }
+            // 정렬, 여백
+            Text("Financial Results").font(.title).padding(10)
+            HStack(alignment: .top) {
+                Text("Qi Sales").font(.headline)
+                Spacer()
+                // alignment: .trailing, .center, .leading
+                VStack(alignment: .trailing) {
+                    Text("January")
+                    Text("February")
+                    Text("March")
+                }
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("$1000")
+                    Text("$200")
+                    Text("$3000")
+                }
+            }
             
-            Label("수직 레이블", systemImage: "moon.fill").labelStyle(VerticalLabelStyle())
-        }
+        } // VStack
     }
 }
 
