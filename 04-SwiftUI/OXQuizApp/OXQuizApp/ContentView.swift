@@ -1,8 +1,10 @@
 
 import SwiftUI
 
+// ViewModifier Protocol 호출
+// SwiftUI View Style을 각자 스타일로 Custom하여 캡슐화하여 재사용 가능 형태로 정의
 struct IconStyle: ViewModifier {
-    func body(content: Content) -> some View {
+    func body(content: Content) -> some View { // 필수 구현 메서드
         content
             .font(.system(size: 30))
             .foregroundColor(.black)
