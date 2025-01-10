@@ -9,23 +9,8 @@ enum DurationError: Error {
 struct ContentView: View {
     var body: some View {
         Button(action: {
-            // 작업의 우선순위를 결정할 수 있다.
-            Task(priority: .high) {
-                // 작업의 우선순위를 확인하는 프로퍼티
-                _ = Task.currentPriority
-                // 작업의 취소 여부를 확인하는 프로퍼티
-                _ = Task.isCancelled
-                await Task.yield()
+            Task {
                 await doSomething()
-            }
-            // 분리된 작업
-            let detachedTask = Task.detached {
-                await doSomething()
-            }
-            
-            if(!detachedTask.isCancelled) {
-                // 작업 취소
-                detachedTask.cancel()
             }
         }) {
             Text("Do Something")
@@ -33,13 +18,18 @@ struct ContentView: View {
     }
     
     func doSomething() async {
-        await withTaskGroup(of: Void.self) { group in
+        var timeStamps: [Int: Date] = [:]
+        timeStamps = await withTaskGroup(of: (Int, Date).self) { group in
             for i in 1...5 {
                 group.addTask {
-                    let result = await takesTooLong()
-                    print("Completed Task \(i) = \(result)")
+                    return (i, await takesTooLong())
                 }
             }
+            var results: [Int: Date] = [:]
+            for await (task, date) in group {
+                results[task] = date
+            }
+            return results
         }
     }
     
