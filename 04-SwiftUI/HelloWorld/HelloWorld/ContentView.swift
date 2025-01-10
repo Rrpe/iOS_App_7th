@@ -2,25 +2,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showAlert = false
     
     var body: some View {
-        VStack {
+           
+            Button(action: {
+                doSomething()
+            }) {
+                Text("Do Something")
+            }
+    
+        } // body View
+    
+        func doSomething() {
+            print("Start \(Date())")
+            takesTooLong()
+            print("End \(Date())")
+        }
+        
+        func takesTooLong() {
+            sleep(5)
+            print("Asunc task completed at \(Date())")
+        }
             
-            Button("Show Alert") {
-                        showAlert = true
-                    }
-                    // 경고창 팝업을 띄우는 수정자
-                    .alert("Important Message",
-                           isPresented: $showAlert,
-                           actions: {
-                        Button("OK", role: .cancel) { }
-                    }, message: {
-                        Text("This is an alert message.")
-                    })
             
-        } // VStack
-    } // body View
 } // Content View
 
 #Preview {
