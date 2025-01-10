@@ -47,7 +47,6 @@ struct ContentView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    print("oo Push O Button oo")
                     selectCorrect()
                 }) {
                     Image(systemName: "circle.circle.fill")
@@ -60,7 +59,6 @@ struct ContentView: View {
                 }
                 Spacer()
                 Button(action: {
-                    print("xx Push O Button xx")
                     selectWrong()
                 }) {
                     Image(systemName: "xmark.square")
