@@ -6,20 +6,22 @@ struct ContentView: View {
     var body: some View {
            
             Button(action: {
-                doSomething()
+                Task {
+                    await doSomething()
+                }
             }) {
                 Text("Do Something")
             }
     
         } // body View
     
-        func doSomething() {
+        func doSomething() async {
             print("Start \(Date())")
-            takesTooLong()
+            await takesTooLong()
             print("End \(Date())")
         }
         
-        func takesTooLong() {
+        func takesTooLong() async {
             sleep(5)
             print("Asunc task completed at \(Date())")
         }
