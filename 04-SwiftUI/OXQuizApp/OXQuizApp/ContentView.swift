@@ -103,12 +103,48 @@ struct ContentView: View {
     }
     
     func selectCorrect() {
-        countCorrect += 1
+        if (operatorSymbol == "+") {
+            if (number1 + number2 == resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        } else if (operatorSymbol == "−") {
+            if (number1 - number2 == resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        } else {
+            if (number1 * number2 == resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        }
         newQuestion()
     }
     
     func selectWrong() {
-        countWrong += 1
+        if (operatorSymbol == "+") {
+            if (number1 + number2 != resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        } else if (operatorSymbol == "−") {
+            if (number1 - number2 != resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        } else {
+            if (number1 * number2 != resultNumber) {
+                countCorrect += 1
+            } else {
+                countWrong += 1
+            }
+        }
         newQuestion()
     }
     
