@@ -2,20 +2,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isTapped = false
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
             
-            Text("Tap me!")
-                .font(.largeTitle)
-                .padding()
-                .background(isTapped ? Color.green : Color.red)
-                .animation(.default, value: isTapped)
-                // Tap 카운트를 이용해 실행시킬 탭 횟수를 조절할 수 있음
-                .onTapGesture(count: 3) {
-                    isTapped.toggle()
-                }
+            Button("Show Alert") {
+                        showAlert = true
+                    }
+                    // 경고창 팝업을 띄우는 수정자
+                    .alert("Important Message",
+                           isPresented: $showAlert,
+                           actions: {
+                        Button("OK", role: .cancel) { }
+                    }, message: {
+                        Text("This is an alert message.")
+                    })
             
         } // VStack
     } // body View
