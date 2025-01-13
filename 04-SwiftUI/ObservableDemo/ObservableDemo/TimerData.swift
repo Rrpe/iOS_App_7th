@@ -31,6 +31,8 @@ class TimerData: ObservableObject {
         }
     }
     
+    // 타이머 클로저가 TimerData 인스턴스 메로리 해제 이후에 동작하지 않도록 invalidate 함수를 실행함.
+    // (unowned 사용을 위한 예시)
     deinit {
         timer?.invalidate()
     }
