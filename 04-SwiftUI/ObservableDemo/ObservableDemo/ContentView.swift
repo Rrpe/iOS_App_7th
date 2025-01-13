@@ -23,6 +23,10 @@ struct ContentView: View {
                 Button(action: resetCount) {
                     Text("Reset Counter")
                 }
+                
+                NavigationLink("Next Screen", destination: {
+                    SecondView(timerData: timerData)
+                })
             }
         }
         
