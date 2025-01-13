@@ -38,8 +38,19 @@ struct GamePlayView: View {
 
             // 전투 로그
             ScrollView {
-                ForEach(viewModel.log.suffix(5), id: \.self) { logEntry in
-                    Text(logEntry)
+                ForEach(viewModel.log.suffix(5)) { logEntry in
+                    /*if logEntry.contains(viewModel.player.name) {
+                        Text(logEntry)
+                            .font(.footnote)
+                            .foregroundStyle(Color.blue)
+                            .padding(4)
+                    } else if logEntry.contains(viewModel.monster.name) {
+                        Text(logEntry)
+                            .font(.footnote)
+                            .foregroundStyle(Color.red)
+                            .padding(4)
+                    }*/
+                    Text(logEntry.message)
                         .font(.footnote)
                         .padding(4)
                 }
@@ -52,7 +63,8 @@ struct GamePlayView: View {
             HStack(spacing: 20) {
                 Button(action: {
                     // 공격 로직
-                    viewModel.playerAttack()
+                    let damage = viewModel.playerAttack()
+                    viewModel.addLog("\(viewModel.player.name)가(이) \(viewModel.monster.name)에게 \(damage)피해를 입혔다!")
                 }) {
                     Text("공격")
                         .font(.headline)
