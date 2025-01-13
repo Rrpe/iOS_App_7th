@@ -12,32 +12,34 @@ struct GamePlayView: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            // 몬스터 상태
+            VStack {
+                Text(viewModel.monster.name)
+                    .font(.headline)
+                Text("HP: \(viewModel.monster.hp)")
+                Text("공격력: \(viewModel.monster.atk)")
+                Text("방어력: \(viewModel.monster.def)")
+            }
+            .padding()
+            .background(Color.red.opacity(0.2))
+            .cornerRadius(10)
+            
             // 플레이어 상태
             VStack {
                 Text(viewModel.player.name)
                     .font(.headline)
-                Text("HP: 100")
-                Text("공격력: 15")
+                Text("HP: \(viewModel.player.hp)")
+                Text("공격력: \(viewModel.player.atk)")
+                Text("방어력: \(viewModel.player.def)")
             }
             .padding()
             .background(Color.green.opacity(0.2))
             .cornerRadius(10)
 
-            // 몬스터 상태
-            VStack {
-                Text("몬스터")
-                    .font(.headline)
-                Text("HP: 50")
-                Text("공격력: 10")
-            }
-            .padding()
-            .background(Color.red.opacity(0.2))
-            .cornerRadius(10)
-
             // 전투 로그
             ScrollView {
-                ForEach(0..<5, id: \.self) { index in
-                    Text("전투 로그 \(index + 1)")
+                ForEach(viewModel.log.suffix(5), id: \.self) { logEntry in
+                    Text(logEntry)
                         .font(.footnote)
                         .padding(4)
                 }
@@ -50,6 +52,7 @@ struct GamePlayView: View {
             HStack(spacing: 20) {
                 Button(action: {
                     // 공격 로직
+                    viewModel.playerAttack()
                 }) {
                     Text("공격")
                         .font(.headline)
