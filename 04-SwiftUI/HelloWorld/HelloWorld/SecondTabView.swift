@@ -13,9 +13,9 @@ struct SecondTabView: View {
     var body: some View {
         TextEditor(text: $text)
             .padding()
-            .onChange(of: text, perform: { value in
-                print("onChange triggered")
-            })
+            .onChange(of: text, initial: false) {
+                print("onChange triggered \(text)")
+            }
     }
 }
 
