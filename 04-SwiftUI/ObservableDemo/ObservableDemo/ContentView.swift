@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var timerData: TimerData = TimerData()
+    // @Observable 지정 객체는 @State 로 상태 관리가 가능해짐 (2024 이후)
+    @State var timerData: TimerData = TimerData()
     
     var body: some View {
-        
-        NavigationView {
+        // NavigationView
+        NavigationStack {
             VStack {
                 Text("Timer count = \(timerData.timeCount)")
                     .font(.largeTitle)
