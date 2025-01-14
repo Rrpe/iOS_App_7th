@@ -55,14 +55,25 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationTitle(Text("To Do List"))
+            .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarItems(trailing: Button("Add", action: {}))
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button("add", action: {
+                        
+                    })
+                }
+            }
             .navigationDestination(for: Int.self) { count in
                 Text("Number of tasks: \(count)")
+                    .navigationBarBackButtonHidden(false)
             }
             .navigationDestination(for: String.self) { task in
                 VStack {
                     Text("Selected Task: \(task)")
                 }
-                .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(false)
             }
             // 당겨서 새로고침 기능 추가
             .refreshable {
