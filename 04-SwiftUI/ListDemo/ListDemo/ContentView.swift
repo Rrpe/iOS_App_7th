@@ -28,34 +28,51 @@ struct ContentView: View {
     
     var body: some View {
         
-        List {
-            // 설정 섹션
-            Section(header: Text("Settings")) {
-                // 알림 허용 토글 스위치
-                Toggle(isOn: $isOn) {
-                    Text("Allow Notifications")
+        NavigationStack {
+            List {
+                // 설정 섹션
+                Section(header: Text("Settings")) {
+                    // 알림 허용 토글 스위치
+                    Toggle(isOn: $isOn) {
+                        Text("Allow Notifications")
+                    }
+                    
+                    NavigationLink(value: listData.count) {
+                        Text("View Task Count")
+                    }
                 }
-            }
-            
-            // ToDo Task Session
-            Section(header: Text("To Do Tasks")) {
-                // listData 배열의 각 항목을 순회하며 표시
-                ForEach(listData) { item in
-                    HStack {
-                        Image(systemName: item.imageName) // SF Symbol
-                        Text(item.task)                   // 할 일 텍스트
+                
+                // ToDo Task Session
+                Section(header: Text("To Do Tasks").font(.caption2).textCase(nil)) {
+                    // listData 배열의 각 항목을 순회하며 표시
+                    ForEach(listData) { item in
+                        NavigationLink(value: item.task) {
+                            HStack {
+                                Image(systemName: item.imageName) // SF Symbol
+                                Text(item.task)                   // 할 일 텍스트
+                            }
+                        }
                     }
                 }
             }
-        } // List
-        // 당겨서 새로고침 기능 추가
-        .refreshable {
-            // 새로운 ToDoList 갱신
-            listData = [
-                ToDoItem(task: "Order dinner", imageName: "dollarsign.circle.fill"),
-                ToDoItem(task: "Call financial advisor", imageName: "phone.fill"),
-                ToDoItem(task: "Sell the kids", imageName: "person.2.fill")
-            ]
+            .navigationDestination(for: Int.self) { count in
+                Text("Number of tasks: \(count)")
+            }
+            .navigationDestination(for: String.self) { task in
+                VStack {
+                    Text("Selected Task: \(task)")
+                }
+                .navigationBarBackButtonHidden(true)
+            }
+            // 당겨서 새로고침 기능 추가
+            .refreshable {
+                // 새로운 ToDoList 갱신
+                listData = [
+                    ToDoItem(task: "Order dinner", imageName: "dollarsign.circle.fill"),
+                    ToDoItem(task: "Call financial advisor", imageName: "phone.fill"),
+                    ToDoItem(task: "Sell the kids", imageName: "person.2.fill")
+                ]
+            }
         }
         
     }
