@@ -14,6 +14,8 @@ struct ContentView: View {
                         ListCell(car: car)
                     }
                 }
+                .onDelete(perform: deleteItem)
+                .onMove(perform: moveItem)
             }
             .navigationTitle(Text("EV Cars"))
             .toolbar {
@@ -36,7 +38,14 @@ struct ContentView: View {
                 CarDetail(selectedCar: car)
             }
         }
-        
+    } // body View
+    
+    func deleteItem(offsets: IndexSet) {
+        carStore.cars.remove(atOffsets: offsets)
+    }
+    
+    func moveItem(from source: IndexSet, to destination: Int) {
+        carStore.cars.move(fromOffsets: source, toOffset: destination)
     }
 }
 
