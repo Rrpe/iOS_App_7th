@@ -53,16 +53,19 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .onDelete(perform: deleteItem)
+                    .onMove(perform: moveItem)
                 }
-            }
+            } // List
             .navigationTitle(Text("To Do List"))
             .navigationBarTitleDisplayMode(.inline)
 //            .navigationBarItems(trailing: Button("Add", action: {}))
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    EditButton()
+                }
                 ToolbarItem(placement: .primaryAction) {
-                    Button("add", action: {
-                        
-                    })
+                    Button("add", action: {})
                 }
             }
             .navigationDestination(for: Int.self) { count in
@@ -84,8 +87,17 @@ struct ContentView: View {
                     ToDoItem(task: "Sell the kids", imageName: "person.2.fill")
                 ]
             }
-        }
+        } // NavigationStack
         
+    }
+    func deleteItem(at offsets: IndexSet) {
+        // List Delete
+        print("delete item: \(offsets)")
+        listData.remove(atOffsets: offsets)
+    }
+    func moveItem(for source: IndexSet, to destination: Int) {
+        // List Move
+        listData.move(fromOffsets: source, toOffset: destination)
     }
 }
 
