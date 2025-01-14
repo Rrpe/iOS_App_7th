@@ -2,17 +2,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var carStore = CarStore(cars: carData)
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        List {
+            ForEach(carStore.cars) { car in
+                NavigationLink(value: car) {
+                    ListCell(car: car)
+                }
+            }
         }
-        .padding()
+        
     }
 }
 
 #Preview {
     ContentView()
+}
+
+struct ListCell: View {
+    var car: Car
+    var body: some View {
+        HStack {
+            Image(car.imageName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 60)
+            Text(car.name)
+        }
+    }
 }
