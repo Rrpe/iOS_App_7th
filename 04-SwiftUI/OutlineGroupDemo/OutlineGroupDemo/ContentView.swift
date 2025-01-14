@@ -9,9 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List(carItems, children: \.children) { item in
-            CellView(item: item)
+        List {
+            ForEach(carItems) { carItem in
+                Section(header: Text(carItem.name)) {
+                    OutlineGroup(carItem.children ?? [CarInfo](), children: \.children) { child in
+                        CellView(item: child)
+                    }
+                }
+                
+            }
         }
+        .listStyle(InsetListStyle())
+        
     }
 }
 
