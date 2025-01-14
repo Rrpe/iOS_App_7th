@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var categories = [
+            IconCategory(categoryName: "Folders", images: ["questionmark.folder.ar",
+                                                           "questionmark.folder",
+                                                           "questionmark.folder.fill.ar",
+                                                           "folder.fill.badge.gear",
+                                                           "questionmark.folder.fill"]),
+            IconCategory(categoryName: "Circles", images: ["book.circle",
+                                                           "books.vertical.circle",
+                                                           "books.vertical.circle.fill",
+                                                           "book.circle.fill",
+                                                           "book.closed.circle"]),
+            IconCategory(categoryName: "Clouds", images: ["cloud.rain",
+                                                          "cloud",
+                                                          "cloud.drizzle.fill",
+                                                          "cloud.fill",
+                                                          "cloud.drizzle"])
+    ]
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView {
+            
+        } content: {
+            
+        } detail: {
+            
         }
-        .padding()
     }
 }
 
