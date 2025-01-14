@@ -1,11 +1,39 @@
 
 import SwiftUI
 
+extension VerticalAlignment {
+    private enum OneThird: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            d.height / 3
+        }
+    }
+    static let oneThird = VerticalAlignment(OneThird.self)
+}
+
 struct ContentView: View {
     var body: some View {
         
         NavigationStack {
                     VStack { // 메인 화면
+                        HStack(alignment: .oneThird) {
+                            Rectangle()
+                                .fill(.green)
+                                .frame(width: 50, height: 200)
+                            Rectangle()
+                                .fill(.red)
+                                .alignmentGuide(.oneThird) { d in d[VerticalAlignment.top] }
+                                .frame(width: 50, height: 200)
+                            Rectangle()
+                                .fill(.blue)
+                                .frame(width: 50, height: 200)
+                            Rectangle()
+                                .fill(.orange)
+                                .alignmentGuide(.oneThird) { d in d[VerticalAlignment.top] }
+                                .frame(width: 50, height: 200)
+                                
+                        }
+                        
+                        
                         // alignment 파라미터로 정렬
                         VStack(alignment: .trailing) {
                             Text("This is some text")
@@ -38,6 +66,7 @@ struct ContentView: View {
                                 .frame(width: 180, height: 50)
                         }
                     }
+            /*
                     .navigationTitle("네비게이션 바")
                     .navigationBarTitleDisplayMode(.inline) // 큰 타이틀 대신 작은 타이틀을 사용하려면 .inline
                     .toolbar {
@@ -56,6 +85,7 @@ struct ContentView: View {
                             }
                         }
                     }
+             */
                 }
         
     }
