@@ -36,6 +36,7 @@ struct ContentView: View {
                 state = value
                 print("Magnifying Updating : \(state)")
             }
+//            .simultaneously(with: DragGesture())
             .onEnded { _ in
                 print("Magnification Ended")
             }
