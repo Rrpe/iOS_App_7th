@@ -30,7 +30,7 @@ struct ContentView: View {
                 })
             }
             .navigationDestination(for: String.self) { menuString in
-                if menuString == "Add Car" {
+                if menuString == "Add Car" { // 동적 전환
                     AddNewCar(carStore: carStore, path: $stackPath)
                 }
             }

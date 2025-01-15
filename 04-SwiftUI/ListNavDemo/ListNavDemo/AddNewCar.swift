@@ -42,7 +42,8 @@ struct AddNewCar: View {
         let newCar = Car(id: UUID().uuidString, name: name, description: description, imageName: "tesla_model_3", isHybrid: isHybrid)
         
         carStore.cars.append(newCar)
-        path.removeLast()
+        path.removeLast() // 현재화면을 닫고 이전화면으로 돌아감
+//        path.append("EV Cars") // 새로운 경로를 추가해버려서 이상한 화면으로 감
     }
 }
 

@@ -9,8 +9,16 @@ import SwiftUI
 
 @Observable
 class CarStore {
-    var cars: [Car]
+    // 차량 데이터 배열을 저장하는 변수
+    var cars: [Car] {
+        didSet {
+            print("saved cars: \(cars.count)")
+            saveJsonToDocuments(cars)
+        }
+    }
     
+    // 초기화 메서드
+    // 기본값으로 빈 배열을 받음
     init(cars: [Car] = []) {
         self.cars = cars
     }
