@@ -18,14 +18,24 @@ struct ContentView: View {
             print("Long Press")}
         )
     
-    @State var magnificationScale: CGFloat = 1.0
+//    @State var magnificationScale: CGFloat = 1.0
+    // @GestureState : 제스처가 진행되는 동안 값이 유지되고, 제스처가 끝나면 초기값으로 돌아감
+    @GestureState var magnificationScale: CGFloat = 1.0
 
     var body: some View {
         let magnification = MagnificationGesture(minimumScaleDelta: 1)
-            .onChanged({ value in
+            /*.onChanged({ value in
                 print("Magnifying Change : \(value)")
                 self.magnificationScale = value
-            })
+            })*/
+        // updating
+        // value: 현재 제스처의 값 (확대, 축소 비율)
+        // state: 제스처의 상태를 저장하는 변수 ($magnificationScale)
+        // transaction: 애니메이션 트랙잭션 정보
+            .updating($magnificationScale) { value, state, transaction in
+                state = value
+                print("Magnifying Updating : \(state)")
+            }
             .onEnded { _ in
                 print("Magnification Ended")
             }
