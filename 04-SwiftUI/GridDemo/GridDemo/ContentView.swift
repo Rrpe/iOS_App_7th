@@ -9,16 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     private var colors: [Color] = [.blue, .yellow, .green]
-    private var gridItems = [GridItem(.flexible()),
-                             GridItem(.flexible()),
-                             GridItem(.flexible())
-    ]
+    private var gridItems = [ GridItem(.adaptive(minimum: 50)) ]
+    /*private var gridItems = [ GridItem(.fixed(100)),
+                              GridItem(.adaptive(minimum: 50)),
+                              GridItem(.fixed(100)),]*/
+//    private var gridItems = [ GridItem() ]
     
     var body: some View {
-        
-        LazyVGrid(columns: gridItems, spacing: 5) {
-            ForEach(0...8, id: \.self) { index in
-                CellContent(index: index, color: colors[index % colors.count])
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: gridItems, spacing: 5) {
+//            LazyVGrid(columns: gridItems, spacing: 5) {
+                ForEach(0...99, id: \.self) { index in
+                    CellContent(index: index, color: colors[index % colors.count])
+                }
             }
         }
         
@@ -35,7 +38,8 @@ struct CellContent: View {
     
     var body: some View {
         Text("\(index + 1)")
-            .frame(minWidth: 50, maxWidth: .infinity, minHeight: 100)
+//            .frame(minWidth: 50, maxWidth: .infinity, minHeight: 100)
+            .frame(minWidth: 75, minHeight: 50, maxHeight: .infinity)
             .background(color)
             .clipShape(.rect(cornerRadius: 8))
             .font(.system(.largeTitle))
