@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var selection: Int = 1
+    
     var body: some View {
-        @State var selection: Int = 0
-        
         TabView(selection: $selection) {
             Text("First Content View")
                 .tabItem {
@@ -32,7 +32,21 @@ struct ContentView: View {
                 .tag(2)
         }
         .font(.largeTitle)
-//        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(PageTabViewStyle())
+        HStack {
+            Button("1") {
+                selection = 0
+            }
+            .disabled(selection == 0)
+            Button("2") {
+                selection = 1
+            }
+            .disabled(selection == 1)
+            Button("3") {
+                selection = 2
+            }
+            .disabled(selection == 2)
+        }
     }
 }
 
