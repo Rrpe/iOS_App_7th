@@ -12,7 +12,7 @@ struct ContentView: View {
     
     init() {
             // UIPageControl의 외형 설정
-            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.black
+            UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.blue
             UIPageControl.appearance().pageIndicatorTintColor = UIColor.red
         }
     
