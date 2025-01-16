@@ -11,19 +11,17 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+    @FetchRequest(entity: Product.entity(), sortDescriptors: [])
+    private var products: FetchedResults<Product>
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(products) { product in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        Text("Item at \(product.name ?? "")")
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        Text(product.name ?? "")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -33,8 +31,8 @@ struct ContentView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button(action: addProduct) {
+                        Label("Add Product", systemImage: "plus")
                     }
                 }
             }
@@ -42,10 +40,10 @@ struct ContentView: View {
         }
     }
 
-    private func addItem() {
+    private func addProduct() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newProduct = Product(context: viewContext)
+            newProduct.name = "Test: \(Date())"//"Test"
 
             do {
                 try viewContext.save()
@@ -60,7 +58,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { products[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -74,13 +72,7 @@ struct ContentView: View {
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()/*.environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)*/
 }
