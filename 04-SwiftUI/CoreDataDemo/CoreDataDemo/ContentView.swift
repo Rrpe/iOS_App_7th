@@ -30,6 +30,10 @@ struct ContentView: View {
                     }, label: {
                         Text("Add")})
                     Spacer()
+                    NavigationLink(destination: ResultView(name: name, viewContext: viewContext)) {
+                        Text("Find")
+                    }
+                    Spacer()
                     Button(action: {
                         name = ""
                         quantity = ""
