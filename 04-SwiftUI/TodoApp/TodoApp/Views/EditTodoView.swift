@@ -1,5 +1,5 @@
 //
-//  AddTodoView.swift
+//  EditTodoView.swift
 //  TodoApp
 //
 //  Created by KimJunsoo on 1/20/25.
@@ -7,11 +7,17 @@
 
 import SwiftUI
 
-struct AddTodoView: View {
-    @Environment(\.modelContext) private var modelContext
+struct EditTodoView: View {
     @Environment(\.dismiss) private var dismiss
     
+    let todo: TodoItem
+    
     @State private var title: String = ""
+    
+    init(todo: TodoItem) {
+        self.todo = todo
+        self._title = State(initialValue: todo.title)
+    }
     
     var body: some View {
         NavigationStack {
@@ -20,7 +26,6 @@ struct AddTodoView: View {
                     TextField("Title", text: $title)
                 }
             }
-            .navigationTitle(Text("New Todo"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
@@ -29,19 +34,15 @@ struct AddTodoView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        let todo = TodoItem(title: title)
-                        modelContext.insert(todo)
+                        todo.title = title
                         dismiss()
                     }
                 }
             }
         }
     }
-    
-    
-    
 }
 
 #Preview {
-    AddTodoView()
+    EditTodoView(todo: TodoItem(title: "Test Hello World"))
 }

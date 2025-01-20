@@ -19,9 +19,9 @@ struct ContentView: View {
             List {
                 ForEach(todos) { item in
                     NavigationLink {
-                        Text("\(item.title) \(item.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        TodoDetailView(item: item)
                     } label: {
-                        Text("\(item.title) \(item.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("\(item.title) at \(item.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -61,3 +61,4 @@ struct ContentView: View {
     ContentView()
         .modelContainer(for: TodoItem.self, inMemory: true)
 }
+
