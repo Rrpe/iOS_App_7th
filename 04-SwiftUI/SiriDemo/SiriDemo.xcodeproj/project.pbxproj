@@ -6,14 +6,63 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1E8FA6C12D3DDA7E0098E8F1 /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8FA6C02D3DDA7E0098E8F1 /* Intents.framework */; };
+		1E8FA6C82D3DDA7E0098E8F1 /* SiriDemoIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1E8FA6BE2D3DDA7E0098E8F1 /* SiriDemoIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1E8FA6C62D3DDA7E0098E8F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E8FA6A02D3DD0B20098E8F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E8FA6BD2D3DDA7E0098E8F1;
+			remoteInfo = SiriDemoIntent;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1E8FA6CD2D3DDA7E0098E8F1 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1E8FA6C82D3DDA7E0098E8F1 /* SiriDemoIntent.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1E8FA6A82D3DD0B20098E8F1 /* SiriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SiriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E8FA6BE2D3DDA7E0098E8F1 /* SiriDemoIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriDemoIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E8FA6C02D3DDA7E0098E8F1 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1E8FA6C92D3DDA7E0098E8F1 /* Exceptions for "SiriDemoIntent" folder in "SiriDemoIntent" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1E8FA6BD2D3DDA7E0098E8F1 /* SiriDemoIntent */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1E8FA6AA2D3DD0B20098E8F1 /* SiriDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SiriDemo;
+			sourceTree = "<group>";
+		};
+		1E8FA6C22D3DDA7E0098E8F1 /* SiriDemoIntent */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1E8FA6C92D3DDA7E0098E8F1 /* Exceptions for "SiriDemoIntent" folder in "SiriDemoIntent" target */,
+			);
+			path = SiriDemoIntent;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +75,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1E8FA6BB2D3DDA7E0098E8F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E8FA6C12D3DDA7E0098E8F1 /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				1E8FA6AA2D3DD0B20098E8F1 /* SiriDemo */,
+				1E8FA6C22D3DDA7E0098E8F1 /* SiriDemoIntent */,
+				1E8FA6BF2D3DDA7E0098E8F1 /* Frameworks */,
 				1E8FA6A92D3DD0B20098E8F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +100,17 @@
 			isa = PBXGroup;
 			children = (
 				1E8FA6A82D3DD0B20098E8F1 /* SiriDemo.app */,
+				1E8FA6BE2D3DDA7E0098E8F1 /* SiriDemoIntent.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1E8FA6BF2D3DDA7E0098E8F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E8FA6C02D3DDA7E0098E8F1 /* Intents.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +123,12 @@
 				1E8FA6A42D3DD0B20098E8F1 /* Sources */,
 				1E8FA6A52D3DD0B20098E8F1 /* Frameworks */,
 				1E8FA6A62D3DD0B20098E8F1 /* Resources */,
+				1E8FA6CD2D3DDA7E0098E8F1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1E8FA6C72D3DDA7E0098E8F1 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1E8FA6AA2D3DD0B20098E8F1 /* SiriDemo */,
@@ -69,6 +139,28 @@
 			productName = SiriDemo;
 			productReference = 1E8FA6A82D3DD0B20098E8F1 /* SiriDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		1E8FA6BD2D3DDA7E0098E8F1 /* SiriDemoIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E8FA6CA2D3DDA7E0098E8F1 /* Build configuration list for PBXNativeTarget "SiriDemoIntent" */;
+			buildPhases = (
+				1E8FA6BA2D3DDA7E0098E8F1 /* Sources */,
+				1E8FA6BB2D3DDA7E0098E8F1 /* Frameworks */,
+				1E8FA6BC2D3DDA7E0098E8F1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1E8FA6C22D3DDA7E0098E8F1 /* SiriDemoIntent */,
+			);
+			name = SiriDemoIntent;
+			packageProductDependencies = (
+			);
+			productName = SiriDemoIntent;
+			productReference = 1E8FA6BE2D3DDA7E0098E8F1 /* SiriDemoIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +173,9 @@
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					1E8FA6A72D3DD0B20098E8F1 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					1E8FA6BD2D3DDA7E0098E8F1 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -100,12 +195,20 @@
 			projectRoot = "";
 			targets = (
 				1E8FA6A72D3DD0B20098E8F1 /* SiriDemo */,
+				1E8FA6BD2D3DDA7E0098E8F1 /* SiriDemoIntent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1E8FA6A62D3DD0B20098E8F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E8FA6BC2D3DDA7E0098E8F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +225,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1E8FA6BA2D3DDA7E0098E8F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1E8FA6C72D3DDA7E0098E8F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E8FA6BD2D3DDA7E0098E8F1 /* SiriDemoIntent */;
+			targetProxy = 1E8FA6C62D3DDA7E0098E8F1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1E8FA6B52D3DD0B30098E8F1 /* Debug */ = {
@@ -284,6 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SiriDemo/SiriDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SiriDemo/Preview Content\"";
@@ -308,12 +427,68 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo37;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		1E8FA6CB2D3DDA7E0098E8F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriDemoIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriDemoIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo37rrpe.SiriDemoIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1E8FA6CC2D3DDA7E0098E8F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriDemoIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriDemoIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.SiriDemo37rrpe.SiriDemoIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -334,6 +509,15 @@
 			buildConfigurations = (
 				1E8FA6B82D3DD0B30098E8F1 /* Debug */,
 				1E8FA6B92D3DD0B30098E8F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E8FA6CA2D3DDA7E0098E8F1 /* Build configuration list for PBXNativeTarget "SiriDemoIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E8FA6CB2D3DDA7E0098E8F1 /* Debug */,
+				1E8FA6CC2D3DDA7E0098E8F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
