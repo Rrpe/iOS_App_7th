@@ -27,6 +27,8 @@ struct ContentView: View {
                     Spacer()
                     Button(action: {
                         addProduct()
+                        name = ""
+                        quantity = ""
                     }, label: {
                         Text("Add")})
                     Spacer()
