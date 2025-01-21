@@ -18,24 +18,33 @@ enum TodoNavigation: Hashable {
 
 struct TodoListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var todos: [TodoItem]
     
     let searchText: String
-    init(searchText: String = "") {
+    let priorityFilter: Priority?
+    
+    @Query private var todos: [TodoItem]
+    
+    init(searchText: String = "", priorityFilter: Priority? = nil) {
         self.searchText = searchText
+        self.priorityFilter = priorityFilter
         
         let predicate = #Predicate<TodoItem> { todo in
-            searchText.isEmpty ? true : todo.title.contains(searchText)
-            //            searchText.isEmpty ? true : todo.title.localizedCaseInsensitiveContains(searchText)
-            //            return items.filter { ($0.title ?? "").localizedCaseInsensitiveContains(searchText) } // 내가 사용한 방식
+            searchText.isEmpty ? true : todo.title.contains(searchText) == true
         }
         
         _todos = Query(filter: predicate, sort: [SortDescriptor(\TodoItem.createdAt)])
     }
     
+    var filteredTodos: [TodoItem] {
+        if let priority = priorityFilter {
+            return todos.filter { $0.priority == priority }
+        }
+        return todos
+    }
+    
     var body: some View {
         List {
-            ForEach(todos) { item in
+            ForEach(filteredTodos) { item in
                 TodoRowView(todo: item)
             }
             .onDelete(perform: deleteItems)
@@ -43,10 +52,10 @@ struct TodoListView: View {
         // 생성한 enum 값을 이용해서, 분기 처리를 한다.
         .navigationDestination(for: TodoNavigation.self) { navigation in
             switch navigation {
-            case .detail(let item):
-                TodoDetailView(item: item)
-            case .edit(let item):
-                EditTodoView(todo: item)
+                case .detail(let item):
+                    TodoDetailView(item: item)
+                case .edit(let item):
+                    EditTodoView(todo: item)
             }
         }
     }
@@ -58,6 +67,7 @@ struct TodoListView: View {
             }
         }
     }
+    
 }
 
 #Preview {

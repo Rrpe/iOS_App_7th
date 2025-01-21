@@ -32,20 +32,21 @@ class PreviewContainer {
     func insertPreviewData() {
         let today = Date()
         let calendar = Calendar.current
+        let dueDate = calendar.date(byAdding: .day, value: 1, to: today)!
         
-        let todos: [(String, Date)] = [
-            ("Buy groceries", today),
-            ("Walk the dog", calendar.date(byAdding: .day, value: 1, to: today)!),
-            ("Do the laundry", calendar.date(byAdding: .day, value: 2, to: today)!),
-            ("Take out the trash", calendar.date(byAdding: .day, value: 3, to: today)!),
-            ("완료된 작업", calendar.date(byAdding: .day, value: 4, to: today)!),
-            ("운동하기", calendar.date(byAdding: .day, value: 5, to: today)!),
-            ("책 읽기", calendar.date(byAdding: .day, value: 6, to: today)!),
-            ("SwiftUI 공부", calendar.date(byAdding: .day, value: 7, to: today)!),
+        let todos: [(String, Date, Priority, Date, Category?)] = [
+            ("Buy groceries", today, .low, dueDate, nil),
+            ("Walk the dog", calendar.date(byAdding: .day, value: 1, to: today)!, .medium, dueDate, nil),
+            ("Do the laundry", calendar.date(byAdding: .day, value: 2, to: today)!, .medium, dueDate, nil),
+            ("Take out the trash", calendar.date(byAdding: .day, value: 3, to: today)!, .low, dueDate, nil),
+            ("완료된 작업", calendar.date(byAdding: .day, value: 4, to: today)!, .low, dueDate, nil),
+            ("운동하기", calendar.date(byAdding: .day, value: 5, to: today)!, .high, dueDate, nil),
+            ("책 읽기", calendar.date(byAdding: .day, value: 6, to: today)!, .high, dueDate, nil),
+            ("SwiftUI 공부", calendar.date(byAdding: .day, value: 7, to: today)!, .high, dueDate, nil),
         ]
         
-        for (title, date) in todos {
-            let todo = TodoItem(title: title, createdAt: date)
+        for (title, date, priority, due, category) in todos {
+            let todo = TodoItem(title: title, priority: priority, dueDate: due, category: category, createdAt: date)
             container.mainContext.insert(todo)
         }
         

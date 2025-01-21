@@ -10,20 +10,12 @@ import SwiftUI
 struct TodoRowView: View {
     let todo: TodoItem
     
-    @State private var showingEditView = false
-    @State private var navigationToDetail = false
+    @State private var showingEditView: Bool = false
     
     var body: some View {
-        // +Add Pro
         HStack {
-            Button(action: {
-                todo.isCompleted.toggle()
-            }) {
-                Image(systemName: todo.isCompleted ? "checkmark.square.fill" : "square")
-                    .foregroundStyle(todo.isCompleted ? .green : .gray)
-            }
-            .buttonStyle(PlainButtonStyle())
-            
+            Image(systemName: todo.isCompleted ? "checkmark.square.fill" : "square")
+                .foregroundStyle(todo.isCompleted ? .green : .gray)
             VStack(alignment: .leading) {
                 Text(todo.title)
                     .strikethrough(todo.isCompleted)
@@ -31,9 +23,14 @@ struct TodoRowView: View {
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
-            .onLongPressGesture(minimumDuration: 0.5) {
-                showingEditView = true
-            }
+            Spacer()
+            PriorityBadge(priority: todo.priority)
+        }
+        .onTapGesture {
+            todo.isCompleted.toggle()
+        }
+        .onLongPressGesture(minimumDuration: 0.5) {
+            showingEditView = true
         }
         .swipeActions(edge: .leading) {
             NavigationLink(value: TodoNavigation.detail(todo)) {
@@ -42,27 +39,12 @@ struct TodoRowView: View {
             .tint(.yellow)
         }
         .sheet(isPresented: $showingEditView) {
-            EditTodoView(todo: todo)
+            // EditTodoView 안에서 빠진 NavigationStack 을 추가함
+            // ( 팝업일 경우 네비게이션 바 제목을 출력하려면, 독립적인 NavigationStack 따로 필요함 )
+            NavigationStack {
+                EditTodoView(todo: todo)
+            }
         }
-        
-        /*HStack {
-         Button(action: {
-         item.isCompleted.toggle()
-         }) {
-         Image(systemName: item.isCompleted ? "checkmark.square.fill" : "square")
-         .foregroundStyle(item.isCompleted ? .green : .gray)
-         }
-         
-         NavigationLink(destination: TodoDetailView(item: item)) {
-         Text("\(item.title) at \(item.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))")
-         .background(.red)
-         .foregroundStyle(.white)
-         .onLongPressGesture {
-         showingEditView = true
-         }
-         }
-         }*/ // 내
-        
     }
 }
 
@@ -74,3 +56,4 @@ struct TodoRowView: View {
         .navigationTitle("Todo List")
     }
 }
+
