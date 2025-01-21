@@ -34,19 +34,28 @@ class PreviewContainer {
         let calendar = Calendar.current
         let dueDate = calendar.date(byAdding: .day, value: 1, to: today)!
         
+        // 카테고리 데이터 추가
+        let categories: [Category] =
+        ["업무", "장보기", "여행"].map { categoryName in
+            let category = Category(name: categoryName)
+            container.mainContext.insert(category)
+            return category
+        }
+        
         let todos: [(String, Date, Priority, Date, Category?)] = [
-            ("Buy groceries", today, .low, dueDate, nil),
-            ("Walk the dog", calendar.date(byAdding: .day, value: 1, to: today)!, .medium, dueDate, nil),
-            ("Do the laundry", calendar.date(byAdding: .day, value: 2, to: today)!, .medium, dueDate, nil),
-            ("Take out the trash", calendar.date(byAdding: .day, value: 3, to: today)!, .low, dueDate, nil),
-            ("완료된 작업", calendar.date(byAdding: .day, value: 4, to: today)!, .low, dueDate, nil),
-            ("운동하기", calendar.date(byAdding: .day, value: 5, to: today)!, .high, dueDate, nil),
-            ("책 읽기", calendar.date(byAdding: .day, value: 6, to: today)!, .high, dueDate, nil),
-            ("SwiftUI 공부", calendar.date(byAdding: .day, value: 7, to: today)!, .high, dueDate, nil),
+            ("Buy groceries", today, .low, dueDate, categories[0]),
+            ("Walk the dog", calendar.date(byAdding: .day, value: 1, to: today)!, .medium, dueDate, categories[0]),
+            ("Do the laundry", calendar.date(byAdding: .day, value: 2, to: today)!, .medium, dueDate, categories[1]),
+            ("Take out the trash", calendar.date(byAdding: .day, value: 3, to: today)!, .low, dueDate, categories[1]),
+            ("완료된 작업", calendar.date(byAdding: .day, value: 4, to: today)!, .low, dueDate, categories[2]),
+            ("운동하기", calendar.date(byAdding: .day, value: 5, to: today)!, .high, dueDate, categories[1]),
+            ("책 읽기", calendar.date(byAdding: .day, value: 6, to: today)!, .high, dueDate, categories[2]),
+            ("SwiftUI 공부", calendar.date(byAdding: .day, value: 7, to: today)!, .high, dueDate, categories[2]),
         ]
         
-        for (title, date, priority, due, category) in todos {
-            let todo = TodoItem(title: title, priority: priority, dueDate: due, category: category, createdAt: date)
+        // dueDate, createAt 더미 데이터 변경
+        for (title, due, priority, createdAt, category) in todos {
+            let todo = TodoItem(title: title, priority: priority, dueDate: due, category: category, createdAt: createdAt)
             container.mainContext.insert(todo)
         }
         

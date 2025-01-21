@@ -19,11 +19,20 @@ struct TodoRowView: View {
             VStack(alignment: .leading) {
                 Text(todo.title)
                     .strikethrough(todo.isCompleted)
-                Text(todo.createdAt, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    .font(.caption)
-                    .foregroundStyle(.gray)
+                if let dueDate = todo.dueDate {
+                    Text(dueDate, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        .font(.caption)
+                        .foregroundStyle(dueDate > Date.now ? .gray : .red)
+                }
             }
             Spacer()
+            if let category = todo.category {
+                Text(category.name ?? "-")
+                    .font(.caption)
+                    .padding(4)
+                    .background(Color.blue.opacity(0.2))
+                    .clipShape(.rect(cornerRadius: 4))
+            }
             PriorityBadge(priority: todo.priority)
         }
         .onTapGesture {
@@ -51,7 +60,8 @@ struct TodoRowView: View {
 #Preview {
     NavigationStack {
         List {
-            TodoRowView(todo: TodoItem(title: "Hello, World!"))
+            TodoRowView(todo: TodoItem(title: "Hello, world!", dueDate: Date().addingTimeInterval(1000),
+                                       category: Category(name: "업무")))
         }
         .navigationTitle("Todo List")
     }
