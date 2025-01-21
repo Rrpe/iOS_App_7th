@@ -9,14 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
+//    @Environment(\.modelContext) private var modelContext     // 리스트 페이지로 modelContext 기능이 이동하여 삭제됨
     @Query private var todos: [TodoItem]
     
     @State private var showingAddTodo = false
+    @State private var searchText = ""
     
     var body: some View {
         NavigationStack {
-            TodoListView()
+            TodoListView(searchText: searchText)
+                .searchable(text: $searchText)
                 .navigationTitle("Todo List")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -31,6 +33,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .navigationBarBackButtonHidden(true) // 이게 안먹음
                 .sheet(isPresented: $showingAddTodo) {
                     AddTodoView()
                 }
@@ -44,7 +47,7 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: TodoItem.self, inMemory: true)
+        .modelContainer(PreviewContainer.shared.container)
 }
 
 

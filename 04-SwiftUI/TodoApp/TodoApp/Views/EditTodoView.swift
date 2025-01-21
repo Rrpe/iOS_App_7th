@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EditTodoView: View {
+    
     @Environment(\.dismiss) private var dismiss
     
     let todo: TodoItem
@@ -39,6 +40,7 @@ struct EditTodoView: View {
                     }
                 }
             }
+            .navigationTitle("Edit View")
         }
     }
 }

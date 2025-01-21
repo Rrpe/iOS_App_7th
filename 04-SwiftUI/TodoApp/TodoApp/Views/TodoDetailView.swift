@@ -10,6 +10,7 @@ import SwiftUI
 struct TodoDetailView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    
     var item: TodoItem
     
     @State private var showingEditView: Bool = false
@@ -33,7 +34,9 @@ struct TodoDetailView: View {
         }
         .navigationTitle(item.title)
         .sheet(isPresented: $showingEditView) {
-            EditTodoView(todo: item)
+//            NavigationStack {
+                EditTodoView(todo: item)
+//            }
         }
     }
 }
