@@ -33,6 +33,10 @@
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Buy quantity share of symbol</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>VpJZe6</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
 					<true/>
 				</dict>
@@ -47,6 +51,10 @@
 					<true/>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Buy quantity share of symbol</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>PpuSO9</string>
 				</dict>
 			</dict>
 			<key>INIntentParameters</key>
@@ -145,14 +153,55 @@
 				<key>INIntentResponseCodes</key>
 				<array>
 					<dict>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Successfully purchased ${quantity} ${symbol} shares</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>VjTB0R</string>
 						<key>INIntentResponseCodeName</key>
 						<string>success</string>
 						<key>INIntentResponseCodeSuccess</key>
 						<true/>
 					</dict>
 					<dict>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>Sorry, could not purchase ${quantity} shares of ${symbol}</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>QoSHBf</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
+					</dict>
+				</array>
+				<key>INIntentResponseLastParameterTag</key>
+				<integer>2</integer>
+				<key>INIntentResponseParameters</key>
+				<array>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>symbol</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>ste9mH</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>symbol</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>1</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
+					</dict>
+					<dict>
+						<key>INIntentResponseParameterDisplayName</key>
+						<string>Quantity</string>
+						<key>INIntentResponseParameterDisplayNameID</key>
+						<string>hSciaY</string>
+						<key>INIntentResponseParameterDisplayPriority</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterName</key>
+						<string>quantity</string>
+						<key>INIntentResponseParameterTag</key>
+						<integer>2</integer>
+						<key>INIntentResponseParameterType</key>
+						<string>String</string>
 					</dict>
 				</array>
 			</dict>
