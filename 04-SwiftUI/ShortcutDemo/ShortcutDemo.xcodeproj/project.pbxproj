@@ -11,7 +11,9 @@
 		1E8FA7E32D4074540098E8F1 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8FA7E22D4074540098E8F1 /* IntentsUI.framework */; };
 		1E8FA7ED2D4074540098E8F1 /* ShortcutDemoIntentUI.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1E8FA7E12D4074540098E8F1 /* ShortcutDemoIntentUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1E8FA7F02D4074540098E8F1 /* ShortcutDemoIntent.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1E8FA7D52D4074540098E8F1 /* ShortcutDemoIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1E8FA7FB2D4075790098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FA2D4075790098E8F1 /* Intents.intentdefinition */; };
+		1E8FA7FE2D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
+		1E8FA7FF2D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
+		1E8FA8002D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
 		885AE39E28946EE2001F3808 /* ShortcutDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE39D28946EE2001F3808 /* ShortcutDemoApp.swift */; };
 		885AE3A028946EE2001F3808 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE39F28946EE2001F3808 /* ContentView.swift */; };
 		885AE3A228946EE5001F3808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885AE3A128946EE5001F3808 /* Assets.xcassets */; };
@@ -61,8 +63,8 @@
 		1E8FA7D72D4074540098E8F1 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		1E8FA7E12D4074540098E8F1 /* ShortcutDemoIntentUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShortcutDemoIntentUI.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8FA7E22D4074540098E8F1 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
-		1E8FA7FA2D4075790098E8F1 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		1E8FA7FC2D4075CE0098E8F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		885AE39A28946EE2001F3808 /* ShortcutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortcutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885AE39D28946EE2001F3808 /* ShortcutDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutDemoApp.swift; sourceTree = "<group>"; };
 		885AE39F28946EE2001F3808 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -161,7 +163,6 @@
 			children = (
 				1E8FA7FC2D4075CE0098E8F1 /* Info.plist */,
 				885AE39D28946EE2001F3808 /* ShortcutDemoApp.swift */,
-				1E8FA7FA2D4075790098E8F1 /* Intents.intentdefinition */,
 				885AE39F28946EE2001F3808 /* ContentView.swift */,
 				885AE3A128946EE5001F3808 /* Assets.xcassets */,
 				885AE3A328946EE5001F3808 /* ShortcutDemo.entitlements */,
@@ -171,6 +172,7 @@
 				885AE3B228947038001F3808 /* DetailView.swift */,
 				885AE3B42894705F001F3808 /* PurchaseData.swift */,
 				885AE3B628947086001F3808 /* PurchaseStore.swift */,
+				1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */,
 				885AE3A428946EE5001F3808 /* Preview Content */,
 			);
 			path = ShortcutDemo;
@@ -323,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FA7FE2D407C460098E8F1 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FA8002D407C460098E8F1 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +344,7 @@
 				885AE3B52894705F001F3808 /* PurchaseData.swift in Sources */,
 				885AE3AD28946F5C001F3808 /* PurchaseView.swift in Sources */,
 				885AE3B328947038001F3808 /* DetailView.swift in Sources */,
-				1E8FA7FB2D4075790098E8F1 /* Intents.intentdefinition in Sources */,
+				1E8FA7FF2D407C460098E8F1 /* Intents.intentdefinition in Sources */,
 				885AE3B128947001001F3808 /* Purchase.swift in Sources */,
 				885AE3AF28946FCA001F3808 /* HistoryView.swift in Sources */,
 				885AE3A028946EE2001F3808 /* ContentView.swift in Sources */,

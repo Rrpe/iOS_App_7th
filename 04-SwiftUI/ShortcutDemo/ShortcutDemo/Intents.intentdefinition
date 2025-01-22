@@ -7,7 +7,7 @@
 	<key>INIntentDefinitionModelVersion</key>
 	<string>1.2</string>
 	<key>INIntentDefinitionNamespace</key>
-	<string>b7YOIH</string>
+	<string>vvMHMN</string>
 	<key>INIntentDefinitionSystemVersion</key>
 	<string>24C101</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
@@ -24,7 +24,7 @@
 			<key>INIntentDescription</key>
 			<string>Buy stocks and share</string>
 			<key>INIntentDescriptionID</key>
-			<string>P5xTQP</string>
+			<string>kjtRpk</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>2</integer>
 			<key>INIntentManagedParameterCombinations</key>
@@ -38,7 +38,7 @@
 				</dict>
 			</dict>
 			<key>INIntentName</key>
-			<string>Intent</string>
+			<string>BuyStock</string>
 			<key>INIntentParameterCombinations</key>
 			<dict>
 				<key>symbol,quantity</key>
@@ -57,7 +57,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Symbol</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>Z0I9bN</string>
+					<string>RAMBKb</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterMetadata</key>
@@ -65,7 +65,7 @@
 						<key>INIntentParameterMetadataCapitalization</key>
 						<string>Sentences</string>
 						<key>INIntentParameterMetadataDefaultValueID</key>
-						<string>1O3m44</string>
+						<string>86G2tn</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>symbol</string>
@@ -83,7 +83,7 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>Specify a stock symbol</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>Za44Q9</string>
+							<string>2iIQD1</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
@@ -101,7 +101,7 @@
 					<key>INIntentParameterDisplayName</key>
 					<string>Quantity</string>
 					<key>INIntentParameterDisplayNameID</key>
-					<string>Q8eeik</string>
+					<string>J9hlqg</string>
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>2</integer>
 					<key>INIntentParameterMetadata</key>
@@ -109,7 +109,7 @@
 						<key>INIntentParameterMetadataCapitalization</key>
 						<string>Sentences</string>
 						<key>INIntentParameterMetadataDefaultValueID</key>
-						<string>K2UOLj</string>
+						<string>4Ejm8T</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>quantity</string>
@@ -127,7 +127,7 @@
 							<key>INIntentParameterPromptDialogFormatString</key>
 							<string>Specify a quantity to purchase</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
-							<string>w0bt2i</string>
+							<string>yVVdex</string>
 							<key>INIntentParameterPromptDialogType</key>
 							<string>Primary</string>
 						</dict>
@@ -159,9 +159,9 @@
 			<key>INIntentRestrictions</key>
 			<integer>1</integer>
 			<key>INIntentTitle</key>
-			<string>ShortcutDemo</string>
+			<string>Buy Stock</string>
 			<key>INIntentTitleID</key>
-			<string>6yS2W7</string>
+			<string>T4PmSv</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentUserConfirmationRequired</key>

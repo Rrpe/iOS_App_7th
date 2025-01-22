@@ -8,6 +8,7 @@
 		<dict>
 			<key>IntentsSupported</key>
 			<array>
+				<string>BuyStockIntent</string>
 				<string>INSendMessageIntent</string>
 			</array>
 		</dict>

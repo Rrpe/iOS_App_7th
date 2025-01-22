@@ -18,7 +18,9 @@ struct ShortcutDemoApp: App {
             ContentView()
         }
         .onChange(of: scenePhase) { phase in
-            
+            INPreferences.requestSiriAuthorization({ status in
+                print("status: \(status)")
+            })
         }
     }
     
