@@ -14,6 +14,12 @@
 		1E8FA7FE2D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
 		1E8FA7FF2D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
 		1E8FA8002D407C460098E8F1 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FA7FD2D407C460098E8F1 /* Intents.intentdefinition */; };
+		1E8FA8032D4082ED0098E8F1 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B42894705F001F3808 /* PurchaseData.swift */; };
+		1E8FA8042D4082ED0098E8F1 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B028947001001F3808 /* Purchase.swift */; };
+		1E8FA8052D4082ED0098E8F1 /* PurchaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B628947086001F3808 /* PurchaseStore.swift */; };
+		1E8FA8062D4082ED0098E8F1 /* PurchaseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B42894705F001F3808 /* PurchaseData.swift */; };
+		1E8FA8072D4082ED0098E8F1 /* PurchaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B628947086001F3808 /* PurchaseStore.swift */; };
+		1E8FA8082D4082ED0098E8F1 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE3B028947001001F3808 /* Purchase.swift */; };
 		885AE39E28946EE2001F3808 /* ShortcutDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE39D28946EE2001F3808 /* ShortcutDemoApp.swift */; };
 		885AE3A028946EE2001F3808 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885AE39F28946EE2001F3808 /* ContentView.swift */; };
 		885AE3A228946EE5001F3808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885AE3A128946EE5001F3808 /* Assets.xcassets */; };
@@ -325,6 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FA8032D4082ED0098E8F1 /* PurchaseData.swift in Sources */,
+				1E8FA8042D4082ED0098E8F1 /* Purchase.swift in Sources */,
+				1E8FA8052D4082ED0098E8F1 /* PurchaseStore.swift in Sources */,
 				1E8FA7FE2D407C460098E8F1 /* Intents.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8FA8002D407C460098E8F1 /* Intents.intentdefinition in Sources */,
+				1E8FA8062D4082ED0098E8F1 /* PurchaseData.swift in Sources */,
+				1E8FA8072D4082ED0098E8F1 /* PurchaseStore.swift in Sources */,
+				1E8FA8082D4082ED0098E8F1 /* Purchase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,9 @@ struct PurchaseView: View {
     @State var status: String = "Enter symbol and quantity"
     
     @State var purchaseData: PurchaseData = PurchaseData()
-    
+    //group.kr.co.codegrove.AppGroup
     @AppStorage("demostorage", store: UserDefaults(
-                    suiteName: "group.com.ebookfrenzy.shortcutdemo")) var store: Data = Data()
+                    suiteName: "group.kr.co.codegrove.AppGroup")) var store: Data = Data()
     
     @Environment(\.scenePhase) private var scenePhase
     
