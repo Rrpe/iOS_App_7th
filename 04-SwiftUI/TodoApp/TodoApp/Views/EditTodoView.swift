@@ -35,7 +35,6 @@ struct EditTodoView: View {
         Form {
             Section {
                 TextField("Title", text: $title)
-                
                 Picker("우선순위", selection: $priority) {
                     ForEach(Priority.allCases, id: \.self) {
                         priority in
@@ -43,12 +42,14 @@ struct EditTodoView: View {
                             .tag(priority)
                     }
                 }
-                
                 Toggle("마감일 설정", isOn: $dueDateEnabled)
                 if dueDateEnabled {
-                    DatePicker("마감일", selection: Binding(
-                        get: { dueDate ?? Date() },
-                        set: { dueDate = $0 }))
+                    DatePicker("마감일",
+                               selection: Binding(get: {
+                        dueDate ?? Date()
+                    }, set:{
+                        dueDate = $0
+                    }))
                 }
             }
             Section("Category") {
@@ -59,6 +60,7 @@ struct EditTodoView: View {
                     }
                 }
             }
+
         }
         .navigationTitle("Edit Todo")
         .toolbar {
@@ -68,6 +70,7 @@ struct EditTodoView: View {
                     todo.title = title
                     todo.priority = priority
                     todo.dueDate = dueDateEnabled ? dueDate : nil
+                    todo.category = selectedCategory
                     // 뷰 닫기와 동시에 모델 컨텍스트 저장이 호출된다.
                     dismiss()
                 }
@@ -82,8 +85,7 @@ struct EditTodoView: View {
     }
 }
 
-
 #Preview {
-    EditTodoView(todo: TodoItem(title: "Test Hello World"))
+    EditTodoView(todo: TodoItem(title: "Hello, world!"))
         .modelContainer(PreviewContainer.shared.container)
 }

@@ -22,6 +22,7 @@ struct TodoListView: View {
     let searchText: String
     let priorityFilter: Priority?
     
+    @Query private var categories: [Category]
     @Query private var todos: [TodoItem]
     
     init(searchText: String = "", priorityFilter: Priority? = nil) {
@@ -35,19 +36,30 @@ struct TodoListView: View {
         _todos = Query(filter: predicate, sort: [SortDescriptor(\TodoItem.createdAt)])
     }
     
-    var filteredTodos: [TodoItem] {
+    func filteredTodos(category: Category? = nil) -> [TodoItem] {
+        let categoryTodos = todos.filter { $0.category == category }
         if let priority = priorityFilter {
-            return todos.filter { $0.priority == priority }
+            return categoryTodos.filter { $0.priority == priority }
         }
-        return todos
+        return categoryTodos
     }
     
     var body: some View {
         List {
-            ForEach(filteredTodos) { item in
-                TodoRowView(todo: item)
+            Section("카테고리 없음") {
+                ForEach(filteredTodos(category: nil)) { item in
+                    TodoRowView(todo: item, showCategory: false)
+                }
+                .onDelete(perform: deleteItems)
             }
-            .onDelete(perform: deleteItems)
+            ForEach(categories) { category in
+                Section(category.name ?? "-") {
+                    ForEach(filteredTodos(category: category)) { item in
+                        TodoRowView(todo: item, showCategory: false)
+                    }
+                    .onDelete(perform: deleteItems)
+                }
+            }
         }
         // 생성한 enum 값을 이용해서, 분기 처리를 한다.
         .navigationDestination(for: TodoNavigation.self) { navigation in

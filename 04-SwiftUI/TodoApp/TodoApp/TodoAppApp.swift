@@ -15,9 +15,11 @@ struct TodoAppApp: App {
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
         do {
-            let container = try ModelContainer(for: schema,
-                                               migrationPlan: MigrationPlan.self,
-                                               configurations: [modelConfiguration])
+            let container = try ModelContainer(
+                for: schema,
+                migrationPlan: MigrationPlan.self,
+                configurations: [modelConfiguration]
+            )
             // 마이그레이션 성공
             print("Successfully created ModelContainer with migration")
             return container
@@ -37,7 +39,7 @@ struct TodoAppApp: App {
             }
         }
     }()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

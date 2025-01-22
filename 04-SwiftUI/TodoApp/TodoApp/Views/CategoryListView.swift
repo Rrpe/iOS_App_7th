@@ -10,6 +10,7 @@ import SwiftData
 
 struct CategoryListView: View {
     @Environment(\.modelContext) private var modelContext
+    
     @Query private var categories: [Category]
     
     @State private var selectedCategory: Category?
@@ -20,28 +21,37 @@ struct CategoryListView: View {
         NavigationStack {
             List {
                 ForEach(categories) { category in
-                    Text(category.name ?? "-")
-                        .onLongPressGesture {
-                            selectedCategory = category
-                            editCategoryName = category.name ?? "-"
-                            isEditingCategory = true
-                        }
+                    HStack {
+                        Text(category.name ?? "-")
+                        Spacer()
+                    }
+                    .onLongPressGesture {
+                        selectedCategory = category
+                        editCategoryName = category.name ?? "-"
+                        isEditingCategory = true
+                    }
+                    
                 }
                 .onDelete(perform: deleteCategories)
             }
-            .navigationTitle("카테고리 수정")
-            .alert("카테고리 수정", isPresented: $isEditingCategory) {
+            .navigationTitle("Categories")
+            .alert("카테고리 수정",
+                   isPresented: $isEditingCategory
+            ) {
                 TextField("카테고리 이름", text: $editCategoryName)
                 HStack {
                     Button("취소") {
                         editCategoryName = ""
                     }
                     Button("저장") {
-                        
+                        if let category = selectedCategory, !editCategoryName.isEmpty {
+                            category.name = editCategoryName
+                            try? modelContext.save()
+                        }
                     }
                 }
             } message: {
-                
+                Text("카테고리 이름을 입력하세요.")
             }
         }
     }

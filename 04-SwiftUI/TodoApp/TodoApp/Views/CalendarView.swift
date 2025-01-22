@@ -28,7 +28,7 @@ struct CalendarView: View {
                 
                 List {
                     ForEach(todosForSelectedDate) { todo in
-                            TodoRowView(todo: todo)
+                        TodoRowView(todo: todo)
                     }
                 }
             }

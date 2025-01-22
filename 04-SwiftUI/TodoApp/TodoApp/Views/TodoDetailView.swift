@@ -43,7 +43,6 @@ struct TodoDetailView: View {
     }
 }
 
-
 #Preview {
-    TodoDetailView(item: TodoItem(title: "Test Detail Hello World"))
+    TodoDetailView(item: TodoItem(title: "Hello, world!"))
 }

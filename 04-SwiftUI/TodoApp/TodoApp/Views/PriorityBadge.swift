@@ -28,7 +28,6 @@ struct PriorityBadge: View {
     }
 }
 
-
 #Preview {
-    PriorityBadge(priority: TodoItem(title: "Hello, World!").priority)
+    PriorityBadge(priority: TodoItem(title: "Hello, world!").priority)
 }
