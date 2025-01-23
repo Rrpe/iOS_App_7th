@@ -10,28 +10,28 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> WeatherEntry {
-        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder", url: thunderUrl)
+        WeatherEntry(date: Date(), city: "-", temperature: 0, description: "-", icon: "circle.fill", image: "", url: thunderUrl)
     }
-
+    
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> WeatherEntry {
-        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder", url: thunderUrl)
+        configuration.location.locationData.timeline[0]
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WeatherEntry> {
-
-        return Timeline(entries: londonTimeline, policy: .atEnd)
+        let timline = configuration.location.locationData.timeline
+        return Timeline(entries: timline, policy: .atEnd)
     }
-
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    
+    //    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
+    //        // Generate a list containing the contexts this widget is relevant in.
+    //    }
 }
 
 struct WeatherWidgetEntryView : View {
     var entry: Provider.Entry
     
     @Environment(\.widgetFamily) private var widgetFamily
-
+    
     var body: some View {
         ZStack {
             Color("weatherBackgroundColor")
@@ -72,7 +72,7 @@ struct WeatherSubView: View {
 
 struct WeatherWidget: Widget {
     let kind: String = "WeatherWidget"
-
+    
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             WeatherWidgetEntryView(entry: entry)
