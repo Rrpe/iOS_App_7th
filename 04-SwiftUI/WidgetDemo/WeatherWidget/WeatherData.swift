@@ -31,8 +31,9 @@ let londonTimeline = [
                  image: "thunder", url: thunderUrl),
     WeatherEntry(date: Date(), city: "London", temperature: 95,
                  description: "Hail Storm", icon: "cloud.hail",
-                 image: "hail", url: tropicalUrl),
+                 image: "hail", url: hailUrl),
 ]
+
 let miamiTimeline = [
     WeatherEntry(date: Date(), city: "Miami", temperature: 85,
                  description: "Thunder Storm", icon: "cloud.bolt.rain",
