@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> WeatherEntry {
-        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder")
+        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder", url: thunderUrl)
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> WeatherEntry {
-        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder")
+        WeatherEntry(date: Date(), city: "London", temperature: 89, description: "Thunder Storm", icon: "cloud.bolt.rain", image: "thunder", url: thunderUrl)
     }
     
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WeatherEntry> {
@@ -33,7 +33,6 @@ struct WeatherWidgetEntryView : View {
     var body: some View {
         ZStack {
             Color("weatherBackgroundColor")
-                .frame(minHeight: 200)
             WeatherSubView(entry: entry)
         }
     }
