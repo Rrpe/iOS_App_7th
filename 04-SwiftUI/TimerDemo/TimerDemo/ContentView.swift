@@ -113,6 +113,7 @@ struct ContentView: View {
                 }
             }
             Spacer()
+//            Test
             
         }
         .frame(minWidth: 300, minHeight: 300)
@@ -225,7 +226,7 @@ struct ContentView: View {
         }
     }
     
-    private var Test: some View {
+    var Test: some View {
         // 테스트용 버튼
         Button(action: {
             timeRemaining = 5 // 10초 설정
