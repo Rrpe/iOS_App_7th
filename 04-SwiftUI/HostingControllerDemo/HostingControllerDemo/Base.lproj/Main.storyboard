@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Hosting Controller-->
+        <scene sceneID="n6U-Nh-plH">
+            <objects>
+                <hostingController id="6UO-gS-vXs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JwY-j4-BLC"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UjQ-cR-3Pk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1053" y="-505"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -16,24 +26,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-A2-yeF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-A2-yeF">
                                 <rect key="frame" x="159" y="409" width="75" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <segue destination="iEB-hT-hEb" kind="show" id="wpY-mp-mWZ"/>
+                                    <segue destination="iEB-hT-hEb" kind="show" destinationCreationSelector="showSwiftUIView:" id="wpY-mp-mWZ"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xk-vm-gEq">
+                                <rect key="frame" x="16" y="69" width="361" height="332"/>
+                                <connections>
+                                    <segue destination="6UO-gS-vXs" kind="embed" destinationCreationSelector="embedSwiftUIView:" id="XQV-5b-692"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0xk-vm-gEq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NqV-Ba-7Su"/>
+                            <constraint firstItem="wmb-A2-yeF" firstAttribute="top" secondItem="0xk-vm-gEq" secondAttribute="bottom" constant="8" id="PTW-1k-F5D"/>
+                            <constraint firstItem="0xk-vm-gEq" firstAttribute="centerX" secondItem="wmb-A2-yeF" secondAttribute="centerX" id="Qln-Sb-Yv0"/>
+                            <constraint firstItem="0xk-vm-gEq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="awU-XE-Osi"/>
+                            <constraint firstAttribute="bottom" secondItem="0xk-vm-gEq" secondAttribute="bottom" constant="451" id="otz-D2-Sqo"/>
+                            <constraint firstItem="0xk-vm-gEq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-34" id="y9M-f2-E7u"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GbJ-qz-vk6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057.2519083969464" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1052.6717557251909" y="-27.464788732394368"/>
         </scene>
         <!--Hosting Controller-->
         <scene sceneID="PH6-nP-Fzp">
