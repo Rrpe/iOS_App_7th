@@ -9,8 +9,6 @@ import SwiftUI
 import MusicKit
 import AVFoundation
 
-
-
 struct ContentView: View {
     
     @State private var timeRemaining: Int = 60 // 기본값 초 단위
