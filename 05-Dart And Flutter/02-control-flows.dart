@@ -89,7 +89,28 @@ void main() {
 
   // forEach loop with function reference: 함수 참조를 사용하여 간단하게 표현
   daysOfWeek.forEach(print);
+
+  print(Day.values);
+  print('${Day.values[0]}');
+  print(Day.values.byName('mon'));
+
+  // Error handling
+  String name = 'Dart';
+
+  try {
+    print('Name: $name');
+    name.indexOf(name[0], name.length - (name.length + 2));
+  } on RangeError catch (exception) {
+    print('On Exception: $exception');
+  } catch (exception) {
+    print('Catch Exception: $exception');
+  } finally {
+    print('Mission Completed!');
+  }
 }
+
+// 열거형 사용하기
+enum Day { sun, mon, tue }
 
 String smallSwitchReturn(int intValue) {
   return switch (intValue) {
