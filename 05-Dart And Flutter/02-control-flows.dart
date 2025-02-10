@@ -58,4 +58,43 @@ void main() {
     default:
       print('Unknown');
   }
+
+  // switch statement with return
+  print(smallSwitchReturn(1));
+
+  //for loop: 반복 횟수가 정해진 경우 사용
+  int maxIterations = 5;
+  for (var i = 0; i < maxIterations; i++) {
+    print('Iterations: $i');
+  }
+
+  // forEach loop: 배열, 리스트, 맵 등의 요소를 반복할 떄 사용
+  List daysOfWeek = [
+    'Sunday',
+    'Monday',
+    'TuesDay',
+    'Wednesday',
+    'Thursday',
+    'Firday',
+    'Saturday'
+  ];
+
+// 표준형
+  daysOfWeek.forEach((day) {
+    print(day);
+  });
+
+  // forEach loop with arrow function: 람다 함수를 사용하여 간단하게 표현
+  daysOfWeek.forEach((day) => print(day));
+
+  // forEach loop with function reference: 함수 참조를 사용하여 간단하게 표현
+  daysOfWeek.forEach(print);
+}
+
+String smallSwitchReturn(int intValue) {
+  return switch (intValue) {
+    1 => "value is 1",
+    2 => "value is 2",
+    _ => "another value"
+  };
 }
