@@ -1,4 +1,4 @@
-void main() {
+void main() async {
   // main function
   // 실습: 함수 선언 및 호출
 
@@ -41,6 +41,27 @@ void main() {
 
   print('EX2-Squared: ${ex2Squared(value)}');
   print('EX2-Cubed: ${ex2Cubed(value)}');
+
+  // Future 반환 값이 있는 함수 호출
+  int myDelay = 5;
+
+  print('Hello');
+
+  var customDelay = await _customDelay(myDelay);
+  var customText = myDelay == customDelay ? 'Success' : 'Failed';
+
+  print('Its $customDelay - $customText');
+}
+
+// 함수 선언: Future 반환 값이 있는 함수
+Future<int> _customDelay(int delay) async {
+  try {
+    await Future.delayed(Duration(seconds: delay));
+    return delay;
+  } catch (e) {
+    print(e);
+    return -1;
+  }
 }
 
 // 함수 선언: 반환 값이 있는 함수
