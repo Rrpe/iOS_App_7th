@@ -7,6 +7,18 @@ void main() {
   printGreetingNamed();
   printGreetingNamed(personName: "Rich");
   printGreetingNamed(personName: "Mary", clientId: 001);
+
+  DateTime timeNow = getTimeDifference(0);
+  DateTime timeDifference = getTimeDifference(-7);
+  print('Current time: $timeNow');
+  print('Time with Difference: $timeDifference');
+}
+
+DateTime getTimeDifference(int hourDifference) {
+  DateTime timeNow = DateTime.now();
+  DateTime timeDifference = timeNow.add(Duration(hours: hourDifference));
+
+  return timeDifference;
 }
 
 void printGreetingNamed({String personName = 'Stranger', int clientId = 999}) {
