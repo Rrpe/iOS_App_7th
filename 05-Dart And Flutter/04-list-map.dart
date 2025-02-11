@@ -66,4 +66,22 @@ void main() {
 
   // 특정 키에 해당하는 값 출력
   print(mapMonths[1]); // January 출력
+
+  // Map advanced
+  Map<String, int> scores = {
+    'Alice': 90,
+    'Bob': 80,
+    'Charlie': 95,
+  };
+
+  print(scores.containsKey('Alice'));
+
+  print(scores.containsValue(80));
+
+  scores.remove('Bob');
+  print(scores);
+
+  Map<String, int> updatedScores =
+      scores.map((key, value) => MapEntry(key, value + 5));
+  print(updatedScores);
 }
