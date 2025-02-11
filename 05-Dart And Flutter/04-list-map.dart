@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 void main() {
   List<String> months = [
     'January',
@@ -84,4 +86,39 @@ void main() {
   Map<String, int> updatedScores =
       scores.map((key, value) => MapEntry(key, value + 5));
   print(updatedScores);
+
+  Map<String, dynamic> data = {
+    'name': 'John',
+    'age': 30,
+    'city': 'Seoul',
+  };
+
+  // 키 존재 여부 확인
+  if (data.containsKey('name')) {
+    print('Name: ${data['name']}');
+  }
+
+  // 값 존재 여부 확인
+  if (data.containsValue(30)) {
+    print('Age: ${data['age']}');
+  }
+
+  Map<String, dynamic> user = {
+    'id': 1,
+    'info': {
+      'name': 'Alice',
+      'contacts': [
+        {'type': 'email', 'value': 'alice@email.com'},
+        {'type': 'phone', 'value': '123-456-7890'}
+      ]
+    }
+  };
+
+  // Map을 JSON 문자열로 변환
+  String userJson = jsonEncode(user);
+  print(userJson);
+
+  // JSON 문자열을 Map으로 변환
+  Map<String, dynamic> parsed = jsonDecode(userJson);
+  print(parsed['info']['contacts'][0]['value']); // alice@email.com 출력
 }
