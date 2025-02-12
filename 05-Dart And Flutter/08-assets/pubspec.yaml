@@ -14,7 +14,9 @@ dependencies:
     sdk: flutter
   # flutter 패키지 중 cupertino_icons 의존성 명시, 애플 아이콘 사용
   cupertino_icons: ^1.0.8
-  
+  # flutter 패키지 중 google_font 의존성 명시, 구글 폰트를 사용하기 위함
+  google_fonts: ^6.2.1
+
 # dev_dependencies: 개발용 의존성 명시
 dev_dependencies:
   flutter_test:
