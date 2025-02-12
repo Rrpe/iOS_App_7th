@@ -1,0 +1,21 @@
+name: sample_app
+description: A new Flutter project
+
+publish_to: 'none' # pub.dev 에 배포하지 않겠다
+
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.6.2 # Dart 버전
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # flutter 패키지 중 cupertino_icons 의존성 명시, 애플 아이콘 사용
+  cupertino_icons: ^1.0.8
+  
+# dev_dependencies: 개발용 의존성 명시
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
