@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:list_navigation/my_list_view.dart';
 import 'package:list_navigation/my_sliver_list_view.dart';
+import 'package:list_navigation/my_grid_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MySliverList(),
+      home: const MyGridView(),
     );
   }
 }
