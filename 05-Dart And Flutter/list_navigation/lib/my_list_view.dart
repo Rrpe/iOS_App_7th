@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class ListDataItems {
   final List<String> monthItems = [
@@ -29,10 +30,14 @@ class MyListView extends StatelessWidget {
         title: const Text("ListView"),
       ),
       body: ListView.builder(
+        scrollDirection: Axis.horizontal,
         itemCount: item.monthItems.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(item.monthItems[index]),
+          return Row(
+            children: [
+              Text(item.monthItems[index]),
+              const SizedBox(width: 10),
+            ],
           );
         },
       ),
