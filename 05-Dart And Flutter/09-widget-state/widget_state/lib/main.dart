@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           textTheme: TextTheme(
             bodyLarge:
-                GoogleFonts.aBeeZee(fontSize: 20, color: Colors.deepOrange),
+                GoogleFonts.aBeeZee(fontSize: 30, color: Colors.deepOrange),
             bodyMedium:
                 GoogleFonts.aBeeZee(fontSize: 18, color: Colors.grey[700]),
           )),
@@ -60,23 +60,21 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 300,
             height: 380,
             color: Colors.white,
-            child: ListView.builder(
-              itemCount: 30,
-              itemBuilder: (context, index) {
-                return _buildListItem();
-              },
+            child: Center(
+              child: RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                      text: 'Hello',
+                      style: Theme.of(context).textTheme.bodyLarge),
+                  TextSpan(text: ' '),
+                  TextSpan(
+                      text: 'Flutter',
+                      style: Theme.of(context).textTheme.bodyMedium),
+                  TextSpan(text: ' '),
+                ]),
+              ),
             )),
       ),
-    );
-  }
-
-  Widget _buildListItem() {
-    return ListTile(
-      title: Text('Hello, World!'),
-      subtitle: Text('Dart & Flutter'),
-      leading: Image.network('https://picsum.photos/120/60'),
-      titleTextStyle: Theme.of(context).textTheme.bodyLarge,
-      subtitleTextStyle: Theme.of(context).textTheme.bodyMedium,
     );
   }
 }
