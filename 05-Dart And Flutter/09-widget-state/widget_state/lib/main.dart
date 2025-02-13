@@ -48,36 +48,22 @@ class _MyHomePageState extends State<MyHomePage> {
             width: 300,
             height: 380,
             color: Colors.white,
-            child: Column(
-              children: [
-                _buildRow(),
-                SizedBox(height: 10),
-                _buildRow(),
-                SizedBox(height: 10),
-                _buildRow(),
-              ],
-            )),
+            child: ListView.builder(
+                itemCount: 30,
+                itemBuilder: (context, index) {
+                  return _buildListItem();
+                })),
       ),
     );
   }
 
-  Widget _buildRow() {
-    return Row(
-      children: [
-        Image.network('https://picsum.photos/120/60'),
-        SizedBox(
-          width: 10,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Hello, World!',
-                style: TextStyle(fontSize: 20, color: Colors.indigo)),
-            Text('Dart & Flutter',
-                style: TextStyle(fontSize: 16, color: Colors.deepPurple)),
-          ],
-        ),
-      ],
+  Widget _buildListItem() {
+    return ListTile(
+      title: Text('Hello, World!',
+          style: TextStyle(fontSize: 20, color: Colors.indigo)),
+      subtitle: Text('Dart & Flutter',
+          style: TextStyle(fontSize: 16, color: Colors.deepPurple)),
+      leading: Image.network('https://picsum.photos/120/60'),
     );
   }
 }
