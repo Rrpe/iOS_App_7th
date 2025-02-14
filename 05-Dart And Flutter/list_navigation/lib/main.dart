@@ -1,12 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
-import 'package:list_navigation/my_grid_view.dart';
-import 'package:list_navigation/my_list_view.dart';
-import 'package:list_navigation/my_sliver_list_view.dart';
-import 'package:list_navigation/text_field_demo.dart';
+import 'package:list_navigation/shared_preference_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const TextFieldDemo(),
+      home: SharedPreferenceDemo(),
     );
   }
 }
