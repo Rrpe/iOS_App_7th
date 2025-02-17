@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:list_navigation/drawer_demo.dart';
+import 'package:list_navigation/tab_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: DrawerDemo(),
+      home: TabDemo(),
     );
   }
 }
