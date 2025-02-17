@@ -24,6 +24,8 @@ android {
         applicationId = "com.example.my_todo_list"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdkVersion flutter.minSdkVersion  // ✅ 추가해야 할 부분
+        targetSdkVersion 33
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

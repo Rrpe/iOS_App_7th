@@ -1,145 +1,234 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'dart:io';
 
 void main() {
-  runApp(TodoApp());
+  runApp(MyApp());
 }
 
-class TodoApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: TodoHome(),
+    return ChangeNotifierProvider(
+      create: (context) => TodoProvider(),
+      child: MaterialApp(
+        title: 'Flutter Todo List',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: TodoListScreen(),
+      ),
     );
   }
 }
 
-class TodoHome extends StatefulWidget {
-  @override
-  _TodoHomeState createState() => _TodoHomeState();
-}
-
-class _TodoHomeState extends State<TodoHome> {
-  List<Map<String, dynamic>> _todoList = [];
+class TodoListScreen extends StatelessWidget {
+  final TextEditingController _controller = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    _loadTodoList();
+  Widget build(BuildContext context) {
+    final todoProvider = Provider.of<TodoProvider>(context);
+
+    return Scaffold(
+      appBar: AppBar(title: Text('Todo List')),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      labelText: 'Enter a task',
+                    ),
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: () {
+                    if (_controller.text.isNotEmpty) {
+                      todoProvider.addTask(_controller.text);
+                      _controller.clear();
+                    }
+                  },
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: todoProvider.tasks.length,
+              itemBuilder: (context, index) {
+                final task = todoProvider.tasks[index];
+                return Dismissible(
+                  key: Key(task.title),
+                  background: Container(color: Colors.red),
+                  onDismissed: (direction) {
+                    todoProvider.removeTask(index);
+                  },
+                  child: ListTile(
+                    leading: Checkbox(
+                      value: task.isDone,
+                      onChanged: (value) {
+                        todoProvider.toggleTask(index);
+                      },
+                    ),
+                    title: Text(
+                      task.title,
+                      style: TextStyle(
+                        decoration:
+                            task.isDone ? TextDecoration.lineThrough : null,
+                      ),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () {
+                        _editTask(context, todoProvider, index, task.title);
+                      },
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (_controller.text.isNotEmpty) {
+            todoProvider.addTask(_controller.text);
+            _controller.clear();
+          }
+        },
+        child: Icon(Icons.add),
+      ),
+    );
   }
 
-  // 할 일 목록 로드
-  Future<void> _loadTodoList() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? todoString = prefs.getString('todo_list');
-    if (todoString != null) {
-      setState(() {
-        _todoList = List<Map<String, dynamic>>.from(json.decode(todoString));
-      });
-    }
-  }
+  void _editTask(BuildContext context, TodoProvider provider, int index,
+      String currentTitle) {
+    TextEditingController controller =
+        TextEditingController(text: currentTitle);
+    bool isIOS = Theme.of(context).platform == TargetPlatform.iOS; // 변경된 부분
 
-  // 할 일 목록 저장
-  Future<void> _saveTodoList() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('todo_list', json.encode(_todoList));
-  }
-
-  // 할 일 추가
-  void _addTodo(String title) {
-    setState(() {
-      _todoList.add({'title': title, 'done': false});
-    });
-    _saveTodoList();
-  }
-
-  // 할 일 삭제
-  void _deleteTodo(int index) {
-    setState(() {
-      _todoList.removeAt(index);
-    });
-    _saveTodoList();
-  }
-
-  // 완료 상태 변경
-  void _toggleDone(int index) {
-    setState(() {
-      _todoList[index]['done'] = !_todoList[index]['done'];
-    });
-    _saveTodoList();
-  }
-
-  // 할 일 입력 다이얼로그
-  void _showAddTodoDialog() {
-    String newTodo = '';
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: Text("새 할 일 추가"),
-          content: TextField(
-            onChanged: (value) => newTodo = value,
-            decoration: InputDecoration(hintText: "할 일을 입력하세요"),
-          ),
-          actions: [
-            TextButton(
-              child: Text("취소"),
-              onPressed: () => Navigator.pop(context),
-            ),
-            TextButton(
-              child: Text("추가"),
-              onPressed: () {
-                if (newTodo.trim().isNotEmpty) {
-                  _addTodo(newTodo.trim());
-                }
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        );
+        return isIOS
+            ? CupertinoAlertDialog(
+                title: Text('Edit Task'),
+                content: Padding(
+                  padding: EdgeInsets.only(top: 10),
+                  child: CupertinoTextField(
+                    controller: controller,
+                    placeholder: 'Enter new task name',
+                  ),
+                ),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('Cancel'),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                  CupertinoDialogAction(
+                    child: Text('Save'),
+                    onPressed: () {
+                      provider.updateTask(index, controller.text);
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              )
+            : AlertDialog(
+                title: Text('Edit Task'),
+                content: TextField(
+                  controller: controller,
+                  decoration: InputDecoration(hintText: 'Enter new task name'),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      provider.updateTask(index, controller.text);
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Save'),
+                  ),
+                ],
+              );
       },
     );
   }
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("간단한 Todo 앱")),
-      body: ListView.builder(
-        itemCount: _todoList.length,
-        itemBuilder: (context, index) {
-          final todo = _todoList[index];
-          return Dismissible(
-            key: Key(todo['title']),
-            direction: DismissDirection.endToStart,
-            onDismissed: (direction) => _deleteTodo(index),
-            background: Container(
-              color: Colors.red,
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: 20),
-              child: Icon(Icons.delete, color: Colors.white),
-            ),
-            child: ListTile(
-              leading: Checkbox(
-                value: todo['done'],
-                onChanged: (value) => _toggleDone(index),
-              ),
-              title: Text(
-                todo['title'],
-                style: TextStyle(
-                  decoration: todo['done'] ? TextDecoration.lineThrough : null,
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: _showAddTodoDialog,
-      ),
+class Task {
+  String title;
+  bool isDone;
+
+  Task({required this.title, this.isDone = false});
+
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'isDone': isDone,
+      };
+
+  factory Task.fromJson(Map<String, dynamic> json) {
+    return Task(
+      title: json['title'],
+      isDone: json['isDone'],
     );
+  }
+}
+
+class TodoProvider extends ChangeNotifier {
+  List<Task> _tasks = [];
+  List<Task> get tasks => _tasks;
+
+  TodoProvider() {
+    loadTasks();
+  }
+
+  void addTask(String title) {
+    _tasks.add(Task(title: title));
+    saveTasks();
+    notifyListeners();
+  }
+
+  void removeTask(int index) {
+    _tasks.removeAt(index);
+    saveTasks();
+    notifyListeners();
+  }
+
+  void toggleTask(int index) {
+    _tasks[index].isDone = !_tasks[index].isDone;
+    saveTasks();
+    notifyListeners();
+  }
+
+  void updateTask(int index, String newTitle) {
+    _tasks[index].title = newTitle;
+    saveTasks();
+    notifyListeners();
+  }
+
+  void saveTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> taskJson =
+        _tasks.map((task) => json.encode(task.toJson())).toList();
+    prefs.setStringList('tasks', taskJson);
+  }
+
+  void loadTasks() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String>? taskJson = prefs.getStringList('tasks');
+    if (taskJson != null) {
+      _tasks =
+          taskJson.map((task) => Task.fromJson(json.decode(task))).toList();
+      notifyListeners();
+    }
   }
 }
