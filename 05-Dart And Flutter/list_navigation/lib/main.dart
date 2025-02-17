@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:list_navigation/navigator_demo.dart';
 
 import 'package:list_navigation/shared_preference_demo.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SharedPreferenceDemo(),
+      home: NavigatorDemo(),
     );
   }
 }
