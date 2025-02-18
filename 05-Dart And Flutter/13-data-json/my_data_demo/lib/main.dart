@@ -1,58 +1,18 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
+// 파일로만 데이터를 가져오는 방법
+// import '1_basic.dart';
+
+// 파일과 함께 데이터를 가져오는 방법
+// import '2_with_file.dart';
+
+// 파일과 JSON을 사용하여 데이터를 가져오는 방법
+import '3_with_file_and_json.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
+// JSON 데이터 파싱 (구문 분석)
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late Future<List<String>> futureData;
-
-  @override
-  void initState() {
-    super.initState();
-    futureData = _loadMonths();
-  }
-
-  Future<List<String>> _loadMonths() async {
-    String jsonString = await DefaultAssetBundle.of(
-      context,
-    ).loadString('assets/example.json');
-    return jsonDecode(jsonString).values.cast<String>().toList();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('My Data App')),
-        body: FutureBuilder(
-          future: futureData,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            final data = snapshot.data!;
-            return ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) {
-                return ListTile(title: Text(data[index]));
-              },
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
+// 비동기 함수, Future, async, await
+// 비동기 함수는 함수가 실행되는 동안 다른 코드가 실행될 수 있도록 하는 함수입니다.
