@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class ProductListScreen extends StatefulWidget {
+  const ProductListScreen({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<ProductListScreen> createState() => _ProductListScreenState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const text('상품 목록')),
+      body: const Center(child: CircularProgressIndicator()),
+    );
   }
 }

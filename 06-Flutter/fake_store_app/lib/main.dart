@@ -1,3 +1,4 @@
+import 'package:fake_store_app/views/project_list_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const Placeholder(),
+      home: ProductListScreen(),
     );
   }
 }
