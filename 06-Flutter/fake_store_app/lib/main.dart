@@ -1,5 +1,6 @@
-import 'package:fake_store_app/views/project_list_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'views/project_list_screen.dart';
 
 void main() {
   runApp(const MyApp());

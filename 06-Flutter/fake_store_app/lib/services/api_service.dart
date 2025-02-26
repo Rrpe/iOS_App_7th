@@ -16,7 +16,7 @@ class ApiService {
           body.map((dynamic item) => Product.fromJson(item)).toList();
       return products;
     } else {
-      throw 'Fai;ed to load products';
+      throw 'Failed to load products';
     }
   }
 }

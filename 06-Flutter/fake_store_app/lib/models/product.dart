@@ -1,7 +1,7 @@
 class Product {
-  final String id;
+  final int id;
   final String title;
-  final double price;
+  final double price; // 9.99
   final String description;
   final String image;
   final Map<String, dynamic> rating;
