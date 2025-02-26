@@ -11,7 +11,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const text('상품 목록')),
+      appBar: AppBar(title: const Text('상품 목록')),
       body: const Center(child: CircularProgressIndicator()),
     );
   }
