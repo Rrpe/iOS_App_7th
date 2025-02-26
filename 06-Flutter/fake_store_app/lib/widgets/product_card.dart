@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../views/product_detail_screen.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -12,6 +13,13 @@ class ProductCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(8),
       child: ListTile(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ProductDetailScreen(productId: product.id),
+            ),
+          );
+        },
         leading: Image.network(
           product.image,
           width: 50,
