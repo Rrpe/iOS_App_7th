@@ -51,7 +51,21 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 24)
         // frame layout
         label.frame = CGRect(x:20, y:100, width: view.frame.width - 40, height: 40)
-        view.addSubview(label)
+        self.view.addSubview(label)
+        
+        let button = UIButton()
+        button.setTitle("Go Second", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.frame = CGRect(x:20, y: 200, width: view.frame.width - 40, height: 40)
+        button.addTarget(self, action: #selector(goSecond), for:.touchUpInside)
+        
+        self.view.addSubview(button)
+    }
+    
+    
+    @objc func goSecond() {
+        let secondVC = SecondViewController()
+        self.present(secondVC, animated: true)
     }
 }
 
