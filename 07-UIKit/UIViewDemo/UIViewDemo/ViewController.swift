@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  DelegateDemo
+//  UIViewDemo
 //
 //  Created by KimJunsoo on 3/13/25.
 //
