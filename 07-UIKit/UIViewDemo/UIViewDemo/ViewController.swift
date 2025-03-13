@@ -13,6 +13,18 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupStackView()
+        
+        // 버튼
+        setupButtn()
+        
+        // 스위치
+        setupSwitch()
+        
+        // 스테퍼
+        setupStepper()
+        
+        // 슬라이더
+        setupSlider()
     }
 
     func setupStackView() {
@@ -50,6 +62,27 @@ class ViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             stackView.heightAnchor.constraint(equalToConstant: 200)
         ])
+    }
+    
+    // MARK: - 버튼 생성
+    func setupButtn() {
+        let button = UIButton(type: .system)
+        button.setTitle("Press Me", for: .normal)
+    }
+    
+    // MARK: - 스위치 생성
+    func setupSwitch() {
+//        let switch = UISwitch()
+    }
+    
+    // MARK: - 스테퍼 생성
+    func setupStepper() {
+        let stepper = UIStepper()
+    }
+    
+    // MARK: - 슬라이더 생성
+    func setupSlider() {
+        let slider = UISlider()
     }
 }
 
