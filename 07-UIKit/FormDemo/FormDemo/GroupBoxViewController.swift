@@ -17,9 +17,26 @@ class GroupBoxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .white
+        
+        setupGroupBox()
     }
 
+    func setupGroupBox() {
+        groupBox.layer.borderWidth = 1
+        groupBox.layer.borderColor = UIColor.lightGray.cgColor
+        groupBox.layer.cornerRadius = 8
+        groupBox.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(groupBox)
+        
+        NSLayoutConstraint.activate([
+            groupBox.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            groupBox.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            groupBox.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            groupBox.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
 
 }
 
