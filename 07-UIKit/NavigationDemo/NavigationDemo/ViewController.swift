@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.standardAppearance = appearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationController?.navigationBar.tintColor = .white
-        //
+        // 커밋 내용 때문에 수정
     }
 
 
