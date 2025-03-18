@@ -61,6 +61,8 @@ class ViewController: UIViewController {
             self?.showMessage("Delete 선택됨")
         })
         
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
         // 아이패드에서 팝오버 형태로 메뉴를 표시하기 위한 설정입니다.
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = view
@@ -71,28 +73,28 @@ class ViewController: UIViewController {
         // 액션 시트를 표시합니다.
         present(alert, animated: true)
     }
-        
-        private func openLink() {
-            if let url = URL(string: "https://www.apple.com"),
-               UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url) { success in
-                    if success {
-                        print("링크 열기 성공")
-                    } else {
-                        print("링크 열기 실패")
-                    }
-                    
+    
+    private func openLink() {
+        if let url = URL(string: "https://www.apple.com"),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url) { success in
+                if success {
+                    print("링크 열기 성공")
+                } else {
+                    print("링크 열기 실패")
                 }
+                
             }
-        }
-        
-        private func showMessage(_ message: String) {
-            // UIAlertController를 사용하여 알림을 생성합니다.
-            let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
-            // "OK" 액션을 추가합니다.
-            alert.addAction(UIAlertAction(title: "확인", style: .default))
-            // 알림을 표시합니다.
-            present(alert, animated: true)
         }
     }
     
+    private func showMessage(_ message: String) {
+        // UIAlertController를 사용하여 알림을 생성합니다.
+        let alert = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
+        // "OK" 액션을 추가합니다.
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        // 알림을 표시합니다.
+        present(alert, animated: true)
+    }
+}
+
