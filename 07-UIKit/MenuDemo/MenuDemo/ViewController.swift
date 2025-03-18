@@ -18,15 +18,13 @@ class ViewController: UIViewController {
     func setupUI() {
         // 디폴트 버튼 설정
         var config = UIButton.Configuration.plain()
-        config.title = "Apple"
-        config.baseForegroundColor = .blue
         
         // 밑줄 스타일
-        let attributedTitle = AttributedString("Apple")
+        let attributedTitle = AttributedString("애플")
         var container = AttributeContainer()
-        container.underlineStyle = .single
+        container.underlineStyle = [.single]
         container.underlineColor = .blue
-        container.font = .systemFont(ofSize: 20)
+        container.font = .systemFont(ofSize: 50)
         
         let underlinedTitle = attributedTitle.settingAttributes(container)
         config.attributedTitle = underlinedTitle
@@ -52,7 +50,14 @@ class ViewController: UIViewController {
     private func openLink() {
         if let url = URL(string: "https://www.apple.com"),
            UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url) { success in
+                if success {
+                    print("링크 열기 성공")
+                } else {
+                    print("링크 열기 실패")
+                }
+                
+            }
         }
     }
     
