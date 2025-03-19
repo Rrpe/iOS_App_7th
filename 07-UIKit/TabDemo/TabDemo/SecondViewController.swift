@@ -9,20 +9,52 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    let dataLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.text = "데이터가 없습니다."
+        return label
+    }()
+    private var observer: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Second"
+        
+        setupLabel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
-    */
 
+    func setupLabel() {
+        view.addSubview(dataLabel)
+        dataLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        observer = NotificationCenter.default.addObserver(forName: DataManager.dataChangedNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.updateLabel()
+        }
+        
+    }
+    
+    func updateLabel() {
+        if DataManager.shared.data.isEmpty {
+            dataLabel.text = "아직 데이터가 없습니다."
+        } else {
+            dataLabel.text = DataManager.shared.data
+        }
+    }
+    
+    deinit {
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+        }
+    }
 }
