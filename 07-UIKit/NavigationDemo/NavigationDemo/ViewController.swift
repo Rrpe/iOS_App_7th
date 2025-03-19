@@ -13,17 +13,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.title = "네비게이션 타이틀"
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .systemBlue
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        self.navigationController?.navigationBar.standardAppearance = appearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = .systemBlue
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         // 커밋 내용 때문에 수정
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let VC = UIViewController()
+        VC.view.backgroundColor = .systemYellow
+        VC.title = "서브 타이틀"
+        self.navigationController?.pushViewController(VC, animated: true)
+        
+    }
 
 }
 
