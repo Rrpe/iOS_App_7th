@@ -70,6 +70,8 @@ class SecondViewController: UIViewController {
     func searchButtonTapped() {
         print("검색 버튼 클릭")
     }
+    
+    
 }
 
 #Preview {
