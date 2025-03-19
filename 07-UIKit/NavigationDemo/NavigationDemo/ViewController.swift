@@ -18,17 +18,19 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.barTintColor = .systemBlue
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        // 커밋 내용 때문에 수정
-    }
 
+        // 네비게이션 바의 큰 타이틀 설정
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationController?.navigationBar.backgroundColor = .systemBlue
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let VC = UIViewController()
-        VC.view.backgroundColor = .systemYellow
-        VC.title = "서브 타이틀"
+        let VC = SecondViewController()
         self.navigationController?.pushViewController(VC, animated: true)
-        
     }
-
 }
 
+#Preview {
+  UINavigationController(rootViewController: ViewController())
+}
