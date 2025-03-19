@@ -11,7 +11,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tabBar.tintColor = .systemGreen
         // Do any additional setup after loading the view.
     }
     
@@ -26,4 +26,8 @@ class TabBarController: UITabBarController {
     }
     */
 
+}
+
+#Preview {
+  UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
 }
