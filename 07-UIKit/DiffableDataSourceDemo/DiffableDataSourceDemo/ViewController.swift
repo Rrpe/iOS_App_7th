@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavigation()
         // 테이블 뷰 구성
         configureTableView()
         // 디퍼블데이터소스 구성
@@ -40,10 +41,19 @@ class ViewController: UIViewController {
         updateData()
     }
     
+    func configureNavigation() {
+        title = "Diffable Data Source"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addNewItem))
+    }
+    
     func configureTableView() {
         // 테이블 뷰 생성 및 설정
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        tableView.delegate = self
         
         // 셀 등록 - UITableViewCell.self 대신 커스텀 셀 사용 가능
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -72,7 +82,7 @@ class ViewController: UIViewController {
     
     func updateData() {
         // 샘플 데이터
-        let items = (0..<30).map { Item(title: "Item \($0)") }
+        let items = (0..<10).map { Item(title: "Item \($0)") }
         // 스냅샷 생성
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.main])
@@ -81,5 +91,30 @@ class ViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
+    @objc func addNewItem() {
+        var snapshot = dataSource.snapshot()
+        
+        let newItem = Item(title: "New \(Date().timeIntervalSince1970)")
+        
+        snapshot.insertItems([newItem], beforeItem: snapshot.itemIdentifiers.first!)
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func deleteItem(_ item: Item) {
+        var snapshot = dataSource.snapshot()
+        
+        snapshot.deleteItems([item])
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
 }
 
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let item = dataSource.itemIdentifier(for: indexPath)!
+        print("Selected item: \(item)")
+        deleteItem(item)
+    }
+}
