@@ -118,3 +118,8 @@ extension ViewController: UITableViewDelegate {
         deleteItem(item)
     }
 }
+
+#Preview {
+  UIStoryboard(name: "Main", bundle: nil)
+    .instantiateInitialViewController()!
+}
