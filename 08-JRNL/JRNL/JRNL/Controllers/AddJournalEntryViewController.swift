@@ -10,6 +10,8 @@ import CoreLocation
 
 class AddJournalEntryViewController: UIViewController {
     
+    @IBOutlet weak var getLocationSwitch: UISwitch!
+    @IBOutlet weak var getLocationSwitchLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
@@ -30,6 +32,15 @@ class AddJournalEntryViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         
 //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    @IBAction func getLocationSwitchValueChanged(_ sender: Any) {
+        if getLocationSwitch.isOn {
+            getLocationSwitchLabel.text = "Getting location..."
+            locationManager.requestLocation()
+        } else {
+            getLocationSwitchLabel.text = "Get Location"
+        }
     }
     
     // MARK: - Navigation
@@ -99,6 +110,7 @@ extension AddJournalEntryViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else { return }
         currentLocation = location
+        getLocationSwitchLabel.text = "GPS 사용 중: \(location.coordinate.latitude), \(location.coordinate.longitude)"
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
