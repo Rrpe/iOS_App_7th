@@ -8,7 +8,7 @@
 import UIKit
 
 class AddJournalEntryViewController: UIViewController {
-
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var photoImageView: UIImageView!
@@ -17,18 +17,21 @@ class AddJournalEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare")
-        let title = titleTextField.text ?? ""
-        let body = bodyTextView.text ?? ""
-        let photo = photoImageView.image
-        let rating = 3
-        newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo)
+        print("prepare \(String(describing: segue.identifier))")
+        if let segueIdentifier = segue.identifier {
+            if segueIdentifier == "save" {
+                let title = titleTextField.text ?? ""
+                let body = bodyTextView.text ?? ""
+                let photo = photoImageView.image
+                let rating = 3
+                newJournalEntry = JournalEntry(rating: rating, title: title, body: body, photo: photo)
+            }
+        }
     }
-
 }

@@ -420,10 +420,14 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="P9P-FT-PoQ">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
-                                <segue destination="Pin-Tv-ceS" kind="unwind" unwindAction="unwindNewEntryCancelWithSegue:" id="dDo-La-Boz"/>
+                                <segue destination="Pin-Tv-ceS" kind="unwind" identifier="cancel" unwindAction="unwindNewEntryCancelWithSegue:" id="dDo-La-Boz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5H1-w8-O9X"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5H1-w8-O9X">
+                            <connections>
+                                <segue destination="Pin-Tv-ceS" kind="unwind" identifier="save" unwindAction="unwindNewEntrySaveWithSegue:" id="6qF-li-RTK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="kzt-ZA-PBO" id="ErI-f1-stG"/>
