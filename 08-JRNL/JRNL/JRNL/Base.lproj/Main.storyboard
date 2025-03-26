@@ -348,7 +348,7 @@
         <!--New Entry-->
         <scene sceneID="7IO-lL-jPd">
             <objects>
-                <viewController id="A6V-iT-iUn" sceneMemberID="viewController">
+                <viewController id="A6V-iT-iUn" customClass="AddJournalEntryViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omH-DL-5Y5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,6 +425,11 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="5H1-w8-O9X"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="kzt-ZA-PBO" id="ErI-f1-stG"/>
+                        <outlet property="photoImageView" destination="iUE-Ca-IcL" id="gf0-28-3su"/>
+                        <outlet property="titleTextField" destination="LFf-yO-3uA" id="WHJ-ze-fV5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zRM-pY-7ZB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Pin-Tv-ceS" userLabel="Exit" sceneMemberID="exit"/>
