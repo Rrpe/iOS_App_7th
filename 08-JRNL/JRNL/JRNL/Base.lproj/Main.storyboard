@@ -438,6 +438,7 @@
                     <connections>
                         <outlet property="bodyTextView" destination="kzt-ZA-PBO" id="ErI-f1-stG"/>
                         <outlet property="photoImageView" destination="iUE-Ca-IcL" id="gf0-28-3su"/>
+                        <outlet property="saveButton" destination="5H1-w8-O9X" id="Q8d-DA-Tms"/>
                         <outlet property="titleTextField" destination="LFf-yO-3uA" id="WHJ-ze-fV5"/>
                     </connections>
                 </viewController>
