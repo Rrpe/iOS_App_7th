@@ -14,10 +14,13 @@ class MapViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     var sampleJournalEntryData = SampleJournalEntryData()
+    var selectedJournalEntry: JournalEntry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mapView.delegate = self
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         self.navigationItem.title = "Loading..."
@@ -46,5 +49,27 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? JournalEntry else { return nil }
+        
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: -5)
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        return view
+    }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let annotation = mapView.selectedAnnotations.first as? JournalEntry else { return }
+        selectedJournalEntry = annotation
+        performSegue(withIdentifier: "showEntry", sender: self)
+    }
 }

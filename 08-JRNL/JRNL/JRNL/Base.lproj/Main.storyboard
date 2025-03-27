@@ -122,6 +122,7 @@
                     <navigationItem key="navigationItem" title="Map" id="4WZ-w2-8jy"/>
                     <connections>
                         <outlet property="mapView" destination="ls0-H2-w4L" id="br6-NU-Mxt"/>
+                        <segue destination="Ftw-Tb-cuj" kind="show" identifier="showMapDetail" id="WW5-Pu-ds2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRa-ot-Rzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -289,7 +290,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oq-ej-iUP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3139" y="-363"/>
+            <point key="canvasLocation" x="3148" y="382"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nBU-2O-rb7">
@@ -474,6 +475,9 @@
             <point key="canvasLocation" x="2899" y="-1172"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WW5-Pu-ds2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
         <image name="map" catalog="system" width="128" height="112"/>
