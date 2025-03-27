@@ -100,7 +100,7 @@
         <!--Map-->
         <scene sceneID="0hT-Ha-3db">
             <objects>
-                <viewController id="ZKz-Pd-Yjk" sceneMemberID="viewController">
+                <viewController id="ZKz-Pd-Yjk" customClass="MapViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sqw-Ef-ekE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,10 +120,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="4WZ-w2-8jy"/>
+                    <connections>
+                        <outlet property="mapView" destination="ls0-H2-w4L" id="br6-NU-Mxt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRa-ot-Rzb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139" y="383"/>
+            <point key="canvasLocation" x="2123" y="382"/>
         </scene>
         <!--Entry Detail-->
         <scene sceneID="1WF-RW-2ZA">
