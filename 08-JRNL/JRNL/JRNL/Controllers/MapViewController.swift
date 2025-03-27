@@ -2,7 +2,7 @@
 //  MapViewController.swift
 //  JRNL
 //
-//  Created by KimJunsoo on 3/27/25.
+//  Created by Jungman Bae on 3/27/25.
 //
 
 import UIKit
@@ -10,66 +10,87 @@ import MapKit
 
 class MapViewController: UIViewController {
 
-    @IBOutlet weak var mapView: MKMapView!
-    
-    let locationManager = CLLocationManager()
-    var sampleJournalEntryData = SampleJournalEntryData()
-    var selectedJournalEntry: JournalEntry?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  @IBOutlet weak var mapView: MKMapView!
 
-        mapView.delegate = self
-        
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        self.navigationItem.title = "Loading..."
-        locationManager.requestLocation()
-        
-        // 샘플 데이터 생성 & 지도에 표시
-        sampleJournalEntryData.createSampleJournalEntryData()
-        mapView.addAnnotations(sampleJournalEntryData.journalEntries)
+  let locationManager = CLLocationManager()
+  var sampleJournalEntryData = SampleJournalEntryData()
+  var selectedJournalEntry: JournalEntry?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    mapView.delegate = self
+
+    // 위치 정보 사용을 위한 설정
+    locationManager.delegate = self
+    locationManager.requestWhenInUseAuthorization()
+    self.navigationItem.title = "Loading..."
+    locationManager.requestLocation()
+
+    // 샘플 데이터 생성 & 지도에 표시
+    sampleJournalEntryData.createSampleJournalEntryData()
+    mapView.addAnnotations(sampleJournalEntryData.journalEntries)
+  }
+
+  // MARK: - Navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    super.prepare(for: segue, sender: sender)
+    if let segueIndentifier = segue.identifier {
+      if segueIndentifier == "showMapDetail" {
+        guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
+          fatalError("Unexpected destination: \(segue.destination)")
+        }
+        entryDetailViewController.selectedJournalEntry = selectedJournalEntry
+      }
     }
+  }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let coordinate = location.coordinate
-            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-            self.navigationItem.title = "Map"
-        }
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    if let location = locations.first {
+      let coordinate = location.coordinate
+      let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+      let region = MKCoordinateRegion(center: coordinate, span: span)
+      mapView.setRegion(region, animated: true)
+      self.navigationItem.title = "Map"
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Failed to find user's location: \(error.localizedDescription)")
-    }
+  }
+
+  func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    print("Failed to find user's location: \(error.localizedDescription)")
+  }
 }
 
 extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? JournalEntry else { return nil }
-        
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: -5)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        }
-        return view
+  // 지도에 핀을 표시할 때 호출
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    guard let annotation = annotation as? JournalEntry else {
+      return nil
     }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        guard let annotation = mapView.selectedAnnotations.first as? JournalEntry else { return }
-        selectedJournalEntry = annotation
-        performSegue(withIdentifier: "showEntry", sender: self)
+
+    let identifier = "marker"
+    var view: MKMarkerAnnotationView
+
+    if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
+      dequeuedView.annotation = annotation
+      view = dequeuedView
+    } else {
+      view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+      view.canShowCallout = true
+      view.calloutOffset = CGPoint(x: -5, y: 5)
+      view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
+    return view
+  }
+
+  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
+    calloutAccessoryControlTapped control: UIControl
+  ) {
+    print("calloutAccessoryControlTapped")
+    guard let annotation = mapView.selectedAnnotations.first as? JournalEntry else {
+      return
+    }
+    selectedJournalEntry = annotation
+    performSegue(withIdentifier: "showMapDetail", sender: self)
+  }
 }
