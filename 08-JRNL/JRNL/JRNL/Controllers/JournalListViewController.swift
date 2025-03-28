@@ -11,13 +11,10 @@ class JournalListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sampleJournalEntryData = SampleJournalEntryData()
     var selectedJournalEntry: JournalEntry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 샘플 데이터 생성
-        sampleJournalEntryData.createSampleJournalEntryData()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -27,7 +24,7 @@ class JournalListViewController: UIViewController {
     @IBAction func unwindNewEntrySave(segue: UIStoryboardSegue) {
         if let sourceViewController = segue.source as? AddJournalEntryViewController,
            let newJournalEntry = sourceViewController.newJournalEntry {
-            sampleJournalEntryData.journalEntries.append(newJournalEntry)
+            SharedData.shared.addJournalEntry(newJournalEntry)
             tableView.reloadData()
         }
     }
@@ -47,7 +44,7 @@ class JournalListViewController: UIViewController {
 
 extension JournalListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleJournalEntryData.journalEntries.count
+        return SharedData.shared.numberOfJournalEntries
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,12 +53,14 @@ extension JournalListViewController: UITableViewDataSource {
             for: indexPath
         ) as! JournalListTableViewCell
         
-        let journalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        let journalEntry = SharedData.shared.getJounalEntry(at: indexPath.row)
         // 날짜, 제목, 사진 표시
         // 날짜는 "월 일, 년" 형식으로 표시
-        journalCell.dateLabel.text = journalEntry.date.formatted(.dateTime.month().day().year())
+        journalCell.dateLabel.text = journalEntry.dateString
         journalCell.titleLabel.text = journalEntry.entryTitle
-        journalCell.photoImageView.image = journalEntry.photo
+        if let photoData = journalEntry.photoData {
+            journalCell.photoImageView.image = UIImage(data: photoData)
+        }
         
         return journalCell
     }
@@ -72,7 +71,7 @@ extension JournalListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt: \(indexPath)")
         // 선택한 셀의 JournalEntry 객체를 가져와서 JournalEntryDetailViewController에 전달
-        let selectedJournalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        let selectedJournalEntry = SharedData.shared.getJounalEntry(at: indexPath.row)
         print("selectedJournalEntry: \(selectedJournalEntry)")
         self.selectedJournalEntry = selectedJournalEntry
         performSegue(withIdentifier: "showDetail", sender: self)
@@ -84,7 +83,7 @@ extension JournalListViewController: UITableViewDelegate {
         forRowAt indexPath: IndexPath
     ) {
         if editingStyle == .delete {
-            sampleJournalEntryData.journalEntries.remove(at: indexPath.row)
+            SharedData.shared.removeJournalEntry(at: indexPath.row)
             // 테이블 전체 새로고침
             // tableView.reloadData()
             
