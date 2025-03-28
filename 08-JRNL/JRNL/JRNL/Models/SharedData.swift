@@ -39,6 +39,13 @@ class SharedData {
         saveJournalEntriesData()
     }
     
+    func removeSelected(journalEntry: JournalEntry) {
+        if let index = journalEntries.firstIndex(where: { $0.id == journalEntry.id }) {
+            journalEntries.remove(at: index)
+            saveJournalEntriesData()
+        }
+    }
+    
     // 데이터 삭제
     func removeJournalEntry(at index: Int) {
         journalEntries.remove(at: index)
