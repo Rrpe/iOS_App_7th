@@ -17,6 +17,7 @@ class AddJournalEntryViewController: UIViewController {
     @IBOutlet weak var bodyTextView: UITextView!
     @IBOutlet weak var photoImageView: UIImageView!
     
+    @IBOutlet weak var ratingView: RatingView!
     var newJournalEntry: JournalEntry?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
