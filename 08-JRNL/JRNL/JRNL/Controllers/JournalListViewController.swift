@@ -17,12 +17,27 @@ class JournalListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
+        
         SharedData.shared.loadJournalEntriesData()
         
         search.searchResultsUpdater = self
         search.obscuresBackgroundDuringPresentation = false
         search.searchBar.placeholder = "제목 검색"
         navigationItem.searchController = search
+    }
+    
+    func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+        collectionView.collectionViewLayout = flowLayout
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -61,16 +76,16 @@ extension JournalListViewController: UICollectionViewDataSource {
         let journalCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "journalCell",
             for: indexPath
-        )
+        ) as! JournalListCollectionViewCell
         
-        /*let journalEntry = search.isActive ? filteredTableData[indexPath.row] : SharedData.shared.getJounalEntry(at: indexPath.row)
+        let journalEntry = search.isActive ? filteredTableData[indexPath.row] : SharedData.shared.getJounalEntry(at: indexPath.row)
         // 날짜, 제목, 사진 표시
         // 날짜는 "월 일, 년" 형식으로 표시
         journalCell.dateLabel.text = journalEntry.dateString
         journalCell.titleLabel.text = journalEntry.entryTitle
         if let photoData = journalEntry.photoData {
             journalCell.photoImageView.image = UIImage(data: photoData)
-        }*/
+        }
         
         return journalCell
     }
@@ -79,6 +94,24 @@ extension JournalListViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension JournalListViewController: UICollectionViewDelegate {
     // TODO: 컬렉션 뷰 델리게이트 코드 추가 ( contextMenu, 동적 사이즈 코드 추가 필요 )
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension JournalListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var columns: CGFloat
+        if traitCollection.horizontalSizeClass == .compact {
+            columns = 1
+        } else {
+            columns = 2
+        }
+        let viewWidth = collectionView.frame.width
+        let inset = 10.0
+        let contentWidth = viewWidth - inset * (columns + 1)
+        let cellWidth = contentWidth / columns
+        let cellHeight = 90.0
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
 }
 
 // MARK: - UISearchResultsUpdating
