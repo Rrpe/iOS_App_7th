@@ -6,22 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		1E38ED082D9CC81000F854AF /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E38ED072D9CC81000F854AF /* WidgetKit.framework */; };
-		1E38ED0A2D9CC81000F854AF /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E38ED092D9CC81000F854AF /* SwiftUI.framework */; };
-		1E38ED152D9CC81100F854AF /* JRNLWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1E38ED052D9CC81000F854AF /* JRNLWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1E38ED132D9CC81100F854AF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CCFA1BB02D923B6700733525 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1E38ED042D9CC81000F854AF;
-			remoteInfo = JRNLWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		1E38ED162D9CC81100F854AF /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -29,7 +13,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				1E38ED152D9CC81100F854AF /* JRNLWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,29 +20,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E38ED052D9CC81000F854AF /* JRNLWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JRNLWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E38ED072D9CC81000F854AF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		1E38ED092D9CC81000F854AF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		1E38ED1C2D9CCB2C00F854AF /* JRNLWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JRNLWidgetExtension.entitlements; sourceTree = "<group>"; };
+		1E38ED2B2D9D0B7400F854AF /* JRNLWidgetExtension copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "JRNLWidgetExtension copy-Info.plist"; path = "/Users/kimjunsoo/Documents/appschool7th/08-JRNL/JRNL/JRNLWidgetExtension copy-Info.plist"; sourceTree = "<absolute>"; };
 		CCFA1BB82D923B6700733525 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1E38ED1A2D9CC81100F854AF /* Exceptions for "JRNLWidget" folder in "JRNLWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 1E38ED042D9CC81000F854AF /* JRNLWidgetExtension */;
-		};
-		1E38ED1E2D9CCBF300F854AF /* Exceptions for "JRNL" folder in "JRNLWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Models/JournalEntry.swift,
-				Models/SharedData.swift,
-			);
-			target = 1E38ED042D9CC81000F854AF /* JRNLWidgetExtension */;
-		};
 		CCFA1BCA2D923B6900733525 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -72,9 +40,6 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1E38ED0B2D9CC81000F854AF /* JRNLWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1E38ED1A2D9CC81100F854AF /* Exceptions for "JRNLWidget" folder in "JRNLWidgetExtension" target */,
-			);
 			path = JRNLWidget;
 			sourceTree = "<group>";
 		};
@@ -82,7 +47,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CCFA1BCA2D923B6900733525 /* Exceptions for "JRNL" folder in "JRNL" target */,
-				1E38ED1E2D9CCBF300F854AF /* Exceptions for "JRNL" folder in "JRNLWidgetExtension" target */,
 			);
 			path = JRNL;
 			sourceTree = "<group>";
@@ -90,15 +54,6 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1E38ED022D9CC81000F854AF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1E38ED0A2D9CC81000F854AF /* SwiftUI.framework in Frameworks */,
-				1E38ED082D9CC81000F854AF /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CCFA1BB52D923B6700733525 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +80,7 @@
 				CCFA1BBA2D923B6700733525 /* JRNL */,
 				1E38ED0B2D9CC81000F854AF /* JRNLWidget */,
 				1E38ED062D9CC81000F854AF /* Frameworks */,
+				1E38ED2B2D9D0B7400F854AF /* JRNLWidgetExtension copy-Info.plist */,
 				CCFA1BB92D923B6700733525 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -133,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				CCFA1BB82D923B6700733525 /* JRNL.app */,
-				1E38ED052D9CC81000F854AF /* JRNLWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,28 +96,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E38ED042D9CC81000F854AF /* JRNLWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1E38ED192D9CC81100F854AF /* Build configuration list for PBXNativeTarget "JRNLWidgetExtension" */;
-			buildPhases = (
-				1E38ED012D9CC81000F854AF /* Sources */,
-				1E38ED022D9CC81000F854AF /* Frameworks */,
-				1E38ED032D9CC81000F854AF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				1E38ED0B2D9CC81000F854AF /* JRNLWidget */,
-			);
-			name = JRNLWidgetExtension;
-			packageProductDependencies = (
-			);
-			productName = JRNLWidgetExtension;
-			productReference = 1E38ED052D9CC81000F854AF /* JRNLWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		CCFA1BB72D923B6700733525 /* JRNL */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CCFA1BCB2D923B6900733525 /* Build configuration list for PBXNativeTarget "JRNL" */;
@@ -175,7 +108,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1E38ED142D9CC81100F854AF /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CCFA1BBA2D923B6700733525 /* JRNL */,
@@ -197,9 +129,6 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					1E38ED042D9CC81000F854AF = {
-						CreatedOnToolsVersion = 16.2;
-					};
 					CCFA1BB72D923B6700733525 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -220,19 +149,11 @@
 			projectRoot = "";
 			targets = (
 				CCFA1BB72D923B6700733525 /* JRNL */,
-				1E38ED042D9CC81000F854AF /* JRNLWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1E38ED032D9CC81000F854AF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CCFA1BB62D923B6700733525 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,13 +164,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1E38ED012D9CC81000F854AF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CCFA1BB42D923B6700733525 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,73 +173,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1E38ED142D9CC81100F854AF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1E38ED042D9CC81000F854AF /* JRNLWidgetExtension */;
-			targetProxy = 1E38ED132D9CC81100F854AF /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		1E38ED172D9CC81100F854AF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = JRNLWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59FP2PXRXK;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JRNLWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JRNLWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.JRNL.JRNLWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		1E38ED182D9CC81100F854AF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = JRNLWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59FP2PXRXK;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = JRNLWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JRNLWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.JRNL.JRNLWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		CCFA1BCC2D923B6900733525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,9 +201,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.JRNL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -386,9 +237,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.JRNL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};
@@ -514,15 +368,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E38ED192D9CC81100F854AF /* Build configuration list for PBXNativeTarget "JRNLWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1E38ED172D9CC81100F854AF /* Debug */,
-				1E38ED182D9CC81100F854AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CCFA1BB32D923B6700733525 /* Build configuration list for PBXProject "JRNL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
