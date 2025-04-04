@@ -1,3 +1,4 @@
 import Combine
 
-combineOperator()
+//combineOperator()
+notificationCenter()
