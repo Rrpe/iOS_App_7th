@@ -2,6 +2,7 @@ import Foundation
 import Combine
 
 //combineOperator()
-notificationCenter()
+//notificationCenter()
+notificationCenter2()
 
-RunLoop.main.run(until: Date().addingTimeInterval(3.0))
+//RunLoop.main.run(until: Date().addingTimeInterval(3.0))
