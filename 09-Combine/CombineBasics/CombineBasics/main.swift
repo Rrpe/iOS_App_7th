@@ -5,4 +5,4 @@ import Combine
 //notificationCenter()
 notificationCenter2()
 
-//RunLoop.main.run(until: Date().addingTimeInterval(3.0))
+RunLoop.main.run(until: Date().addingTimeInterval(3.0))

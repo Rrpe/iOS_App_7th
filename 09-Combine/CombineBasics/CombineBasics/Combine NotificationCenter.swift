@@ -69,9 +69,12 @@ func notificationCenter() {
     print("주문 상태가 변경되었습니다.: \(pizzaOrder.status)")
 }
 
+
 func notificationCenter2() {
     var cancellables = Set<AnyCancellable>()
     
+    // FIXME - 세마포어 추가: 비동기 작업 완료 대기를 위한 세마포어 생성
+    let semaphore = DispatchSemaphore(value: 0)
     
     let margheritaOrder = Order(toppings: [Topping("Tomato Sauce", isVegan: true),
                                            Topping("Vegan Mozzarella", isVegan: true),
@@ -111,6 +114,71 @@ func notificationCenter2() {
         .post(name: .addTopping,
               object: margheritaOrder,
               userInfo: ["extra": Topping("Mushrooms", isVegan: true)])
+    
+    let orderStatusPublisher = NotificationCenter.default
+        .publisher(for: .didUpdateOrderStatus,
+                   object: margheritaOrder)
+        .compactMap { $0.userInfo?["status"] as? OrderStatus }
+        .eraseToAnyPublisher()
+    
+    let shippingStatusPublisher = NotificationCenter.default
+        .publisher(for: .didValidateAddress,
+                   object: margheritaOrder)
+        .compactMap { $0.userInfo?["status"] as? AddressStatus }
+        .eraseToAnyPublisher()
+    
+    let readyToProducePublisher = Publishers.CombineLatest(orderStatusPublisher, shippingStatusPublisher)
+        .print()
+        .map { (orderStatus, addressStatus) in
+            switch (orderStatus, addressStatus) {
+            case (.placed, .valid):
+                print("주문이 접수되었습니다. 배송 준비 중입니다.")
+                return true
+            case (.shipping, .valid):
+                print("배송 중입니다.")
+                fallthrough
+            case (.delivered, .valid):
+                print("배송이 완료되었습니다.")
+                fallthrough
+            default:
+                print("주문 상태나 배송 상태가 유효하지 않습니다.")
+                return false
+            }
+        }
+        .sink {
+            print("주문 상태: \($0)")
+        }
+        .store(in: &cancellables)
+    
+    NotificationCenter
+        .default
+        .post(name: .didValidateAddress,
+              object: margheritaOrder,
+              userInfo: ["status": AddressStatus.valid])
+    
+    // 이벤트를 시간차를 두고 발송
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        NotificationCenter
+            .default
+            .post(name: .didValidateAddress,
+                  object: margheritaOrder,
+                  userInfo: ["status": AddressStatus.invalid])
+        
+        // 추가 지연
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            NotificationCenter
+                .default
+                .post(name: .didValidateAddress,
+                      object: margheritaOrder,
+                      userInfo: ["status": AddressStatus.valid])
+        }
+        
+        // 5초 후 플레이그라운드 실행 종료
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            // 실행 완료
+            print("결과 확인 완료")
+        }
+    }
 }
 // 주문 상태를 나타내는 열거형
 enum OrderStatus {
@@ -151,6 +219,6 @@ class Order {
 // NotificationCenter에서 사용할 알림 이름 확장
 extension Notification.Name {
     static let didUpdateOrderStatus = Notification.Name("didUpdateOrderStatus")
-    static let dedValidateAddress = Notification.Name("dedValidateAddress")
+    static let didValidateAddress = Notification.Name("didValidateAddress")
     static let addTopping = Notification.Name("addTopping")
 }
