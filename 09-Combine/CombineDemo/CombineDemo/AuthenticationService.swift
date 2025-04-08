@@ -12,6 +12,30 @@ import Combine
 enum APIError: LocalizedError {
     /// 잘못된 요청, 예: 잘못된 URL
     case invalidRequestError(String)
+    case transportError(Error)
+    case invalidResponse
+    case validationError(String)
+    case decodingError(Error)
+    
+    var errorDescription: String? {
+        switch self {
+        case .invalidRequestError(let message):
+            return "Invalid request: \(message)"
+        case .transportError(let error):
+            return "Transport error: \(error)"
+        case .invalidResponse:
+            return "Invalid response"
+        case .validationError(let reason):
+            return "Validation Error: \(reason)"
+        case .decodingError:
+            return "The server returned data in an unexpected format. Try updating the app."
+        }
+    }
+}
+
+struct APIErrorMessage: Decodable {
+    var error: Bool
+    var reason: String
 }
 
 enum NetworkError: Error {
@@ -88,7 +112,23 @@ actor AuthenticationService {
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
+            .mapError { APIError.transportError($0) }
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    throw APIError.invalidResponse
+                }
+                if (200..<300).contains(httpResponse.statusCode) {
+                    return data
+                } else {
+                    let decoder = JSONDecoder()
+                    let apiError = try decoder.decode(APIErrorMessage.self, from: data)
+                    
+                    if httpResponse.statusCode == 400 {
+                        throw APIError.validationError(apiError.reason)
+                    }
+                    throw APIError.invalidResponse
+                }
+            }
             .decode(type: UserNameAvailableMessage.self, decoder: JSONDecoder())
             .map(\.isAvailable)
             .eraseToAnyPublisher()
