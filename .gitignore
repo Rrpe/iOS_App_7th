@@ -20,6 +20,4 @@ xcuserdata/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode
-09-Combine/CombineFirebaseBookShelf/CombineFirebaseBookShelf/GoogleService-Info.plist
 **/GoogleService-Info.plist
