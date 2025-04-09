@@ -36,7 +36,7 @@ private class BookListViewModel: ObservableObject {
     }
 }
 
-struct OnDemandBookListViewWithClosures: View {
+struct ClosuresBookListView: View {
     @StateObject private var viewModel = BookListViewModel()
     
     var body: some View {
@@ -46,6 +46,6 @@ struct OnDemandBookListViewWithClosures: View {
         .task {
             viewModel.fetchBooks()
         }
-        .navigationTitle("Book Details")
+        .navigationTitle("Book List")
     }
 }
