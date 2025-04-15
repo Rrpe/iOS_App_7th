@@ -7,62 +7,42 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		1E9D1B282DACD64200B9797F /* PBXContainerItemProxy */ = {
+		1ED8336A2DADFB4B00F83A7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1E9D1AD32DACD2B500B9797F /* Project object */;
+			containerPortal = 1ED833512DADFB4900F83A7C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1E9D1ADA2DACD2B500B9797F;
-			remoteInfo = XCTestHelloWorld;
-		};
-		1ED8333B2DACE59400F83A7C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1E9D1AD32DACD2B500B9797F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1E9D1B232DACD64200B9797F;
-			remoteInfo = FizzBuzzTests;
+			remoteGlobalIDString = 1ED833582DADFB4900F83A7C;
+			remoteInfo = Albertos;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E9D1ADB2DACD2B500B9797F /* XCTestHelloWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCTestHelloWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E9D1B242DACD64200B9797F /* FizzBuzzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FizzBuzzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ED833592DADFB4900F83A7C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1ED8333A2DACDDB900F83A7C /* Exceptions for "XCTestHelloWorld" folder in "FizzBuzzTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				FizzBuzz.swift,
-			);
-			target = 1E9D1B232DACD64200B9797F /* FizzBuzzTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1E9D1ADD2DACD2B500B9797F /* XCTestHelloWorld */ = {
+		1ED8335B2DADFB4900F83A7C /* Albertos */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1ED8333A2DACDDB900F83A7C /* Exceptions for "XCTestHelloWorld" folder in "FizzBuzzTests" target */,
-			);
-			path = XCTestHelloWorld;
+			path = Albertos;
 			sourceTree = "<group>";
 		};
-		1E9D1B252DACD64200B9797F /* FizzBuzzTests */ = {
+		1ED8336C2DADFB4B00F83A7C /* AlbertosTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = FizzBuzzTests;
+			path = AlbertosTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1E9D1AD82DACD2B500B9797F /* Frameworks */ = {
+		1ED833562DADFB4900F83A7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1E9D1B212DACD64200B9797F /* Frameworks */ = {
+		1ED833662DADFB4B00F83A7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,20 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1E9D1AD22DACD2B500B9797F = {
+		1ED833502DADFB4900F83A7C = {
 			isa = PBXGroup;
 			children = (
-				1E9D1ADD2DACD2B500B9797F /* XCTestHelloWorld */,
-				1E9D1B252DACD64200B9797F /* FizzBuzzTests */,
-				1E9D1ADC2DACD2B500B9797F /* Products */,
+				1ED8335B2DADFB4900F83A7C /* Albertos */,
+				1ED8336C2DADFB4B00F83A7C /* AlbertosTests */,
+				1ED8335A2DADFB4900F83A7C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1E9D1ADC2DACD2B500B9797F /* Products */ = {
+		1ED8335A2DADFB4900F83A7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E9D1ADB2DACD2B500B9797F /* XCTestHelloWorld.app */,
-				1E9D1B242DACD64200B9797F /* FizzBuzzTests.xctest */,
+				1ED833592DADFB4900F83A7C /* Albertos.app */,
+				1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,99 +73,99 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E9D1ADA2DACD2B500B9797F /* XCTestHelloWorld */ = {
+		1ED833582DADFB4900F83A7C /* Albertos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E9D1AFF2DACD2B700B9797F /* Build configuration list for PBXNativeTarget "XCTestHelloWorld" */;
+			buildConfigurationList = 1ED8337D2DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "Albertos" */;
 			buildPhases = (
-				1E9D1AD72DACD2B500B9797F /* Sources */,
-				1E9D1AD82DACD2B500B9797F /* Frameworks */,
-				1E9D1AD92DACD2B500B9797F /* Resources */,
+				1ED833552DADFB4900F83A7C /* Sources */,
+				1ED833562DADFB4900F83A7C /* Frameworks */,
+				1ED833572DADFB4900F83A7C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1ED8333C2DACE59400F83A7C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1E9D1ADD2DACD2B500B9797F /* XCTestHelloWorld */,
+				1ED8335B2DADFB4900F83A7C /* Albertos */,
 			);
-			name = XCTestHelloWorld;
+			name = Albertos;
 			packageProductDependencies = (
 			);
-			productName = XCTestHelloWorld;
-			productReference = 1E9D1ADB2DACD2B500B9797F /* XCTestHelloWorld.app */;
+			productName = Albertos;
+			productReference = 1ED833592DADFB4900F83A7C /* Albertos.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1E9D1B232DACD64200B9797F /* FizzBuzzTests */ = {
+		1ED833682DADFB4B00F83A7C /* AlbertosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E9D1B2A2DACD64200B9797F /* Build configuration list for PBXNativeTarget "FizzBuzzTests" */;
+			buildConfigurationList = 1ED833802DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "AlbertosTests" */;
 			buildPhases = (
-				1E9D1B202DACD64200B9797F /* Sources */,
-				1E9D1B212DACD64200B9797F /* Frameworks */,
-				1E9D1B222DACD64200B9797F /* Resources */,
+				1ED833652DADFB4B00F83A7C /* Sources */,
+				1ED833662DADFB4B00F83A7C /* Frameworks */,
+				1ED833672DADFB4B00F83A7C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1E9D1B292DACD64200B9797F /* PBXTargetDependency */,
+				1ED8336B2DADFB4B00F83A7C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1E9D1B252DACD64200B9797F /* FizzBuzzTests */,
+				1ED8336C2DADFB4B00F83A7C /* AlbertosTests */,
 			);
-			name = FizzBuzzTests;
+			name = AlbertosTests;
 			packageProductDependencies = (
 			);
-			productName = FizzBuzzTests;
-			productReference = 1E9D1B242DACD64200B9797F /* FizzBuzzTests.xctest */;
+			productName = AlbertosTests;
+			productReference = 1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1E9D1AD32DACD2B500B9797F /* Project object */ = {
+		1ED833512DADFB4900F83A7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					1E9D1ADA2DACD2B500B9797F = {
+					1ED833582DADFB4900F83A7C = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					1E9D1B232DACD64200B9797F = {
+					1ED833682DADFB4B00F83A7C = {
 						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 1ED833582DADFB4900F83A7C;
 					};
 				};
 			};
-			buildConfigurationList = 1E9D1AD62DACD2B500B9797F /* Build configuration list for PBXProject "XCTestHelloWorld" */;
+			buildConfigurationList = 1ED833542DADFB4900F83A7C /* Build configuration list for PBXProject "Albertos" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 1E9D1AD22DACD2B500B9797F;
+			mainGroup = 1ED833502DADFB4900F83A7C;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1E9D1ADC2DACD2B500B9797F /* Products */;
+			productRefGroup = 1ED8335A2DADFB4900F83A7C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E9D1ADA2DACD2B500B9797F /* XCTestHelloWorld */,
-				1E9D1B232DACD64200B9797F /* FizzBuzzTests */,
+				1ED833582DADFB4900F83A7C /* Albertos */,
+				1ED833682DADFB4B00F83A7C /* AlbertosTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1E9D1AD92DACD2B500B9797F /* Resources */ = {
+		1ED833572DADFB4900F83A7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1E9D1B222DACD64200B9797F /* Resources */ = {
+		1ED833672DADFB4B00F83A7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,14 +175,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1E9D1AD72DACD2B500B9797F /* Sources */ = {
+		1ED833552DADFB4900F83A7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1E9D1B202DACD64200B9797F /* Sources */ = {
+		1ED833652DADFB4B00F83A7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -212,20 +192,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1E9D1B292DACD64200B9797F /* PBXTargetDependency */ = {
+		1ED8336B2DADFB4B00F83A7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1E9D1ADA2DACD2B500B9797F /* XCTestHelloWorld */;
-			targetProxy = 1E9D1B282DACD64200B9797F /* PBXContainerItemProxy */;
-		};
-		1ED8333C2DACE59400F83A7C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1E9D1B232DACD64200B9797F /* FizzBuzzTests */;
-			targetProxy = 1ED8333B2DACE59400F83A7C /* PBXContainerItemProxy */;
+			target = 1ED833582DADFB4900F83A7C /* Albertos */;
+			targetProxy = 1ED8336A2DADFB4B00F83A7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1E9D1AFD2DACD2B700B9797F /* Debug */ = {
+		1ED8337B2DADFB4B00F83A7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -288,7 +263,7 @@
 			};
 			name = Debug;
 		};
-		1E9D1AFE2DACD2B700B9797F /* Release */ = {
+		1ED8337C2DADFB4B00F83A7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -344,15 +319,14 @@
 			};
 			name = Release;
 		};
-		1E9D1B002DACD2B700B9797F /* Debug */ = {
+		1ED8337E2DADFB4B00F83A7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"XCTestHelloWorld/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Albertos/Preview Content\"";
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -361,14 +335,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-enable-testing";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.XCTestHelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.Albertos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -376,15 +348,14 @@
 			};
 			name = Debug;
 		};
-		1E9D1B012DACD2B700B9797F /* Release */ = {
+		1ED8337F2DADFB4B00F83A7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"XCTestHelloWorld/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Albertos/Preview Content\"";
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -393,14 +364,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-enable-testing";
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.XCTestHelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.Albertos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -408,69 +377,75 @@
 			};
 			name = Release;
 		};
-		1E9D1B2B2DACD64200B9797F /* Debug */ = {
+		1ED833812DADFB4B00F83A7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.FizzBuzzTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.AlbertosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Albertos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Albertos";
 			};
 			name = Debug;
 		};
-		1E9D1B2C2DACD64200B9797F /* Release */ = {
+		1ED833822DADFB4B00F83A7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.FizzBuzzTests;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.AlbertosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Albertos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Albertos";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E9D1AD62DACD2B500B9797F /* Build configuration list for PBXProject "XCTestHelloWorld" */ = {
+		1ED833542DADFB4900F83A7C /* Build configuration list for PBXProject "Albertos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E9D1AFD2DACD2B700B9797F /* Debug */,
-				1E9D1AFE2DACD2B700B9797F /* Release */,
+				1ED8337B2DADFB4B00F83A7C /* Debug */,
+				1ED8337C2DADFB4B00F83A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E9D1AFF2DACD2B700B9797F /* Build configuration list for PBXNativeTarget "XCTestHelloWorld" */ = {
+		1ED8337D2DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "Albertos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E9D1B002DACD2B700B9797F /* Debug */,
-				1E9D1B012DACD2B700B9797F /* Release */,
+				1ED8337E2DADFB4B00F83A7C /* Debug */,
+				1ED8337F2DADFB4B00F83A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E9D1B2A2DACD64200B9797F /* Build configuration list for PBXNativeTarget "FizzBuzzTests" */ = {
+		1ED833802DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "AlbertosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E9D1B2B2DACD64200B9797F /* Debug */,
-				1E9D1B2C2DACD64200B9797F /* Release */,
+				1ED833812DADFB4B00F83A7C /* Debug */,
+				1ED833822DADFB4B00F83A7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1E9D1AD32DACD2B500B9797F /* Project object */;
+	rootObject = 1ED833512DADFB4900F83A7C /* Project object */;
 }
