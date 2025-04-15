@@ -8,10 +8,22 @@
 import XCTest
 
 final class MenuGroupingTests: XCTestCase {
-
+    
     // 한 카테고리당 섹션이 하나씩 있어햐 함.
     func testMenuWithManyCategoriesReturnsOneSectionPerCategory() {
+        let menu = [
+            MenuItem(category: "drinks", name: "a drink"),
+            MenuItem(category: "pastas", name: "a pasta"),
+            MenuItem(category: "pastas", name: "another pasta"),
+            MenuItem(category: "desserts", name: "a dessert"),
+        ].shuffled()
         
+        let sections = groupMenuByCategory(menu)
+        XCTAssertEqual(sections.count, 3)
+        
+        XCTAssertEqual(try XCTUnwrap(sections[safe: 0]?.category), "pastas")
+        XCTAssertEqual(try XCTUnwrap(sections[safe: 1]?.category), "drinks")
+        XCTAssertEqual(try XCTUnwrap(sections[safe: 2]?.category), "desserts")
     }
     
     // 카테고리가 하나인 경우 섹션도 하나여야 한다.
@@ -24,6 +36,8 @@ final class MenuGroupingTests: XCTestCase {
         let sections = groupMenuByCategory(menu)
         
         // Assert
+        // XCTAssertTrue(sections.count == 2) 는 불리언에 대한 결과만 제공
+        // Equal Assert 가 조금 더 명확한 테스트 결과를 제공함
         XCTAssertEqual(sections.count, 1)
         
         do {
