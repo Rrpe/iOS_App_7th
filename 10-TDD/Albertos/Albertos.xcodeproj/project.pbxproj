@@ -21,9 +21,22 @@
 		1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1ED8338D2DAE130500F83A7C /* Exceptions for "Albertos" folder in "AlbertosTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models.swift,
+			);
+			target = 1ED833682DADFB4B00F83A7C /* AlbertosTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1ED8335B2DADFB4900F83A7C /* Albertos */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1ED8338D2DAE130500F83A7C /* Exceptions for "Albertos" folder in "AlbertosTests" target */,
+			);
 			path = Albertos;
 			sourceTree = "<group>";
 		};
