@@ -25,6 +25,7 @@
 		1ED8338D2DAE130500F83A7C /* Exceptions for "Albertos" folder in "AlbertosTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				MenuRow.swift,
 				Models.swift,
 			);
 			target = 1ED833682DADFB4B00F83A7C /* AlbertosTests */;
