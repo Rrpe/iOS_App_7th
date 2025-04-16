@@ -36,8 +36,10 @@ final class MenuListViewModelTests: XCTestCase {
         }
         let expectedMenu = [MenuItem.fixture()]
         
-        let viewModel = MenuList.ViewModel(MenuFetchingStub(returning: .success(expectedMenu)),
-                                           menuGrouping: spyClosure)
+        let viewModel = MenuList.ViewModel(
+            menuFetching: MenuFetchingStub(returning: .success(expectedMenu)),
+            menuGrouping: spyClosure
+        )
         
         let expectation = XCTestExpectation(description: "Publishes sections built from received menu and given grouping closure")
         
@@ -58,9 +60,66 @@ final class MenuListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
         wait(for: [expectation], timeout: 1.0)
-        
     }
     
     // 메뉴 리스트 조회가 실패하면, 에러를 발행한다.
-    func testWhenFetchingFailsPublishesAnError() {}
+    func testWhenFetchingFailsPublishesAnError() {
+        // Arrange
+        let expectedError = NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Test error"])
+        let viewModel = MenuList.ViewModel(
+            menuFetching: MenuFetchingStub(returning: .failure(expectedError))
+        )
+        
+        // Act & Assert
+        let expectation = XCTestExpectation(description: "Publishes error when fetching fails")
+        
+        viewModel
+            .$sections
+            .dropFirst()
+            .sink { value in
+                guard case .failure(let error) = value else {
+                    return XCTFail("Expected a failure Result, got: \(value)")
+                }
+                let nsError = error as NSError
+                XCTAssertEqual(nsError, expectedError)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    // retry 메서드를 호출하면 메뉴를 다시 가져온다.
+    func testRetryFetchesMenuAgain() {
+        // Arrange
+        let expectedError = NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Test error"])
+        let menuFetchingStub = MenuFetchingStub(returning: .failure(expectedError))
+        let spyMenuFetching = SpyMenuFetching(returning: menuFetchingStub.result)
+        
+        let viewModel = MenuList.ViewModel(
+            menuFetching: spyMenuFetching
+        )
+        
+        // Act
+        let initialCallCount = spyMenuFetching.fetchMenuCallCount
+        viewModel.retry()
+        
+        // Assert
+        XCTAssertEqual(spyMenuFetching.fetchMenuCallCount, initialCallCount + 1)
+    }
+}
+
+// 호출 횟수를 기록하는 Spy 객체
+class SpyMenuFetching: MenuFetching {
+    private let menuFetching: MenuFetching
+    private(set) var fetchMenuCallCount = 0
+    
+    init(returning result: Result<[MenuItem], Error>) {
+        self.menuFetching = MenuFetchingStub(returning: result)
+    }
+    
+    func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
+        fetchMenuCallCount += 1
+        return menuFetching.fetchMenu()
+    }
 }
