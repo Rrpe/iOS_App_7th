@@ -93,20 +93,51 @@ final class MenuListViewModelTests: XCTestCase {
     // retry 메서드를 호출하면 메뉴를 다시 가져온다.
     func testRetryFetchesMenuAgain() {
         // Arrange
-        let expectedError = NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Test error"])
-        let menuFetchingStub = MenuFetchingStub(returning: .failure(expectedError))
-        let spyMenuFetching = SpyMenuFetching(returning: menuFetchingStub.result)
+        var fetchCount = 0
+        let expectedMenu = [MenuItem.fixture()]
         
-        let viewModel = MenuList.ViewModel(
-            menuFetching: spyMenuFetching
+        let menuFetchingSpy = MenuFetchingSpy(
+            fetchingClosure: {
+                fetchCount += 1
+                if fetchCount == 1 {
+                    return Fail(error: NSError(domain: "TestError", code: 0, userInfo: nil)).eraseToAnyPublisher()
+                } else {
+                    return Just(expectedMenu)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                }
+            }
         )
         
+        let viewModel = MenuList.ViewModel(menuFetching: menuFetchingSpy)
+        
         // Act
-        let initialCallCount = spyMenuFetching.fetchMenuCallCount
+        let firstFailExpectation = XCTestExpectation(description: "First fetch fails")
+        let expectation = XCTestExpectation(description: "Retry fetches menu items")
+        
+        var results = [Result<[MenuSection], Error>]()
+        viewModel
+            .$sections
+            .sink { value in
+                results.append(value)
+                guard case .success(let sections) = value else {
+                    firstFailExpectation.fulfill()
+                    return
+                }
+                XCTAssertEqual(sections.flatMap { $0.items }, expectedMenu)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
         viewModel.retry()
         
         // Assert
-        XCTAssertEqual(spyMenuFetching.fetchMenuCallCount, initialCallCount + 1)
+        wait(for: [firstFailExpectation], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssertEqual(fetchCount, 2)
+        XCTAssertTrue(results[0].isFailure)
+        XCTAssertTrue(results[1].isSuccess)
+        
     }
 }
 
@@ -122,5 +153,19 @@ class SpyMenuFetching: MenuFetching {
     func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
         fetchMenuCallCount += 1
         return menuFetching.fetchMenu()
+    }
+}
+
+extension Result {
+    var isSuccess: Bool {
+        switch self {
+        case .success:
+            return true
+        case .failure:
+            return false
+        }
+    }
+    var isFailure: Bool {
+        return !isSuccess
     }
 }
