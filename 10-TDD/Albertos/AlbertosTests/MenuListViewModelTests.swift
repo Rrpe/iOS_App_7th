@@ -65,13 +65,13 @@ final class MenuListViewModelTests: XCTestCase {
     // 메뉴 리스트 조회가 실패하면, 에러를 발행한다.
     func testWhenFetchingFailsPublishesAnError() {
         // Arrange
-        let expectedError = NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Test error"])
+        let expectedError = NSError(domain: "TestError", code: 0, userInfo: nil)//[NSLocalizedDescriptionKey: "Test error"])
         let viewModel = MenuList.ViewModel(
             menuFetching: MenuFetchingStub(returning: .failure(expectedError))
         )
         
-        // Act & Assert
-        let expectation = XCTestExpectation(description: "Publishes error when fetching fails")
+        // Act
+        let expectation = XCTestExpectation(description: "Publishes an error when fetching fails")
         
         viewModel
             .$sections
@@ -86,6 +86,7 @@ final class MenuListViewModelTests: XCTestCase {
             }
             .store(in: &cancellables)
         
+        // Assert
         wait(for: [expectation], timeout: 1.0)
     }
     
