@@ -2,20 +2,24 @@
 //  AlbertosApp.swift
 //  Albertos
 //
-//  Created by KimJunsoo on 4/15/25.
+//  Created by Jungman Bae on 4/15/25.
 //
 
 import SwiftUI
 
 @main
 struct AlbertosApp: App {
-    var body: some Scene {
-        WindowGroup {
-            NavigationStack {
-                MenuList(viewModel: .init(
-                    menuFetching: MenuFetchingPlaceholder()
-                ))
-            }
-        }
+  let orderController = OrderController()
+
+  var body: some Scene {
+    WindowGroup {
+      NavigationStack {
+        MenuList(viewModel: .init(
+          menuFetching: MenuFetcher()
+        ))
+          OrderButton(orderController: orderController)
+      }
+      .environmentObject(orderController)
     }
+  }
 }

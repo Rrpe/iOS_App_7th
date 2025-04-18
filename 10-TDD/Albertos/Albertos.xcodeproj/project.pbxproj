@@ -7,44 +7,27 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		1ED8336A2DADFB4B00F83A7C /* PBXContainerItemProxy */ = {
+		CC9AE23E2DADFB4D001C7622 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 1ED833512DADFB4900F83A7C /* Project object */;
+			containerPortal = CC9AE2282DADFB4C001C7622 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1ED833582DADFB4900F83A7C;
+			remoteGlobalIDString = CC9AE22F2DADFB4C001C7622;
 			remoteInfo = Albertos;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1ED833592DADFB4900F83A7C /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC9AE2302DADFB4C001C7622 /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC9AE23D2DADFB4D001C7622 /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1ED8338D2DAE130500F83A7C /* Exceptions for "Albertos" folder in "AlbertosTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				MenuFetching.swift,
-				MenuFetchingPlaceholder.swift,
-				MenuList.swift,
-				MenuRow.swift,
-				Models.swift,
-			);
-			target = 1ED833682DADFB4B00F83A7C /* AlbertosTests */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1ED8335B2DADFB4900F83A7C /* Albertos */ = {
+		CC9AE2322DADFB4C001C7622 /* Albertos */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				1ED8338D2DAE130500F83A7C /* Exceptions for "Albertos" folder in "AlbertosTests" target */,
-			);
 			path = Albertos;
 			sourceTree = "<group>";
 		};
-		1ED8336C2DADFB4B00F83A7C /* AlbertosTests */ = {
+		CC9AE2402DADFB4D001C7622 /* AlbertosTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = AlbertosTests;
 			sourceTree = "<group>";
@@ -52,14 +35,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1ED833562DADFB4900F83A7C /* Frameworks */ = {
+		CC9AE22D2DADFB4C001C7622 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED833662DADFB4B00F83A7C /* Frameworks */ = {
+		CC9AE23A2DADFB4D001C7622 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,20 +52,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1ED833502DADFB4900F83A7C = {
+		CC9AE2272DADFB4C001C7622 = {
 			isa = PBXGroup;
 			children = (
-				1ED8335B2DADFB4900F83A7C /* Albertos */,
-				1ED8336C2DADFB4B00F83A7C /* AlbertosTests */,
-				1ED8335A2DADFB4900F83A7C /* Products */,
+				CC9AE2322DADFB4C001C7622 /* Albertos */,
+				CC9AE2402DADFB4D001C7622 /* AlbertosTests */,
+				CC9AE2312DADFB4C001C7622 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1ED8335A2DADFB4900F83A7C /* Products */ = {
+		CC9AE2312DADFB4C001C7622 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1ED833592DADFB4900F83A7C /* Albertos.app */,
-				1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */,
+				CC9AE2302DADFB4C001C7622 /* Albertos.app */,
+				CC9AE23D2DADFB4D001C7622 /* AlbertosTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,99 +73,99 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1ED833582DADFB4900F83A7C /* Albertos */ = {
+		CC9AE22F2DADFB4C001C7622 /* Albertos */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1ED8337D2DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "Albertos" */;
+			buildConfigurationList = CC9AE2512DADFB4D001C7622 /* Build configuration list for PBXNativeTarget "Albertos" */;
 			buildPhases = (
-				1ED833552DADFB4900F83A7C /* Sources */,
-				1ED833562DADFB4900F83A7C /* Frameworks */,
-				1ED833572DADFB4900F83A7C /* Resources */,
+				CC9AE22C2DADFB4C001C7622 /* Sources */,
+				CC9AE22D2DADFB4C001C7622 /* Frameworks */,
+				CC9AE22E2DADFB4C001C7622 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1ED8335B2DADFB4900F83A7C /* Albertos */,
+				CC9AE2322DADFB4C001C7622 /* Albertos */,
 			);
 			name = Albertos;
 			packageProductDependencies = (
 			);
 			productName = Albertos;
-			productReference = 1ED833592DADFB4900F83A7C /* Albertos.app */;
+			productReference = CC9AE2302DADFB4C001C7622 /* Albertos.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1ED833682DADFB4B00F83A7C /* AlbertosTests */ = {
+		CC9AE23C2DADFB4D001C7622 /* AlbertosTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1ED833802DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "AlbertosTests" */;
+			buildConfigurationList = CC9AE2542DADFB4D001C7622 /* Build configuration list for PBXNativeTarget "AlbertosTests" */;
 			buildPhases = (
-				1ED833652DADFB4B00F83A7C /* Sources */,
-				1ED833662DADFB4B00F83A7C /* Frameworks */,
-				1ED833672DADFB4B00F83A7C /* Resources */,
+				CC9AE2392DADFB4D001C7622 /* Sources */,
+				CC9AE23A2DADFB4D001C7622 /* Frameworks */,
+				CC9AE23B2DADFB4D001C7622 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1ED8336B2DADFB4B00F83A7C /* PBXTargetDependency */,
+				CC9AE23F2DADFB4D001C7622 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				1ED8336C2DADFB4B00F83A7C /* AlbertosTests */,
+				CC9AE2402DADFB4D001C7622 /* AlbertosTests */,
 			);
 			name = AlbertosTests;
 			packageProductDependencies = (
 			);
 			productName = AlbertosTests;
-			productReference = 1ED833692DADFB4B00F83A7C /* AlbertosTests.xctest */;
+			productReference = CC9AE23D2DADFB4D001C7622 /* AlbertosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1ED833512DADFB4900F83A7C /* Project object */ = {
+		CC9AE2282DADFB4C001C7622 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
-					1ED833582DADFB4900F83A7C = {
-						CreatedOnToolsVersion = 16.2;
+					CC9AE22F2DADFB4C001C7622 = {
+						CreatedOnToolsVersion = 16.3;
 					};
-					1ED833682DADFB4B00F83A7C = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 1ED833582DADFB4900F83A7C;
+					CC9AE23C2DADFB4D001C7622 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = CC9AE22F2DADFB4C001C7622;
 					};
 				};
 			};
-			buildConfigurationList = 1ED833542DADFB4900F83A7C /* Build configuration list for PBXProject "Albertos" */;
+			buildConfigurationList = CC9AE22B2DADFB4C001C7622 /* Build configuration list for PBXProject "Albertos" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 1ED833502DADFB4900F83A7C;
+			mainGroup = CC9AE2272DADFB4C001C7622;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1ED8335A2DADFB4900F83A7C /* Products */;
+			productRefGroup = CC9AE2312DADFB4C001C7622 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1ED833582DADFB4900F83A7C /* Albertos */,
-				1ED833682DADFB4B00F83A7C /* AlbertosTests */,
+				CC9AE22F2DADFB4C001C7622 /* Albertos */,
+				CC9AE23C2DADFB4D001C7622 /* AlbertosTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1ED833572DADFB4900F83A7C /* Resources */ = {
+		CC9AE22E2DADFB4C001C7622 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED833672DADFB4B00F83A7C /* Resources */ = {
+		CC9AE23B2DADFB4D001C7622 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -192,14 +175,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1ED833552DADFB4900F83A7C /* Sources */ = {
+		CC9AE22C2DADFB4C001C7622 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED833652DADFB4B00F83A7C /* Sources */ = {
+		CC9AE2392DADFB4D001C7622 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -209,15 +192,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1ED8336B2DADFB4B00F83A7C /* PBXTargetDependency */ = {
+		CC9AE23F2DADFB4D001C7622 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1ED833582DADFB4900F83A7C /* Albertos */;
-			targetProxy = 1ED8336A2DADFB4B00F83A7C /* PBXContainerItemProxy */;
+			target = CC9AE22F2DADFB4C001C7622 /* Albertos */;
+			targetProxy = CC9AE23E2DADFB4D001C7622 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1ED8337B2DADFB4B00F83A7C /* Debug */ = {
+		CC9AE24F2DADFB4D001C7622 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -252,6 +235,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -269,7 +253,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -280,7 +264,7 @@
 			};
 			name = Debug;
 		};
-		1ED8337C2DADFB4B00F83A7C /* Release */ = {
+		CC9AE2502DADFB4D001C7622 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -315,6 +299,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -326,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -336,14 +321,13 @@
 			};
 			name = Release;
 		};
-		1ED8337E2DADFB4B00F83A7C /* Debug */ = {
+		CC9AE2522DADFB4D001C7622 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Albertos/Preview Content\"";
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -352,6 +336,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,14 +350,13 @@
 			};
 			name = Debug;
 		};
-		1ED8337F2DADFB4B00F83A7C /* Release */ = {
+		CC9AE2532DADFB4D001C7622 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Albertos/Preview Content\"";
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -381,6 +365,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +379,7 @@
 			};
 			name = Release;
 		};
-		1ED833812DADFB4B00F83A7C /* Debug */ = {
+		CC9AE2552DADFB4D001C7622 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -402,7 +387,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.AlbertosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -413,7 +398,7 @@
 			};
 			name = Debug;
 		};
-		1ED833822DADFB4B00F83A7C /* Release */ = {
+		CC9AE2562DADFB4D001C7622 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -421,7 +406,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 59FP2PXRXK;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.codegrove.AlbertosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,34 +420,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1ED833542DADFB4900F83A7C /* Build configuration list for PBXProject "Albertos" */ = {
+		CC9AE22B2DADFB4C001C7622 /* Build configuration list for PBXProject "Albertos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1ED8337B2DADFB4B00F83A7C /* Debug */,
-				1ED8337C2DADFB4B00F83A7C /* Release */,
+				CC9AE24F2DADFB4D001C7622 /* Debug */,
+				CC9AE2502DADFB4D001C7622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1ED8337D2DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "Albertos" */ = {
+		CC9AE2512DADFB4D001C7622 /* Build configuration list for PBXNativeTarget "Albertos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1ED8337E2DADFB4B00F83A7C /* Debug */,
-				1ED8337F2DADFB4B00F83A7C /* Release */,
+				CC9AE2522DADFB4D001C7622 /* Debug */,
+				CC9AE2532DADFB4D001C7622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1ED833802DADFB4B00F83A7C /* Build configuration list for PBXNativeTarget "AlbertosTests" */ = {
+		CC9AE2542DADFB4D001C7622 /* Build configuration list for PBXNativeTarget "AlbertosTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1ED833812DADFB4B00F83A7C /* Debug */,
-				1ED833822DADFB4B00F83A7C /* Release */,
+				CC9AE2552DADFB4D001C7622 /* Debug */,
+				CC9AE2562DADFB4D001C7622 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1ED833512DADFB4900F83A7C /* Project object */;
+	rootObject = CC9AE2282DADFB4C001C7622 /* Project object */;
 }
