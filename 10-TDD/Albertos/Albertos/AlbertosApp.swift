@@ -6,20 +6,46 @@
 //
 
 import SwiftUI
+import HippoAnalytics
+
+// AppDelegate 에서 애널리틱스 초기화
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        // Initialize analytics here
+        debugPrint("🦛 HippoAnalytics: AppDelegate didFinishLaunchingWithOptions")
+        let analytics = HippoAnalyticsClient.shared
+        analytics.configure(apiKey: "your_api_key_here")
+        
+        return true
+    }
+}
+
 
 @main
 struct AlbertosApp: App {
-  let orderController = OrderController()
-
-  var body: some Scene {
-    WindowGroup {
-      NavigationStack {
-        MenuList(viewModel: .init(
-          menuFetching: MenuFetcher()
-        ))
-          OrderButton(orderController: orderController)
-      }
-      .environmentObject(orderController)
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    let orderController = OrderController()
+    
+    var body: some Scene {
+        WindowGroup {
+            NavigationStack {
+                VStack {
+                    MenuList(viewModel: .init(
+                        menuFetching: MenuFetcher()
+                    ))
+                    OrderButton(orderController: orderController)
+                }
+                .navigationDestination(for: String.self) { destination in
+                    if destination == "OrderDetail" {
+                        OrderDetail(orderController: orderController)
+                    }
+                }
+            }
+            .environmentObject(orderController)
+        }
     }
-  }
 }

@@ -5,4 +5,18 @@
 //  Created by KimJunsoo on 4/18/25.
 //
 
-import Foundation
+import Combine
+import HippoPayments
+
+extension HippoPaymentsProcessor: PaymentProcessing {
+    func process(for order: Order) -> AnyPublisher<Void, Error> {
+        return Future { promise in
+            self.processPayment(
+                payload: order.hippoPaymentsPayload,
+                onSuccess: { promise(.success(())) },
+                onFailure: { promise(.failure($0)) }
+            )
+        }
+        .eraseToAnyPublisher()
+    }
+}
