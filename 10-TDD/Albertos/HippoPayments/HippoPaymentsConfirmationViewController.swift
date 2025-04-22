@@ -9,7 +9,8 @@ import UIKit
 
 class HippoPaymentsConfirmationViewController: UIViewController {
     
-    let dismissButton = UIButton()
+    let successButton = UIButton()
+    let failureButton = UIButton()
     let textLabel = UILabel()
     let container = UIStackView()
     
@@ -39,19 +40,27 @@ class HippoPaymentsConfirmationViewController: UIViewController {
         )
         
         container.addArrangedSubview(textLabel)
-        container.addArrangedSubview(dismissButton)
+        container.addArrangedSubview(successButton)
         container.axis = .vertical
         
         textLabel.text = "Your payment was successful\n\nPowered by HippoPayments 🦛"
         textLabel.numberOfLines = 0
         textLabel.textAlignment = .center
-        dismissButton.setTitle("Dismiss", for: .normal)
-        dismissButton.setTitleColor(.systemBlue, for: .normal)
-        dismissButton.addTarget(self, action: #selector(dismissButtonTouched), for: .primaryActionTriggered)
+        successButton.setTitle("SuccessButton", for: .normal)
+        successButton.setTitleColor(.systemBlue, for: .normal)
+        successButton.addTarget(self, action: #selector(dismissButtonTouched), for: .primaryActionTriggered)
         
+
+        failureButton.setTitle("FailureButton", for: .normal)
+        failureButton.setTitleColor(.systemBlue, for: .normal)
+        failureButton.addTarget(self, action: #selector(failureButtonTouched), for: .primaryActionTriggered)
     }
     
     @objc func dismissButtonTouched() {
+        viewControllerPresentationSource.dismiss(animated: true, completion: onDismiss)
+    }
+    
+    @objc func failureButtonTouched() {
         viewControllerPresentationSource.dismiss(animated: true, completion: onDismiss)
     }
 }
