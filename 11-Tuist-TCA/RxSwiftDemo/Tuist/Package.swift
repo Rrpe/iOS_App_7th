@@ -2,19 +2,25 @@
 import PackageDescription
 
 #if TUIST
-    import struct ProjectDescription.PackageSettings
+import struct ProjectDescription.PackageSettings
 
-    let packageSettings = PackageSettings(
-        // Customize the product types for specific package product
-        // Default is .staticFramework
-        // productTypes: ["Alamofire": .framework,]
-        productTypes: [:]
-    )
+let packageSettings = PackageSettings(
+    // Customize the product types for specific package product
+    // Default is .staticFramework
+    // productTypes: ["Alamofire": .framework,]
+    productTypes: [:]
+)
 #endif
 
 let package = Package(
     name: "RxSwiftDemo",
+    products: [
+        .library(name: "RxSwiftDemo", targets: ["RxSwiftDemo"])
+    ],
     dependencies: [
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "6.0.0")
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", exact: "6.6.0")
+    ],
+    targets: [
+        .target(name: "RxSwiftDemo", dependencies: [])
     ]
 )
