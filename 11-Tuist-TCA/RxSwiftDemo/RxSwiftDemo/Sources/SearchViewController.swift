@@ -70,7 +70,7 @@ class SearchViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-    /*
+    
      func bindViewModel() {
      // Search Bar의 텍스트 변경을 ViewModel의 searchText에 바인딩
      searchBar.rx.text.orEmpty
@@ -83,17 +83,11 @@ class SearchViewController: UIViewController {
      cell.textLabel?.text = result // 검색 결과를 셀에 표시
      }
      .disposed(by: disposeBag)
-     }*/
+     }
     //FIXME: SearchViewController.swift의 bindViewModel() 메서드를 다음과 같이 수정
-    
-    func bindViewModel() {
-        // 직접 delegate methodInvoked를 사용하는 방식 대신
-        // Observable로 변환하여 사용
-        Observable.just(searchBar) // 검색 바를 Observable로 변환
-            .flatMap { searchBar -> Observable<String> in
-                // 직접 텍스트 변경 처리
-                return searchBar.rx.text.orEmpty.asObservable()
-            }
+    /*func bindViewModel() {
+        // 수정된 바인딩 코드
+        searchBar.rx.text.orEmpty
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] query in
@@ -101,13 +95,13 @@ class SearchViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // ViewModel의 searchResults를 TableView에 바인딩 (기존 코드는 유지)
+        // 기존 코드 유지
         viewModel.searchResults
             .drive(tableView.rx.items(cellIdentifier: "cell")) { index, result, cell in
-                cell.textLabel?.text = result // 검색 결과를 셀에 표시
+                cell.textLabel?.text = result
             }
             .disposed(by: disposeBag)
-    }
+    }*/
 }
 
 extension SearchViewController {

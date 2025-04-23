@@ -2,6 +2,17 @@ import ProjectDescription
 
 let project = Project(
     name: "RxSwiftDemo",
+    settings: .settings(
+        base: [
+            "SWIFT_OPTIMIZATION_LEVEL": "O",
+            "SWIFT_WHOLE_MODULE_OPTIMIZATION": "YES" // 이 설정이 핵심입니다
+        ],
+        configurations: [
+            .debug(name: "Debug"),
+            .release(name: "Release")
+        ],
+        defaultSettings: .recommended
+    ),
     targets: [
         .target(
             name: "RxSwiftDemo",
@@ -21,7 +32,7 @@ let project = Project(
             dependencies: [
                 .external(name: "RxSwift"),
                 .external(name: "RxCocoa"),
-                .external(name: "RxRelay")  // FIXME: RxRelay 추가
+                .external(name: "RxRelay")
             ]
         ),
         .target(

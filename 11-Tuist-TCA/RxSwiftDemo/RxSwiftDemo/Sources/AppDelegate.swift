@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // RxCocoa 초기화 및 DelegateProxy 설정
-//        _ = RxCocoa.setup()
+        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = SearchViewController()
